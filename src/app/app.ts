@@ -1,16 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { MeldeformularComponent } from './component/meldeformular.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [MeldeformularComponent],
   template: `
-    <h1>Hello, {{ title() }}</h1>
-
-    <router-outlet />
+    <app-meldeformular></app-meldeformular>
   `,
   styles: [],
 })
-export class App {
-  protected readonly title = signal('angular-latest');
-}
+export class App {}

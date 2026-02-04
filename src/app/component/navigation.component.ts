@@ -11,10 +11,10 @@ import { FormsModule } from '@angular/forms';
         <a
           href="https://antidis.f4.htw-berlin.de/"
           aria-label="Zur Startseite wechseln"
-          [class.active]="activePage === 'startseite'"
-          [attr.aria-current]="activePage === 'startseite' ? 'page' : null"
+          [class.active]="activePage === 'home'"
+          [attr.aria-current]="activePage === 'home' ? 'page' : null"
         >
-          Startseite
+          Home
         </a>
         <a
           href="https://antidis.f4.htw-berlin.de/imprint"
@@ -114,6 +114,6 @@ import { FormsModule } from '@angular/forms';
   `]
 })
 export class NavigationComponent {
-  @Input() activePage: 'startseite' | 'impressum' | 'datenschutz' | 'admin' = 'startseite';
+  @Input() activePage: 'home' | 'impressum' | 'datenschutz' | 'admin' = 'home';
   selectedLanguage: 'de' | 'en' = 'de';
 }

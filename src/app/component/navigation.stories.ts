@@ -10,7 +10,7 @@ const meta: Meta<NavigationComponent> = {
   argTypes: {
     activePage: {
       control: 'radio',
-      options: ['startseite', 'impressum', 'datenschutz', 'admin'],
+      options: ['home', 'impressum', 'datenschutz', 'admin'],
     },
   },
 };
@@ -20,7 +20,7 @@ type Story = StoryObj<NavigationComponent>;
 
 export const Startseite: Story = {
   args: {
-    activePage: 'startseite',
+    activePage: 'home',
   },
 };
 
