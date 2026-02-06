@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  NgControl,
   ValidationErrors,
   Validator,
-  Validators,
 } from '@angular/forms';
 
 @Component({
@@ -73,34 +71,27 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
   @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
   @Input() requiredErrorId = 'email-required-error';
   @Input() formatErrorId = 'email-format-error';
+  @Output() valueChange = new EventEmitter<string>();
 
   value = '';
   disabled = false;
+  touched = false;
+  dirty = false;
 
-  private readonly ngControl = inject(NgControl, { optional: true, self: true });
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
 
-  constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
-
   get showError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && control.invalid && (control.touched || control.dirty);
+    return this.isInvalid && (this.touched || this.dirty);
   }
 
   get showRequiredError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['required'] && (control.touched || control.dirty);
+    return this.isRequiredError && (this.touched || this.dirty);
   }
 
   get showFormatError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['email'] && (control.touched || control.dirty);
+    return this.isFormatError && (this.touched || this.dirty);
   }
 
   get ariaDescribedBy(): string | null {
@@ -117,6 +108,26 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
     this.value = value ?? '';
   }
 
+  private get normalizedValue(): string {
+    return this.value.trim();
+  }
+
+  private get isRequiredError(): boolean {
+    return this.required && !this.normalizedValue;
+  }
+
+  private get isFormatError(): boolean {
+    if (!this.normalizedValue) {
+      return false;
+    }
+
+    return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.normalizedValue);
+  }
+
+  private get isInvalid(): boolean {
+    return this.isRequiredError || this.isFormatError;
+  }
+
   registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
@@ -129,16 +140,20 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
     this.disabled = isDisabled;
   }
 
-  validate(control: AbstractControl): ValidationErrors | null {
-    if (this.required && !this.value.trim()) {
+  validate(_: AbstractControl): ValidationErrors | null {
+    if (this.isRequiredError) {
       return { required: true };
     }
 
-    if (!this.value.trim()) {
+    if (!this.normalizedValue) {
       return null;
     }
 
-    return Validators.email(control);
+    if (this.isFormatError) {
+      return { email: true };
+    }
+
+    return null;
   }
 
   registerOnValidatorChange(fn: () => void): void {
@@ -147,11 +162,14 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
 
   onValueChange(value: string): void {
     this.value = value;
+    this.dirty = true;
     this.onChange(value);
     this.onValidatorChange();
+    this.valueChange.emit(value);
   }
 
   markTouched(): void {
+    this.touched = true;
     this.onTouched();
   }
 }

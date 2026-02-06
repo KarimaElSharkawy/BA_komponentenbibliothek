@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  NgControl,
   ValidationErrors,
   Validator,
 } from '@angular/forms';
@@ -60,24 +59,19 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
   @Input() describedBy: string | null = null;
   @Input() errorId = 'checkbox-error';
   @Input() errorText = 'Bitte bestätigen Sie dieses Feld.';
+  @Output() valueChange = new EventEmitter<boolean>();
 
   value = false;
   disabled = false;
+  touched = false;
+  dirty = false;
 
-  private readonly ngControl = inject(NgControl, { optional: true, self: true });
   private onChange: (value: boolean) => void = () => {};
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
 
-  constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
-
   get showError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && control.invalid && (control.touched || control.dirty);
+    return this.required && !this.value && (this.touched || this.dirty);
   }
 
   get ariaDescribedBy(): string | null {
@@ -116,11 +110,14 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
 
   onValueChange(value: boolean): void {
     this.value = value;
+    this.dirty = true;
     this.onChange(value);
     this.onValidatorChange();
+    this.valueChange.emit(value);
   }
 
   markTouched(): void {
+    this.touched = true;
     this.onTouched();
   }
 }

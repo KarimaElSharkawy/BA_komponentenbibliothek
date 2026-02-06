@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  NgControl,
   ValidationErrors,
   Validator,
 } from '@angular/forms';
@@ -75,34 +74,43 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input() minlengthErrorText = '';
   @Input() requiredErrorId = 'textarea-required-error';
   @Input() minlengthErrorId = 'textarea-minlength-error';
+  @Output() valueChange = new EventEmitter<string>();
 
   value = '';
   disabled = false;
 
-  private readonly ngControl = inject(NgControl, { optional: true, self: true });
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
-
-  constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
+  private touched = false;
+  private dirty = false;
 
   get showError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && control.invalid && (control.touched || control.dirty);
+    return this.isInvalid && (this.touched || this.dirty);
   }
 
   get showRequiredError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['required'] && (control.touched || control.dirty);
+    return this.isRequiredError && (this.touched || this.dirty);
   }
 
   get showMinlengthError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['minlength'] && (control.touched || control.dirty);
+    return this.isMinlengthError && (this.touched || this.dirty);
+  }
+
+  private get isRequiredError(): boolean {
+    return !!(this.required && !this.value.trim());
+  }
+
+  private get isMinlengthError(): boolean {
+    return !!(
+      this.minlength > 0 &&
+      this.value.trim().length > 0 &&
+      this.value.trim().length < this.minlength
+    );
+  }
+
+  private get isInvalid(): boolean {
+    return this.isRequiredError || this.isMinlengthError;
   }
 
   get ariaDescribedBy(): string | null {
@@ -154,11 +162,14 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
 
   onValueChange(value: string): void {
     this.value = value;
+    this.dirty = true;
     this.onChange(value);
     this.onValidatorChange();
+    this.valueChange.emit(value);
   }
 
   markTouched(): void {
+    this.touched = true;
     this.onTouched();
   }
 }

@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  NgControl,
   ValidationErrors,
   Validator,
 } from '@angular/forms';
@@ -72,24 +71,19 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
   @Input() required = false;
   @Input() errorText = 'Bitte wählen Sie eine Option aus.';
   @Input() errorId = 'dropdown-error';
+  @Output() valueChange = new EventEmitter<string>();
 
   value = '';
   disabled = false;
+  touched = false;
+  dirty = false;
 
-  private readonly ngControl = inject(NgControl, { optional: true, self: true });
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
 
-  constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
-
   get showError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && control.invalid && (control.touched || control.dirty);
+    return this.required && !this.value && (this.touched || this.dirty);
   }
 
   writeValue(value: string | null): void {
@@ -121,11 +115,14 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
 
   onValueChange(value: string): void {
     this.value = value;
+    this.dirty = true;
     this.onChange(value);
     this.onValidatorChange();
+    this.valueChange.emit(value);
   }
 
   markTouched(): void {
+    this.touched = true;
     this.onTouched();
   }
 }
