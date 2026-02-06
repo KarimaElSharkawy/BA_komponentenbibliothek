@@ -15,11 +15,21 @@ type Story = StoryObj<DropdownComponent>;
 export const Standard: Story = {
   args: {
     id: 'gruppe',
-    label: 'Mitgliedergruppe*',
+    label: 'Mitgliedergruppe',
     placeholder: 'Bitte auswählen',
     options: ['Studierende', 'Mitarbeitende', 'Externe'],
     required: true,
     errorText: 'Bitte wählen Sie eine Mitgliedergruppe aus.',
     errorId: 'gruppe-error',
+  },
+};
+
+export const Optional: Story = {
+  args: {
+    id: 'gruppe-optional',
+    label: 'Mitgliedergruppe (optional)',
+    placeholder: 'Bitte auswählen',
+    options: ['Studierende', 'Mitarbeitende', 'Externe'],
+    required: false,
   },
 };

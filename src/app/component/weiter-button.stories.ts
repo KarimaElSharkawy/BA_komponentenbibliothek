@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { WeiterButtonComponent } from './weiter-button.component';
 
 const meta: Meta<WeiterButtonComponent> = {
-  title: 'Formulare/Felder/Weiter Button',
+  title: 'Formulare/Felder/Buttons/Weiter Button',
   component: WeiterButtonComponent,
   parameters: {
     layout: 'padded',
@@ -27,4 +27,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-

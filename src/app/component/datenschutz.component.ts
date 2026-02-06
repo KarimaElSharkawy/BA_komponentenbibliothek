@@ -70,19 +70,27 @@ import {
         [attr.aria-describedby]="showError ? textId + ' ' + errorId : textId"
         (blur)="markTouched()"
       />
-      <label class="form-check-label" [for]="id">{{ label }}</label>
+      <label class="form-check-label" [for]="id">
+        {{ label }}
+        <span *ngIf="required" class="required-indicator" aria-hidden="true" aria-disabled="true">*</span>
+      </label>
     </div>
 
     <div id="{{ errorId }}" class="invalid-feedback d-block" *ngIf="showError" aria-live="polite">
       {{ errorText }}
     </div>
   `,
+  styles: [`
+    .required-indicator {
+      margin-left: 0.15rem;
+    }
+  `],
 })
 export class DatenschutzComponent implements ControlValueAccessor, Validator {
   @Input() id = 'privacyConsent';
   @Input() textId = 'privacy-consent-text';
   @Input() heading = 'Datenschutzhinweis und Einverständniserklärung';
-  @Input() label = 'Ich stimme der Datenschutz- und Einverständniserklärung zu. *';
+  @Input() label = 'Ich stimme der Datenschutz- und Einverständniserklärung zu.';
   @Input() ariaLabel = 'Datenschutz und Einverständnis zustimmen';
   @Input() required = true;
   @Input() errorId = 'privacy-consent-error';

@@ -9,22 +9,21 @@ import {
   NgControl,
   ValidationErrors,
   Validator,
-  Validators,
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-email-input',
+  selector: 'app-name-input',
   standalone: true,
   imports: [CommonModule, FormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => EmailInputComponent),
+      useExisting: forwardRef(() => NameInputComponent),
       multi: true,
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => EmailInputComponent),
+      useExisting: forwardRef(() => NameInputComponent),
       multi: true,
     },
   ],
@@ -35,7 +34,7 @@ import {
     </label>
     <input
       [id]="id"
-      type="email"
+      type="text"
       class="form-control"
       [ngModel]="value"
       (ngModelChange)="onValueChange($event)"
@@ -46,15 +45,12 @@ import {
       [attr.aria-label]="ariaLabel || label"
       [placeholder]="placeholder"
       [attr.aria-invalid]="showError ? 'true' : null"
-      [attr.aria-describedby]="ariaDescribedBy"
+      [attr.aria-describedby]="showError ? errorId : null"
       (blur)="markTouched()"
     />
 
-    <div id="{{ requiredErrorId }}" class="invalid-feedback d-block" *ngIf="showRequiredError" aria-live="polite">
-      {{ requiredErrorText }}
-    </div>
-    <div id="{{ formatErrorId }}" class="invalid-feedback d-block" *ngIf="showFormatError" aria-live="polite">
-      {{ formatErrorText }}
+    <div id="{{ errorId }}" class="invalid-feedback d-block" *ngIf="showError" aria-live="polite">
+      {{ errorText }}
     </div>
   `,
   styles: [`
@@ -63,16 +59,14 @@ import {
     }
   `],
 })
-export class EmailInputComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'email-field';
-  @Input() label = 'E-Mail';
+export class NameInputComponent implements ControlValueAccessor, Validator {
+  @Input() id = 'name-field';
+  @Input() label = 'Name';
   @Input() ariaLabel = '';
-  @Input() placeholder = 'name@beispiel.de';
+  @Input() placeholder = '';
   @Input() required = false;
-  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';
-  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-  @Input() requiredErrorId = 'email-required-error';
-  @Input() formatErrorId = 'email-format-error';
+  @Input() errorText = 'Bitte geben Sie Ihren Namen ein.';
+  @Input() errorId = 'name-error';
 
   value = '';
   disabled = false;
@@ -93,26 +87,6 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
     return !!control && control.invalid && (control.touched || control.dirty);
   }
 
-  get showRequiredError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['required'] && (control.touched || control.dirty);
-  }
-
-  get showFormatError(): boolean {
-    const control = this.ngControl?.control;
-    return !!control && !!control.errors?.['email'] && (control.touched || control.dirty);
-  }
-
-  get ariaDescribedBy(): string | null {
-    if (this.showRequiredError) {
-      return this.requiredErrorId;
-    }
-    if (this.showFormatError) {
-      return this.formatErrorId;
-    }
-    return null;
-  }
-
   writeValue(value: string | null): void {
     this.value = value ?? '';
   }
@@ -129,16 +103,11 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
     this.disabled = isDisabled;
   }
 
-  validate(control: AbstractControl): ValidationErrors | null {
+  validate(_: AbstractControl): ValidationErrors | null {
     if (this.required && !this.value.trim()) {
       return { required: true };
     }
-
-    if (!this.value.trim()) {
-      return null;
-    }
-
-    return Validators.email(control);
+    return null;
   }
 
   registerOnValidatorChange(fn: () => void): void {

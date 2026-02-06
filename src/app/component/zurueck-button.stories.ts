@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { ZurueckButtonComponent } from './zurueck-button.component';
 
 const meta: Meta<ZurueckButtonComponent> = {
-  title: 'Formulare/Felder/Zurueck Button',
+  title: 'Formulare/Felder/Buttons/Zurueck Button',
   component: ZurueckButtonComponent,
   parameters: {
     layout: 'padded',
@@ -18,4 +18,3 @@ export const Standard: Story = {
     ariaLabel: 'Zurück zu den Meldedaten',
   },
 };
-

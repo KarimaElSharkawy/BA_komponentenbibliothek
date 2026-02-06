@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { EmailInputComponent } from './email-input.component';
 
 const meta: Meta<EmailInputComponent> = {
-  title: 'Formulare/Felder/E-Mail',
+  title: 'Formulare/Felder/Textfelder/E-Mail',
   component: EmailInputComponent,
   parameters: {
     layout: 'padded',
@@ -12,10 +12,10 @@ const meta: Meta<EmailInputComponent> = {
 export default meta;
 type Story = StoryObj<EmailInputComponent>;
 
-export const Standard: Story = {
+export const Required: Story = {
   args: {
     id: 'email',
-    label: 'E-Mail*',
+    label: 'E-Mail',
     placeholder: 'name@beispiel.de',
     required: true,
     requiredErrorId: 'email-required-error',
@@ -25,3 +25,11 @@ export const Standard: Story = {
   },
 };
 
+export const Optional: Story = {
+  args: {
+    id: 'email-optional',
+    label: 'E-Mail (optional)',
+    placeholder: 'name@beispiel.de',
+    required: false,
+  },
+};

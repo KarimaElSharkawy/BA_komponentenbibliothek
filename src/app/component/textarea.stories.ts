@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { TextareaComponent } from './textarea.component';
 
 const meta: Meta<TextareaComponent> = {
-  title: 'Formulare/Felder/Textarea',
+  title: 'Formulare/Felder/Textfelder/Freitext',
   component: TextareaComponent,
   parameters: {
     layout: 'padded',
@@ -12,10 +12,10 @@ const meta: Meta<TextareaComponent> = {
 export default meta;
 type Story = StoryObj<TextareaComponent>;
 
-export const Standard: Story = {
+export const Required: Story = {
   args: {
     id: 'message',
-    label: 'Schilderung*',
+    label: 'Schilderung',
     rows: 4,
     required: true,
     minlength: 10,
@@ -27,3 +27,12 @@ export const Standard: Story = {
   },
 };
 
+export const Optional: Story = {
+  args: {
+    id: 'message-optional',
+    label: 'Schilderung (optional)',
+    rows: 4,
+    required: false,
+    placeholder: 'Bitte beschreiben Sie den Vorfall.',
+  },
+};

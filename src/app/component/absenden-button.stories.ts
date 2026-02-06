@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { AbsendenButtonComponent } from './absenden-button.component';
 
 const meta: Meta<AbsendenButtonComponent> = {
-  title: 'Formulare/Felder/Absenden Button',
+  title: 'Formulare/Felder/Buttons/Absenden Button',
   component: AbsendenButtonComponent,
   parameters: {
     layout: 'padded',
@@ -27,4 +27,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-

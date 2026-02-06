@@ -28,7 +28,10 @@ import {
     },
   ],
   template: `
-    <label [for]="id" class="form-label">{{ label }}</label>
+    <label [for]="id" class="form-label">
+      {{ label }}
+      <span *ngIf="required" class="required-indicator" aria-hidden="true" aria-disabled="true">*</span>
+    </label>
     <textarea
       [id]="id"
       class="form-control"
@@ -54,6 +57,11 @@ import {
       {{ minlengthErrorText }}
     </div>
   `,
+  styles: [`
+    .required-indicator {
+      margin-left: 0.15rem;
+    }
+  `],
 })
 export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input() id = 'textarea-field';

@@ -28,7 +28,10 @@ import {
     },
   ],
   template: `
-    <label [for]="id" class="form-label">{{ label }}</label>
+    <label [for]="id" class="form-label">
+      {{ label }}
+      <span *ngIf="required" class="required-indicator" aria-hidden="true" aria-disabled="true">*</span>
+    </label>
     <select
       [id]="id"
       class="form-select"
@@ -54,6 +57,9 @@ import {
     .form-select {
       min-height: 2.5rem;
       display: block;
+    }
+    .required-indicator {
+      margin-left: 0.15rem;
     }
   `],
 })
