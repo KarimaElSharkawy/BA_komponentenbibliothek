@@ -8,48 +8,39 @@
     "directives": [],
     "components": [
         {
-            "name": "AbsendenButtonComponent",
-            "id": "component-AbsendenButtonComponent-b7b90070ca84c13e0b25fe4c4c261714b4ee509bd66e5669fae3192c65abf0bbf1b8e93c75281a11d7e52ba3ce8370344b284e1e577a3c86ad4658103fb6c324",
-            "file": "src/app/component/absenden-button.component.ts",
+            "name": "AbbreviationComponent",
+            "id": "component-AbbreviationComponent-684e91a997fb7973720c4e95e87098ceac82827d478e5ae8fc38848f1c9fd5d375a44d0ea2f0c285ebc31dabb7d8d9e0ef344f630346d17039879b58cd6544e8",
+            "file": "src/app/component/abbreviation.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "app-absenden-button",
+            "selector": "app-abbreviation",
             "styleUrls": [],
             "styles": [
-                "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  "
+                "\n    abbr {\n      cursor: help;\n      text-decoration: underline dotted;\n    }\n  "
             ],
-            "template": "<button\n  type=\"submit\"\n  class=\"w-100 btn btn-primary btn-lg\"\n  [disabled]=\"disabled\"\n  [attr.aria-disabled]=\"disabled\"\n  [attr.aria-label]=\"ariaLabel\"\n>\n  {{ label }}\n</button>\n",
+            "template": "<p>\n  <abbr [title]=\"title\">{{ text }}</abbr>\n</p>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "ariaLabel",
-                    "defaultValue": "'Meldeformular absenden'",
+                    "name": "text",
+                    "defaultValue": "'FAQ'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 21,
                     "type": "string",
                     "decorators": []
                 },
                 {
-                    "name": "disabled",
-                    "defaultValue": "false",
+                    "name": "title",
+                    "defaultValue": "'Frequently Asked Questions'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Absenden'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 26,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 }
@@ -66,15 +57,80 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-absenden-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"submit\"\n      class=\"w-100 btn btn-primary btn-lg\"\n      [disabled]=\"disabled\"\n      [attr.aria-disabled]=\"disabled\"\n      [attr.aria-label]=\"ariaLabel\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  `],\n})\nexport class AbsendenButtonComponent {\n  @Input() disabled = false;\n  @Input() label = 'Absenden';\n  @Input() ariaLabel = 'Meldeformular absenden';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-abbreviation',\n  standalone: true,\n  template: `\n    <p>\n      <abbr [title]=\"title\">{{ text }}</abbr>\n    </p>\n  `,\n  styles: [\n    `\n    abbr {\n      cursor: help;\n      text-decoration: underline dotted;\n    }\n  `,\n  ],\n})\nexport class AbbreviationComponent {\n  @Input() text = 'FAQ';\n  @Input() title = 'Frequently Asked Questions';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  \n",
+            "stylesData": "\n    abbr {\n      cursor: help;\n      text-decoration: underline dotted;\n    }\n  \n",
+            "extends": []
+        },
+        {
+            "name": "AbsendenButtonComponent",
+            "id": "component-AbsendenButtonComponent-791e04aa97e264f6e889aba875c90fe1b1b28e4454098abcfd8d27ba89e7212c10698867103ea3c9b5e3645c9217d89d1f1e5c95d2678c1af893fd63bc717c5e",
+            "file": "src/app/component/absenden-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-absenden-button",
+            "styleUrls": [],
+            "styles": [
+                "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  "
+            ],
+            "template": "<button\n  type=\"submit\"\n  class=\"w-100 btn btn-lg\"\n  [disabled]=\"disabled\"\n  [attr.aria-disabled]=\"disabled\"\n  [attr.aria-label]=\"ariaLabel\"\n>\n  {{ label }}\n</button>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "ariaLabel",
+                    "defaultValue": "'Meldeformular absenden'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Absenden'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-absenden-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"submit\"\n      class=\"w-100 btn btn-lg\"\n      [disabled]=\"disabled\"\n      [attr.aria-disabled]=\"disabled\"\n      [attr.aria-label]=\"ariaLabel\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  `],\n})\nexport class AbsendenButtonComponent {\n  @Input() disabled = false;\n  @Input() label = 'Absenden';\n  @Input() ariaLabel = 'Meldeformular absenden';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  \n",
             "extends": []
         },
         {
             "name": "App",
-            "id": "component-App-a196f6203cb1f5bf92d2ebe2ad8c4306acaf46f2a7c418381b3a1e481728d931fdd2450c15a80a06b60dc5ecd13f675e8984fc8b8caf7b06ab49357ea183a797",
+            "id": "component-App-78916092029625d5b56df444a21edd3c10814d80af78e9166d5c999bb8de3c26f690a85f9011d27d0ccaa81af398895c1e307b0b5d7f68541f1c14bcc13ac554",
             "file": "src/app/app.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -84,7 +140,7 @@
             "selector": "app-root",
             "styleUrls": [],
             "styles": [],
-            "template": "<app-meldeformular></app-meldeformular>\n",
+            "template": "<div class=\"container\">\n  <p>App-Root — Meldeformular (Platzhalter)</p>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -97,24 +153,116 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [
-                {
-                    "name": "MeldeformularComponent",
-                    "type": "component"
-                }
-            ],
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { MeldeformularComponent } from './component/meldeformular.component';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [MeldeformularComponent],\n  template: `\n    <app-meldeformular></app-meldeformular>\n  `,\n  styles: [],\n})\nexport class App {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  template: `\n    <div class=\"container\">\n      <p>App-Root — Meldeformular (Platzhalter)</p>\n    </div>\n  `,\n  styles: [],\n})\nexport class App {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": []
         },
         {
+            "name": "BurgerMenuComponent",
+            "id": "component-BurgerMenuComponent-92cc184f5bbcc3e14710d62c88cd6f379532e620908cb57dda5d25e878943d00632052070db8a7977eb52c28d0daf8d1caf674e55648a7ffe4daee0bc516ca39",
+            "file": "src/app/component/burger-menu.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-burger-menu",
+            "styleUrls": [],
+            "styles": [
+                "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  "
+            ],
+            "template": "<div class=\"burger-menu\">\n  <button\n    type=\"button\"\n    class=\"burger-button\"\n    (click)=\"isOpen = !isOpen\"\n    [attr.aria-expanded]=\"isOpen\"\n    aria-controls=\"burger-menu-list\"\n    aria-label=\"Menü öffnen\"\n  >\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div *ngIf=\"isOpen\" id=\"burger-menu-list\" [class]=\"menuClass\" role=\"menu\" aria-label=\"Menüeinträge\">\n    <div class=\"menu-item\" role=\"menuitem\" *ngFor=\"let item of normalizedItems\">\n      <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n      <ng-template #staticText>\n        <span class=\"menu-item-text\">{{ item.text }}</span>\n      </ng-template>\n    </div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "items",
+                    "defaultValue": "['text 1', 'text 2', 'text 3']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 103,
+                    "type": "unknown",
+                    "decorators": []
+                },
+                {
+                    "name": "openDirection",
+                    "defaultValue": "'down'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 104,
+                    "type": "\"down\" | \"up\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 106
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NavTextComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { NavTextComponent } from './nav-text.component';\n\ntype BurgerMenuEntry = string | { text: string; href?: string };\n\n@Component({\n  selector: 'app-burger-menu',\n  standalone: true,\n  imports: [CommonModule, NavTextComponent],\n  template: `\n    <div class=\"burger-menu\">\n      <button\n        type=\"button\"\n        class=\"burger-button\"\n        (click)=\"isOpen = !isOpen\"\n        [attr.aria-expanded]=\"isOpen\"\n        aria-controls=\"burger-menu-list\"\n        aria-label=\"Menü öffnen\"\n      >\n        <span></span>\n        <span></span>\n        <span></span>\n      </button>\n\n      <div *ngIf=\"isOpen\" id=\"burger-menu-list\" [class]=\"menuClass\" role=\"menu\" aria-label=\"Menüeinträge\">\n        <div class=\"menu-item\" role=\"menuitem\" *ngFor=\"let item of normalizedItems\">\n          <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n          <ng-template #staticText>\n            <span class=\"menu-item-text\">{{ item.text }}</span>\n          </ng-template>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [`\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  `],\n})\nexport class BurgerMenuComponent {\n  @Input() items: readonly BurgerMenuEntry[] = ['text 1', 'text 2', 'text 3'];\n  @Input() openDirection: 'down' | 'up' = 'down';\n\n  isOpen = false;\n\n  get normalizedItems(): { text: string; href?: string }[] {\n    return this.items.map((item) => (typeof item === 'string' ? { text: item } : item));\n  }\n\n  get menuClass(): string {\n    return this.openDirection === 'up' ? 'menu-list menu-up' : 'menu-list';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  \n",
+            "extends": [],
+            "accessors": {
+                "normalizedItems": {
+                    "name": "normalizedItems",
+                    "getSignature": {
+                        "name": "normalizedItems",
+                        "type": "[]",
+                        "returnType": "literal type[]",
+                        "line": 108
+                    }
+                },
+                "menuClass": {
+                    "name": "menuClass",
+                    "getSignature": {
+                        "name": "menuClass",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 112
+                    }
+                }
+            }
+        },
+        {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-2541ea4c32dd55a403b88b300bd7dc4e8e712c1a90f1aaaa678d1a6a0de92558affd4859f88b023304e63d422015ce6b3e5257bf8404e66bc7bdf11905baaf33",
+            "id": "component-CheckboxComponent-87b43bed522cea9bbc0e074dc81ac513c23998279f58fbd9d8077718ae007db730877e38cb484be4fd0c6526aa3cca278cdbcd4b085e8050395822ac6bdae883",
             "file": "src/app/component/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -141,7 +289,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 58,
+                    "line": 57,
                     "type": "string",
                     "decorators": []
                 },
@@ -150,7 +298,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 60,
+                    "line": 59,
                     "type": "string | null",
                     "decorators": []
                 },
@@ -159,7 +307,7 @@
                     "defaultValue": "'checkbox-error'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61,
+                    "line": 60,
                     "type": "string",
                     "decorators": []
                 },
@@ -168,7 +316,7 @@
                     "defaultValue": "'Bitte bestätigen Sie dieses Feld.'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 62,
+                    "line": 61,
                     "type": "string",
                     "decorators": []
                 },
@@ -177,7 +325,7 @@
                     "defaultValue": "'checkbox-field'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 56,
+                    "line": 55,
                     "type": "string",
                     "decorators": []
                 },
@@ -186,7 +334,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 57,
+                    "line": 56,
                     "type": "string",
                     "decorators": []
                 },
@@ -195,7 +343,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 59,
+                    "line": 58,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -206,11 +354,22 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 63,
+                    "line": 62,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
+                {
+                    "name": "dirty",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 67
+                },
                 {
                     "name": "disabled",
                     "defaultValue": "false",
@@ -220,22 +379,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 66
-                },
-                {
-                    "name": "ngControl",
-                    "defaultValue": "inject(NgControl, { optional: true, self: true })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 68,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
+                    "line": 65
                 },
                 {
                     "name": "onChange",
@@ -280,6 +424,17 @@
                     ]
                 },
                 {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 66
+                },
+                {
                     "name": "value",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -288,7 +443,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 65
+                    "line": 64
                 }
             ],
             "methodsClass": [
@@ -298,7 +453,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 125,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -317,7 +472,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 118,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -359,7 +514,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 95,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -402,7 +557,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -436,7 +591,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 114,
+                    "line": 107,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -469,7 +624,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -501,7 +656,7 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 100,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -533,7 +688,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 84,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -569,18 +724,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-checkbox',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => CheckboxComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => CheckboxComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <div class=\"form-check\">\n      <input\n        [id]=\"id\"\n        type=\"checkbox\"\n        class=\"form-check-input\"\n        [ngModel]=\"value\"\n        (ngModelChange)=\"onValueChange($event)\"\n        [ngModelOptions]=\"{ standalone: true }\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [attr.aria-required]=\"required ? 'true' : null\"\n        [attr.aria-label]=\"ariaLabel || label\"\n        [attr.aria-invalid]=\"showError ? 'true' : null\"\n        [attr.aria-describedby]=\"ariaDescribedBy\"\n        (blur)=\"markTouched()\"\n      />\n      <label class=\"form-check-label\" [for]=\"id\">{{ label }}</label>\n    </div>\n\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n})\nexport class CheckboxComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'checkbox-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() required = false;\n  @Input() describedBy: string | null = null;\n  @Input() errorId = 'checkbox-error';\n  @Input() errorText = 'Bitte bestätigen Sie dieses Feld.';\n  @Output() valueChange = new EventEmitter<boolean>();\n\n  value = false;\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: boolean) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showError) {\n      return this.describedBy ? `${this.describedBy} ${this.errorId}` : this.errorId;\n    }\n    return this.describedBy;\n  }\n\n  writeValue(value: boolean | null): void {\n    this.value = !!value;\n  }\n\n  registerOnChange(fn: (value: boolean) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: boolean): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-checkbox',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => CheckboxComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => CheckboxComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <div class=\"form-check\">\n      <input\n        [id]=\"id\"\n        type=\"checkbox\"\n        class=\"form-check-input\"\n        [ngModel]=\"value\"\n        (ngModelChange)=\"onValueChange($event)\"\n        [ngModelOptions]=\"{ standalone: true }\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [attr.aria-required]=\"required ? 'true' : null\"\n        [attr.aria-label]=\"ariaLabel || label\"\n        [attr.aria-invalid]=\"showError ? 'true' : null\"\n        [attr.aria-describedby]=\"ariaDescribedBy\"\n        (blur)=\"markTouched()\"\n      />\n      <label class=\"form-check-label\" [for]=\"id\">{{ label }}</label>\n    </div>\n\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n})\nexport class CheckboxComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'checkbox-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() required = false;\n  @Input() describedBy: string | null = null;\n  @Input() errorId = 'checkbox-error';\n  @Input() errorText = 'Bitte bestätigen Sie dieses Feld.';\n  @Output() valueChange = new EventEmitter<boolean>();\n\n  value = false;\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: boolean) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.required && !this.value && (this.touched || this.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showError) {\n      return this.describedBy ? `${this.describedBy} ${this.errorId}` : this.errorId;\n    }\n    return this.describedBy;\n  }\n\n  writeValue(value: boolean | null): void {\n    this.value = !!value;\n  }\n\n  registerOnChange(fn: (value: boolean) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: boolean): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 71
-            },
             "extends": [],
             "implements": [
                 "ControlValueAccessor",
@@ -593,7 +740,7 @@
                         "name": "showError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 79
+                        "line": 73
                     }
                 },
                 "ariaDescribedBy": {
@@ -602,538 +749,14 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 84
-                    }
-                }
-            }
-        },
-        {
-            "name": "DatenschutzComponent",
-            "id": "component-DatenschutzComponent-ffda066ce3508206a9a79c34837802f6e93f69a65fd4eee1e6134fb5fb0aaff5a769c59b722a8af89f8246a42eeb514b7ebf48c9f49f871d9d78a03656d5baee",
-            "file": "src/app/component/datenschutz.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [
-                {
-                    "name": ")"
-                },
-                {
-                    "name": ")"
-                }
-            ],
-            "selector": "app-datenschutz",
-            "styleUrls": [],
-            "styles": [
-                "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
-            ],
-            "template": "<h3 class=\"h5 mb-2\">{{ heading }}</h3>\n<p [id]=\"textId\" class=\"mb-2 text-body\">\n  Ich erkläre mich damit einverstanden, dass Daten zur Bearbeitung meines Anliegens von der HTW\n  Berlin erhoben, gespeichert, verarbeitet und intern übermittelt werden. Siehe\n  <a\n    [href]=\"datenschutzUrl\"\n    target=\"_blank\"\n    rel=\"noopener noreferrer\"\n    class=\"link-dark fw-semibold text-decoration-underline\"\n    [attr.aria-label]=\"datenschutzAriaLabel\"\n  >\n    Datenschutzinformationen\n  </a>\n  sowie in der\n  <a\n    [href]=\"richtlinieUrl\"\n    target=\"_blank\"\n    rel=\"noopener noreferrer\"\n    class=\"link-dark fw-semibold text-decoration-underline\"\n    [attr.aria-label]=\"richtlinieAriaLabel\"\n  >\n    Antidiskriminierungsrichtlinie der HTW Berlin (§10)\n  </a>\n  .\n</p>\n\n<div class=\"form-check\">\n  <input\n    [id]=\"id\"\n    type=\"checkbox\"\n    class=\"form-check-input\"\n    [ngModel]=\"value\"\n    (ngModelChange)=\"onValueChange($event)\"\n    [ngModelOptions]=\"{ standalone: true }\"\n    [disabled]=\"disabled\"\n    [required]=\"required\"\n    [attr.aria-required]=\"required ? 'true' : null\"\n    [attr.aria-label]=\"ariaLabel || label\"\n    [attr.aria-invalid]=\"showError ? 'true' : null\"\n    [attr.aria-describedby]=\"showError ? textId + ' ' + errorId : textId\"\n    (blur)=\"markTouched()\"\n  />\n  <label class=\"form-check-label\" [for]=\"id\">\n    {{ label }}\n    <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n  </label>\n</div>\n\n<div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n  {{ errorText }}\n</div>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "ariaLabel",
-                    "defaultValue": "'Datenschutz und Einverständnis zustimmen'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 94,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "datenschutzAriaLabel",
-                    "defaultValue": "'Datenschutzinformationen als PDF, öffnet in neuem Tab'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 100,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "datenschutzUrl",
-                    "defaultValue": "'https://antidis.f4.htw-berlin.de/assets/HTW_Datenschutzinformationen_Fallintervention_Final.pdf'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 98,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "errorId",
-                    "defaultValue": "'privacy-consent-error'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 96,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "errorText",
-                    "defaultValue": "'Bitte stimmen Sie der Datenschutz- und Einverständniserklärung zu.'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 97,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "heading",
-                    "defaultValue": "'Datenschutzhinweis und Einverständniserklärung'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 92,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "id",
-                    "defaultValue": "'privacyConsent'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 90,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Ich stimme der Datenschutz- und Einverständniserklärung zu.'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 93,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "required",
-                    "defaultValue": "true",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 95,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "richtlinieAriaLabel",
-                    "defaultValue": "'Antidiskriminierungsrichtlinie der HTW Berlin als PDF, öffnet in neuem Tab'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 104,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "richtlinieUrl",
-                    "defaultValue": "'https://www.htw-berlin.de/fileadmin/HTW/Zentral/Antidiskriminierung/Antidiskriminierungsrichtlinie-HTW-Berlin-R03_20.pdf'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 102,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "textId",
-                    "defaultValue": "'privacy-consent-text'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 91,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 108
-                },
-                {
-                    "name": "ngControl",
-                    "defaultValue": "inject(NgControl, { optional: true, self: true })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 110,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "onChange",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 111,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "onTouched",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 112,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "onValidatorChange",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 113,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "value",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 107
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "markTouched",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 159,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "onValueChange",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 153,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnChange",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "value",
-                                    "type": "boolean",
-                                    "optional": false,
-                                    "dotDotDotToken": false,
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 130,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "value",
-                                    "type": "boolean",
-                                    "optional": false,
-                                    "dotDotDotToken": false,
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnTouched",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": []
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 134,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnValidatorChange",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": []
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 149,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "setDisabledState",
-                    "args": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 138,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "validate",
-                    "args": [
-                        {
-                            "name": "_",
-                            "type": "AbstractControl",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "ValidationErrors | null",
-                    "typeParameters": [],
-                    "line": 142,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "_",
-                            "type": "AbstractControl",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "writeValue",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "boolean | null",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 126,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "boolean | null",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "FormsModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-datenschutz',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DatenschutzComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => DatenschutzComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <h3 class=\"h5 mb-2\">{{ heading }}</h3>\n    <p [id]=\"textId\" class=\"mb-2 text-body\">\n      Ich erkläre mich damit einverstanden, dass Daten zur Bearbeitung meines Anliegens von der HTW\n      Berlin erhoben, gespeichert, verarbeitet und intern übermittelt werden. Siehe\n      <a\n        [href]=\"datenschutzUrl\"\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        class=\"link-dark fw-semibold text-decoration-underline\"\n        [attr.aria-label]=\"datenschutzAriaLabel\"\n      >\n        Datenschutzinformationen\n      </a>\n      sowie in der\n      <a\n        [href]=\"richtlinieUrl\"\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        class=\"link-dark fw-semibold text-decoration-underline\"\n        [attr.aria-label]=\"richtlinieAriaLabel\"\n      >\n        Antidiskriminierungsrichtlinie der HTW Berlin (§10)\n      </a>\n      .\n    </p>\n\n    <div class=\"form-check\">\n      <input\n        [id]=\"id\"\n        type=\"checkbox\"\n        class=\"form-check-input\"\n        [ngModel]=\"value\"\n        (ngModelChange)=\"onValueChange($event)\"\n        [ngModelOptions]=\"{ standalone: true }\"\n        [disabled]=\"disabled\"\n        [required]=\"required\"\n        [attr.aria-required]=\"required ? 'true' : null\"\n        [attr.aria-label]=\"ariaLabel || label\"\n        [attr.aria-invalid]=\"showError ? 'true' : null\"\n        [attr.aria-describedby]=\"showError ? textId + ' ' + errorId : textId\"\n        (blur)=\"markTouched()\"\n      />\n      <label class=\"form-check-label\" [for]=\"id\">\n        {{ label }}\n        <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n      </label>\n    </div>\n\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class DatenschutzComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'privacyConsent';\n  @Input() textId = 'privacy-consent-text';\n  @Input() heading = 'Datenschutzhinweis und Einverständniserklärung';\n  @Input() label = 'Ich stimme der Datenschutz- und Einverständniserklärung zu.';\n  @Input() ariaLabel = 'Datenschutz und Einverständnis zustimmen';\n  @Input() required = true;\n  @Input() errorId = 'privacy-consent-error';\n  @Input() errorText = 'Bitte stimmen Sie der Datenschutz- und Einverständniserklärung zu.';\n  @Input() datenschutzUrl =\n    'https://antidis.f4.htw-berlin.de/assets/HTW_Datenschutzinformationen_Fallintervention_Final.pdf';\n  @Input() datenschutzAriaLabel =\n    'Datenschutzinformationen als PDF, öffnet in neuem Tab';\n  @Input() richtlinieUrl =\n    'https://www.htw-berlin.de/fileadmin/HTW/Zentral/Antidiskriminierung/Antidiskriminierungsrichtlinie-HTW-Berlin-R03_20.pdf';\n  @Input() richtlinieAriaLabel =\n    'Antidiskriminierungsrichtlinie der HTW Berlin als PDF, öffnet in neuem Tab';\n\n  value = false;\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: boolean) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  writeValue(value: boolean | null): void {\n    this.value = !!value;\n  }\n\n  registerOnChange(fn: (value: boolean) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: boolean): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 113
-            },
-            "extends": [],
-            "implements": [
-                "ControlValueAccessor",
-                "Validator"
-            ],
-            "accessors": {
-                "showError": {
-                    "name": "showError",
-                    "getSignature": {
-                        "name": "showError",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 121
+                        "line": 77
                     }
                 }
             }
         },
         {
             "name": "DropdownComponent",
-            "id": "component-DropdownComponent-2057389748ef430a1bcdd2c4d55349dd321b333de00ea89b631ade5a41b4972c70d03625a3d20686ccfd4b4f6b774178fa3ee0ec26ea0f42e7af358da7aa775f",
+            "id": "component-DropdownComponent-43503e31c9f386b11e26b3c1d15893b5d76c04f3876cc10c2a06dc411901e62465a8ff331405505c5c429a450b3bb93d8078fa3a6c10f37d746e1cd2a3f84260",
             "file": "src/app/component/dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1162,7 +785,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
+                    "line": 68,
                     "type": "string",
                     "decorators": []
                 },
@@ -1171,7 +794,7 @@
                     "defaultValue": "'dropdown-error'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 74,
+                    "line": 73,
                     "type": "string",
                     "decorators": []
                 },
@@ -1180,7 +803,7 @@
                     "defaultValue": "'Bitte wählen Sie eine Option aus.'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 73,
+                    "line": 72,
                     "type": "string",
                     "decorators": []
                 },
@@ -1189,7 +812,7 @@
                     "defaultValue": "'dropdown-field'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 67,
+                    "line": 66,
                     "type": "string",
                     "decorators": []
                 },
@@ -1198,7 +821,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 68,
+                    "line": 67,
                     "type": "string",
                     "decorators": []
                 },
@@ -1207,7 +830,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70,
+                    "line": 69,
                     "type": "unknown",
                     "decorators": []
                 },
@@ -1216,7 +839,7 @@
                     "defaultValue": "'Bitte auswählen'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 71,
+                    "line": 70,
                     "type": "string",
                     "decorators": []
                 },
@@ -1225,13 +848,33 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
+                    "line": 71,
                     "type": "boolean",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 74,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
+                {
+                    "name": "dirty",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79
+                },
                 {
                     "name": "disabled",
                     "defaultValue": "false",
@@ -1242,518 +885,6 @@
                     "optional": false,
                     "description": "",
                     "line": 77
-                },
-                {
-                    "name": "ngControl",
-                    "defaultValue": "inject(NgControl, { optional: true, self: true })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 79,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                },
-                {
-                    "name": "onChange",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 80,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "onTouched",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 81,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "onValidatorChange",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 82,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "value",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 76
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "markTouched",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 128,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "onValueChange",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 122,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "string",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnChange",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "value",
-                                    "type": "string",
-                                    "optional": false,
-                                    "dotDotDotToken": false,
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ]
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 99,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [
-                                {
-                                    "name": "value",
-                                    "type": "string",
-                                    "optional": false,
-                                    "dotDotDotToken": false,
-                                    "deprecated": false,
-                                    "deprecationMessage": ""
-                                }
-                            ],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnTouched",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": []
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 103,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnValidatorChange",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": []
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 118,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "function",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "function": [],
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "setDisabledState",
-                    "args": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 107,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "isDisabled",
-                            "type": "boolean",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "validate",
-                    "args": [
-                        {
-                            "name": "_",
-                            "type": "AbstractControl",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "ValidationErrors | null",
-                    "typeParameters": [],
-                    "line": 111,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "_",
-                            "type": "AbstractControl",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "writeValue",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "string | null",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 95,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "string | null",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "FormsModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-dropdown',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <select\n      [id]=\"id\"\n      class=\"form-select\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n    </select>\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class DropdownComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'dropdown-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() options: readonly string[] = [];\n  @Input() placeholder = 'Bitte auswählen';\n  @Input() required = false;\n  @Input() errorText = 'Bitte wählen Sie eine Option aus.';\n  @Input() errorId = 'dropdown-error';\n\n  value = '';\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 82
-            },
-            "extends": [],
-            "implements": [
-                "ControlValueAccessor",
-                "Validator"
-            ],
-            "accessors": {
-                "showError": {
-                    "name": "showError",
-                    "getSignature": {
-                        "name": "showError",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 90
-                    }
-                }
-            }
-        },
-        {
-            "name": "EmailInputComponent",
-            "id": "component-EmailInputComponent-0b149ff9b06e54a691528058e66e70d16c96232becb893f5bcfad634f9c19a77296ad51accc122c51f4ad96708e9c459a36177d61f111af8bf8fa64e4d83a100",
-            "file": "src/app/component/email-input.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [
-                {
-                    "name": ")"
-                },
-                {
-                    "name": ")"
-                }
-            ],
-            "selector": "app-email-input",
-            "styleUrls": [],
-            "styles": [
-                "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
-            ],
-            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"email\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n  {{ formatErrorText }}\n</div>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "ariaLabel",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 69,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "formatErrorId",
-                    "defaultValue": "'email-format-error'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 75,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "formatErrorText",
-                    "defaultValue": "'Bitte geben Sie eine gültige E-Mail-Adresse ein.'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 73,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "id",
-                    "defaultValue": "'email-field'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 67,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'E-Mail'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 68,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "placeholder",
-                    "defaultValue": "'name@beispiel.de'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 70,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "required",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 71,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "requiredErrorId",
-                    "defaultValue": "'email-required-error'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 74,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "requiredErrorText",
-                    "defaultValue": "'Bitte geben Sie Ihre E-Mail-Adresse ein.'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "string",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 78
-                },
-                {
-                    "name": "ngControl",
-                    "defaultValue": "inject(NgControl, { optional: true, self: true })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 80,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
                 },
                 {
                     "name": "onChange",
@@ -1798,6 +929,17 @@
                     ]
                 },
                 {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 78
+                },
+                {
                     "name": "value",
                     "defaultValue": "''",
                     "deprecated": false,
@@ -1806,7 +948,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 77
+                    "line": 76
                 }
             ],
             "methodsClass": [
@@ -1816,7 +958,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 154,
+                    "line": 124,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1835,7 +977,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1877,7 +1019,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 120,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1920,7 +1062,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 124,
+                    "line": 97,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1954,7 +1096,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1987,7 +1129,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 128,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2008,7 +1150,7 @@
                     "name": "validate",
                     "args": [
                         {
-                            "name": "control",
+                            "name": "_",
                             "type": "AbstractControl",
                             "optional": false,
                             "dotDotDotToken": false,
@@ -2019,12 +1161,12 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 132,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "control",
+                            "name": "_",
                             "type": "AbstractControl",
                             "optional": false,
                             "dotDotDotToken": false,
@@ -2051,7 +1193,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 116,
+                    "line": 89,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2087,18 +1229,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n  Validators,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'email-field';\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = 'email-required-error';\n  @Input() formatErrorId = 'email-format-error';\n\n  value = '';\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && !!control.errors?.['required'] && (control.touched || control.dirty);\n  }\n\n  get showFormatError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && !!control.errors?.['email'] && (control.touched || control.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(control: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n\n    if (!this.value.trim()) {\n      return null;\n    }\n\n    return Validators.email(control);\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-dropdown',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <select\n      [id]=\"id\"\n      class=\"form-select\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n    </select>\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class DropdownComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'dropdown-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() options: readonly string[] = [];\n  @Input() placeholder = 'Bitte auswählen';\n  @Input() required = false;\n  @Input() errorText = 'Bitte wählen Sie eine Option aus.';\n  @Input() errorId = 'dropdown-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.required && !this.value && (this.touched || this.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 83
-            },
+            "stylesData": "\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
             "extends": [],
             "implements": [
                 "ControlValueAccessor",
@@ -2111,7 +1245,512 @@
                         "name": "showError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 91
+                        "line": 85
+                    }
+                }
+            }
+        },
+        {
+            "name": "EmailInputComponent",
+            "id": "component-EmailInputComponent-1a10420a35f5204d4ce261e19e3382f5ecaa474c644f5ac2f3d93265605df96b4c725e74c917a796308b22018b0137e2bdbdc30ebce9b302826318b4588e67fc",
+            "file": "src/app/component/email-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": ")"
+                },
+                {
+                    "name": ")"
+                }
+            ],
+            "selector": "app-email-input",
+            "styleUrls": [],
+            "styles": [
+                "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
+            ],
+            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"email\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n  {{ formatErrorText }}\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "ariaLabel",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 67,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formatErrorId",
+                    "defaultValue": "'email-format-error'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 73,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formatErrorText",
+                    "defaultValue": "'Bitte geben Sie eine gültige E-Mail-Adresse ein.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 71,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "'email-field'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 65,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'E-Mail'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 66,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'name@beispiel.de'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 68,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "required",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "requiredErrorId",
+                    "defaultValue": "'email-required-error'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "requiredErrorText",
+                    "defaultValue": "'Bitte geben Sie Ihre E-Mail-Adresse ein.'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 70,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 74,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "dirty",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 77
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 81,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 82,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "onValidatorChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 83,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "touched",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 78
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 76
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "markTouched",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 171,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onValueChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 163,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 131,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "string",
+                                    "optional": false,
+                                    "dotDotDotToken": false,
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 135,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnValidatorChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 159,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 139,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "validate",
+                    "args": [
+                        {
+                            "name": "_",
+                            "type": "AbstractControl",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ValidationErrors | null",
+                    "typeParameters": [],
+                    "line": 143,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "_",
+                            "type": "AbstractControl",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | null",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | null",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'email-field';\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = 'email-required-error';\n  @Input() formatErrorId = 'email-format-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showFormatError(): boolean {\n    return this.isFormatError && (this.touched || this.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  private get normalizedValue(): string {\n    return this.value.trim();\n  }\n\n  private get isRequiredError(): boolean {\n    return this.required && !this.normalizedValue;\n  }\n\n  private get isFormatError(): boolean {\n    if (!this.normalizedValue) {\n      return false;\n    }\n\n    return !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(this.normalizedValue);\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isFormatError;\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.isRequiredError) {\n      return { required: true };\n    }\n\n    if (!this.normalizedValue) {\n      return null;\n    }\n\n    if (this.isFormatError) {\n      return { email: true };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
+            "extends": [],
+            "implements": [
+                "ControlValueAccessor",
+                "Validator"
+            ],
+            "accessors": {
+                "showError": {
+                    "name": "showError",
+                    "getSignature": {
+                        "name": "showError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 85
                     }
                 },
                 "showRequiredError": {
@@ -2120,7 +1759,7 @@
                         "name": "showRequiredError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 96
+                        "line": 89
                     }
                 },
                 "showFormatError": {
@@ -2129,7 +1768,7 @@
                         "name": "showFormatError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 101
+                        "line": 93
                     }
                 },
                 "ariaDescribedBy": {
@@ -2138,7 +1777,43 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 106
+                        "line": 97
+                    }
+                },
+                "normalizedValue": {
+                    "name": "normalizedValue",
+                    "getSignature": {
+                        "name": "normalizedValue",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 111
+                    }
+                },
+                "isRequiredError": {
+                    "name": "isRequiredError",
+                    "getSignature": {
+                        "name": "isRequiredError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 115
+                    }
+                },
+                "isFormatError": {
+                    "name": "isFormatError",
+                    "getSignature": {
+                        "name": "isFormatError",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 119
+                    }
+                },
+                "isInvalid": {
+                    "name": "isInvalid",
+                    "getSignature": {
+                        "name": "isInvalid",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 127
                     }
                 }
             }
@@ -2191,6 +1866,89 @@
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "LogoComponent",
+            "id": "component-LogoComponent-2a276936c724f98ae47195eebb245817bb6d0d76cd6d5b2f8db6d626b5ac9128d25b2bb35202b224a6400f4be0f547d001701808400ba7d6fe029a29212a74fa",
+            "file": "src/app/component/logo.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-logo",
+            "styleUrls": [],
+            "styles": [
+                "\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  "
+            ],
+            "template": "<img\n  [src]=\"src\"\n  [alt]=\"alt\"\n  [width]=\"width\"\n  [height]=\"height\"\n  class=\"logo\"\n  [attr.aria-label]=\"ariaLabel\"\n/>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "alt",
+                    "defaultValue": "'HTW Berlin Logo'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "ariaLabel",
+                    "defaultValue": "'Hochschule für Technik und Wirtschaft Berlin'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "120",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "src",
+                    "defaultValue": "'/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "defaultValue": "300",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-logo',\n  standalone: true,\n  template: `\n    <img\n      [src]=\"src\"\n      [alt]=\"alt\"\n      [width]=\"width\"\n      [height]=\"height\"\n      class=\"logo\"\n      [attr.aria-label]=\"ariaLabel\"\n    />\n  `,\n  styles: [`\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  `],\n})\nexport class LogoComponent {\n  @Input() src = '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg';\n  @Input() alt = 'HTW Berlin Logo';\n  @Input() ariaLabel = 'Hochschule für Technik und Wirtschaft Berlin';\n  @Input() width = 300;\n  @Input() height = 120;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  \n",
             "extends": []
         },
         {
@@ -2673,8 +2431,117 @@
             }
         },
         {
+            "name": "NavTextComponent",
+            "id": "component-NavTextComponent-d8c7449e13b32b6030e743c6b8c6bcc57a6bbde795aa58bf1d20731c5ec0971f35c1e0f58a3abc656a38f45506717504a9ca5f6fb2ce9282ac0382b3e6b6fa31",
+            "file": "src/app/component/nav-text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-nav-text",
+            "styleUrls": [],
+            "styles": [
+                "\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  "
+            ],
+            "template": "<a\n  *ngIf=\"interactive; else textOnly\"\n  [routerLink]=\"href\"\n  routerLinkActive=\"active\"\n  [routerLinkActiveOptions]=\"{ exact: true }\"\n  class=\"nav-text-link\"\n>\n  {{ text }}\n</a>\n<ng-template #textOnly>\n  <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n</ng-template>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "href",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "interactive",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "text",
+                    "defaultValue": "'Link'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'app-nav-text',\n  standalone: true,\n  imports: [CommonModule, RouterModule],\n  template: `\n    <a\n      *ngIf=\"interactive; else textOnly\"\n      [routerLink]=\"href\"\n      routerLinkActive=\"active\"\n      [routerLinkActiveOptions]=\"{ exact: true }\"\n      class=\"nav-text-link\"\n    >\n      {{ text }}\n    </a>\n    <ng-template #textOnly>\n      <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n    </ng-template>\n  `,\n  styles: [`\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  `],\n})\nexport class NavTextComponent {\n  @Input() text = 'Link';\n  @Input() href = '';\n  @Input() interactive = true;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  \n",
+            "extends": []
+        },
+        {
+            "name": "ShowcaseComponent",
+            "id": "component-ShowcaseComponent-5b6b4a0494e6579082bd800a9f96e9c4bae6a8a5a2f98c02737d95daddc3cb591c1c4d3367ce9721b2fd3f21195346158c8f007a4f09b9fee7724f7d18104f2f",
+            "file": "src/app/component/showcase.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-showcase",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"container\">\n  <p>Showcase (Platzhalterkomponente)</p>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-showcase',\n  standalone: true,\n  template: `\n    <div class=\"container\">\n      <p>Showcase (Platzhalterkomponente)</p>\n    </div>\n  `,\n  styles: [],\n})\nexport class ShowcaseComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
             "name": "TextareaComponent",
-            "id": "component-TextareaComponent-b06e0d8dfe9baa686009fcef2afb02c8b60fc3c505e61b5c98711f6237841e17b5ed419ff0074a93c906f432467a835f48d1fab3583d881ecd5e9676ce3ac1e5",
+            "id": "component-TextareaComponent-3469d5bcba608cf6811cb40206c6d584cea86e7a760dbc1a22547b677565371ce89725e6ba4fa4d93251c7cfa311f7f8cc290fc6245a84a41c7400665ec5b49f",
             "file": "src/app/component/textarea.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2798,7 +2665,16 @@
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 77,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "dirty",
@@ -2809,7 +2685,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 85,
+                    "line": 86,
                     "modifierKind": [
                         123
                     ]
@@ -2823,24 +2699,10 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 79
+                    "line": 80
                 },
                 {
                     "name": "onChange",
-                    "defaultValue": "() => {...}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "function",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 81,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "onTouched",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2854,7 +2716,7 @@
                     ]
                 },
                 {
-                    "name": "onValidatorChange",
+                    "name": "onTouched",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -2868,6 +2730,20 @@
                     ]
                 },
                 {
+                    "name": "onValidatorChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 84,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
                     "name": "touched",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -2876,7 +2752,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 84,
+                    "line": 85,
                     "modifierKind": [
                         123
                     ]
@@ -2890,7 +2766,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 78
+                    "line": 79
                 }
             ],
             "methodsClass": [
@@ -2900,7 +2776,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 171,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2919,7 +2795,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 162,
+                    "line": 163,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2961,7 +2837,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 129,
+                    "line": 130,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3004,7 +2880,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 133,
+                    "line": 134,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3038,7 +2914,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 158,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3071,7 +2947,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 137,
+                    "line": 138,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3103,7 +2979,7 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 141,
+                    "line": 142,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3135,7 +3011,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 125,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3171,7 +3047,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-textarea',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <textarea\n      [id]=\"id\"\n      class=\"form-control\"\n      [rows]=\"rows\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.minlength]=\"minlength\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    ></textarea>\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n      {{ minlengthErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class TextareaComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'textarea-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() rows = 4;\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() minlength = 0;\n  @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';\n  @Input() minlengthErrorText = '';\n  @Input() requiredErrorId = 'textarea-required-error';\n  @Input() minlengthErrorId = 'textarea-minlength-error';\n\n  value = '';\n  disabled = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n  private touched = false;\n  private dirty = false;\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showMinlengthError(): boolean {\n    return this.isMinlengthError && (this.touched || this.dirty);\n  }\n\n  private get isRequiredError(): boolean {\n    return !!(this.required && !this.value.trim());\n  }\n\n  private get isMinlengthError(): boolean {\n    return !!(\n      this.minlength > 0 &&\n      this.value.trim().length > 0 &&\n      this.value.trim().length < this.minlength\n    );\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isMinlengthError;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showMinlengthError) {\n      return this.minlengthErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n\n    if (this.minlength > 0 && this.value.trim().length < this.minlength) {\n      return {\n        minlength: {\n          requiredLength: this.minlength,\n          actualLength: this.value.trim().length,\n        },\n      };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-textarea',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <textarea\n      [id]=\"id\"\n      class=\"form-control\"\n      [rows]=\"rows\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.minlength]=\"minlength\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    ></textarea>\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n      {{ minlengthErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class TextareaComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'textarea-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() rows = 4;\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() minlength = 0;\n  @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';\n  @Input() minlengthErrorText = '';\n  @Input() requiredErrorId = 'textarea-required-error';\n  @Input() minlengthErrorId = 'textarea-minlength-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n  private touched = false;\n  private dirty = false;\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showMinlengthError(): boolean {\n    return this.isMinlengthError && (this.touched || this.dirty);\n  }\n\n  private get isRequiredError(): boolean {\n    return !!(this.required && !this.value.trim());\n  }\n\n  private get isMinlengthError(): boolean {\n    return !!(\n      this.minlength > 0 &&\n      this.value.trim().length > 0 &&\n      this.value.trim().length < this.minlength\n    );\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isMinlengthError;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showMinlengthError) {\n      return this.minlengthErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n\n    if (this.minlength > 0 && this.value.trim().length < this.minlength) {\n      return {\n        minlength: {\n          requiredLength: this.minlength,\n          actualLength: this.value.trim().length,\n        },\n      };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -3187,7 +3063,7 @@
                         "name": "showError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 87
+                        "line": 88
                     }
                 },
                 "showRequiredError": {
@@ -3196,7 +3072,7 @@
                         "name": "showRequiredError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 91
+                        "line": 92
                     }
                 },
                 "showMinlengthError": {
@@ -3205,7 +3081,7 @@
                         "name": "showMinlengthError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 95
+                        "line": 96
                     }
                 },
                 "isRequiredError": {
@@ -3214,7 +3090,7 @@
                         "name": "isRequiredError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 99
+                        "line": 100
                     }
                 },
                 "isMinlengthError": {
@@ -3223,7 +3099,7 @@
                         "name": "isMinlengthError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 103
+                        "line": 104
                     }
                 },
                 "isInvalid": {
@@ -3232,7 +3108,7 @@
                         "name": "isInvalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 111
+                        "line": 112
                     }
                 },
                 "ariaDescribedBy": {
@@ -3241,7 +3117,7 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 115
+                        "line": 116
                     }
                 }
             }
@@ -3608,7 +3484,7 @@
         },
         {
             "name": "WeiterButtonComponent",
-            "id": "component-WeiterButtonComponent-438d4845b52338daa4f861aece8a075135f57ffe932a85b61f020606acfe42f05e762026816649b758f49991127707eca19087acd0d123cdc8a144ee9689c7c1",
+            "id": "component-WeiterButtonComponent-9b35a2864079b0332cad14272fb009a2bafa7a647278dab879c8a94ca058a7f194ff63f3cea6e95586f35008832325ce6b9f0927473af4c7cf5e29e9928f0f66",
             "file": "src/app/component/weiter-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3618,9 +3494,9 @@
             "selector": "app-weiter-button",
             "styleUrls": [],
             "styles": [
-                "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  "
+                "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  "
             ],
-            "template": "<button\n  type=\"button\"\n  class=\"w-100 btn btn-primary btn-lg\"\n  [disabled]=\"disabled\"\n  [attr.aria-disabled]=\"disabled\"\n  [attr.aria-label]=\"ariaLabel\"\n  (click)=\"onClick()\"\n>\n  {{ label }}\n</button>\n",
+            "template": "<button\n  type=\"button\"\n  class=\"w-100 btn btn-lg\"\n  [disabled]=\"disabled\"\n  [attr.aria-disabled]=\"disabled\"\n  [attr.aria-label]=\"ariaLabel\"\n  (click)=\"onClick()\"\n>\n  {{ label }}\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -3630,7 +3506,7 @@
                     "defaultValue": "'Weiter zur Zusammenfassung'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 46,
                     "type": "string",
                     "decorators": []
                 },
@@ -3639,7 +3515,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 44,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3648,7 +3524,7 @@
                     "defaultValue": "'Weiter'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 45,
                     "type": "string",
                     "decorators": []
                 }
@@ -3659,7 +3535,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 47,
                     "type": "EventEmitter"
                 }
             ],
@@ -3671,7 +3547,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 49,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3685,15 +3561,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-weiter-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"w-100 btn btn-primary btn-lg\"\n      [disabled]=\"disabled\"\n      [attr.aria-disabled]=\"disabled\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  `],\n})\nexport class WeiterButtonComponent {\n  @Input() disabled = false;\n  @Input() label = 'Weiter';\n  @Input() ariaLabel = 'Weiter zur Zusammenfassung';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-weiter-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"w-100 btn btn-lg\"\n      [disabled]=\"disabled\"\n      [attr.aria-disabled]=\"disabled\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  `],\n})\nexport class WeiterButtonComponent {\n  @Input() disabled = false;\n  @Input() label = 'Weiter';\n  @Input() ariaLabel = 'Weiter zur Zusammenfassung';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  \n",
+            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #0052a3;\n      border-color: #0052a3;\n      color: #ffffff;\n    }\n    button:hover:not(:disabled) {\n      background-color: #003d7a;\n      border-color: #003d7a;\n      color: #ffffff;\n    }\n    button:active:not(:disabled) {\n      background-color: #002e5a;\n      border-color: #002e5a;\n      color: #ffffff;\n    }\n    button:disabled {\n      background-color: #cccccc;\n      border-color: #cccccc;\n      color: #666666;\n    }\n  \n",
             "extends": []
         },
         {
             "name": "ZurueckButtonComponent",
-            "id": "component-ZurueckButtonComponent-824a3de88c9ec8c2f436ce2e3f9ec4d9f846e095b77d1912c926269348aed6e3cbeb4f7ebf3448756f3979fd3744aac5ca6c077ee9bfa027481c10072d1f4a92",
+            "id": "component-ZurueckButtonComponent-1c4b6b5a33a9bc4ec24612af268821386df3c5f0d6e4c56b0495379d14401cefdf6c6cd38c058b60dedd1967aed451a442530c9259c34c9192791d0669954879",
             "file": "src/app/component/zurueck-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3703,9 +3579,9 @@
             "selector": "app-zurueck-button",
             "styleUrls": [],
             "styles": [
-                "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  "
+                "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #5a5a5a;\n      border-color: #5a5a5a;\n      color: #ffffff;\n    }\n    button:hover {\n      background-color: #3d3d3d;\n      border-color: #3d3d3d;\n      color: #ffffff;\n    }\n    button:active {\n      background-color: #2a2a2a;\n      border-color: #2a2a2a;\n      color: #ffffff;\n    }\n  "
             ],
-            "template": "<button\n  type=\"button\"\n  class=\"w-100 btn btn-secondary btn-lg mb-2\"\n  [attr.aria-label]=\"ariaLabel\"\n  (click)=\"onClick()\"\n>\n  {{ label }}\n</button>\n",
+            "template": "<button\n  type=\"button\"\n  class=\"w-100 btn btn-lg mb-2\"\n  [attr.aria-label]=\"ariaLabel\"\n  (click)=\"onClick()\"\n>\n  {{ label }}\n</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -3715,7 +3591,7 @@
                     "defaultValue": "'Zurück zu den Meldedaten'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 38,
                     "type": "string",
                     "decorators": []
                 },
@@ -3724,7 +3600,7 @@
                     "defaultValue": "'Zurück'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 37,
                     "type": "string",
                     "decorators": []
                 }
@@ -3735,7 +3611,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 39,
                     "type": "EventEmitter"
                 }
             ],
@@ -3747,7 +3623,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3761,15 +3637,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-zurueck-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"w-100 btn btn-secondary btn-lg mb-2\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  `],\n})\nexport class ZurueckButtonComponent {\n  @Input() label = 'Zurück';\n  @Input() ariaLabel = 'Zurück zu den Meldedaten';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-zurueck-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"w-100 btn btn-lg mb-2\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      {{ label }}\n    </button>\n  `,\n  styles: [`\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #5a5a5a;\n      border-color: #5a5a5a;\n      color: #ffffff;\n    }\n    button:hover {\n      background-color: #3d3d3d;\n      border-color: #3d3d3d;\n      color: #ffffff;\n    }\n    button:active {\n      background-color: #2a2a2a;\n      border-color: #2a2a2a;\n      color: #ffffff;\n    }\n  `],\n})\nexport class ZurueckButtonComponent {\n  @Input() label = 'Zurück';\n  @Input() ariaLabel = 'Zurück zu den Meldedaten';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n    }\n  \n",
+            "stylesData": "\n    button {\n      min-height: 3rem;\n      display: block;\n      background-color: #5a5a5a;\n      border-color: #5a5a5a;\n      color: #ffffff;\n    }\n    button:hover {\n      background-color: #3d3d3d;\n      border-color: #3d3d3d;\n      color: #ffffff;\n    }\n    button:active {\n      background-color: #2a2a2a;\n      border-color: #2a2a2a;\n      color: #ffffff;\n    }\n  \n",
             "extends": []
         },
         {
             "name": "ZurueckIconButtonComponent",
-            "id": "component-ZurueckIconButtonComponent-67f6aba24c1e66671522713f0ea8e990e3289b6874db550e7cf0bdb8b4ececb43d3945932b8701c59f4a1f7e9726a7c5d89679f6f6515d47d511707a88796e9b",
+            "id": "component-ZurueckIconButtonComponent-86fb27da8e9f0d967e34bdbd5aa011b26d21ed004678cea87490b43f1c15fc9d1035c3bf6705e0ba8502d470525634eb6fc6ea52365beb2ac8e7d88152313f13",
             "file": "src/app/component/zurueck-icon-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3779,7 +3655,7 @@
             "selector": "app-zurueck-icon-button",
             "styleUrls": [],
             "styles": [
-                "\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #1f2937;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  "
+                "\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #000000;\n    }\n    .zurueck-icon-button:hover {\n      color: #003d7a;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  "
             ],
             "template": "<button\n  type=\"button\"\n  class=\"zurueck-icon-button\"\n  [attr.aria-label]=\"ariaLabel\"\n  (click)=\"onClick()\"\n>\n  <svg\n    class=\"icon\"\n    viewBox=\"0 0 24 24\"\n    aria-hidden=\"true\"\n    focusable=\"false\"\n  >\n    <path d=\"M15 5L8 12L15 19\" />\n  </svg>\n</button>\n",
             "templateUrl": [],
@@ -3791,7 +3667,7 @@
                     "defaultValue": "'Zurück'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 50,
+                    "line": 53,
                     "type": "string",
                     "decorators": []
                 }
@@ -3802,7 +3678,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 54,
                     "type": "EventEmitter"
                 }
             ],
@@ -3814,7 +3690,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3828,10 +3704,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-zurueck-icon-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"zurueck-icon-button\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      <svg\n        class=\"icon\"\n        viewBox=\"0 0 24 24\"\n        aria-hidden=\"true\"\n        focusable=\"false\"\n      >\n        <path d=\"M15 5L8 12L15 19\" />\n      </svg>\n    </button>\n  `,\n  styles: [\n    `\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #1f2937;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  `,\n  ],\n})\nexport class ZurueckIconButtonComponent {\n  @Input() ariaLabel = 'Zurück';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-zurueck-icon-button',\n  standalone: true,\n  template: `\n    <button\n      type=\"button\"\n      class=\"zurueck-icon-button\"\n      [attr.aria-label]=\"ariaLabel\"\n      (click)=\"onClick()\"\n    >\n      <svg\n        class=\"icon\"\n        viewBox=\"0 0 24 24\"\n        aria-hidden=\"true\"\n        focusable=\"false\"\n      >\n        <path d=\"M15 5L8 12L15 19\" />\n      </svg>\n    </button>\n  `,\n  styles: [\n    `\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #000000;\n    }\n    .zurueck-icon-button:hover {\n      color: #003d7a;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  `,\n  ],\n})\nexport class ZurueckIconButtonComponent {\n  @Input() ariaLabel = 'Zurück';\n  @Output() clicked = new EventEmitter<void>();\n\n  onClick(): void {\n    this.clicked.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #1f2937;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  \n",
+            "stylesData": "\n    .zurueck-icon-button {\n      width: 48px;\n      height: 48px;\n      border: 0;\n      padding: 0;\n      background: transparent;\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      color: #000000;\n    }\n    .zurueck-icon-button:hover {\n      color: #003d7a;\n    }\n\n    .icon {\n      width: 28px;\n      height: 28px;\n      stroke: currentColor;\n      stroke-width: 2.5;\n      fill: none;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n  \n",
             "extends": []
         }
     ],
@@ -3860,7 +3736,19 @@
             }
         ],
         "functions": [],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "BurgerMenuEntry",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "string | literal type",
+                "file": "src/app/component/burger-menu.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            }
+        ],
         "enumerations": [],
         "groupedVariables": {
             "src/app/app.config.ts": [
@@ -3890,7 +3778,21 @@
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "src/app/component/burger-menu.component.ts": [
+                {
+                    "name": "BurgerMenuEntry",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "string | literal type",
+                    "file": "src/app/component/burger-menu.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ]
+        }
     },
     "routes": {
         "name": "<root>",
@@ -3931,12 +3833,40 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/component/abbreviation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AbbreviationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/component/absenden-button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "AbsendenButtonComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/burger-menu.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BurgerMenuComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/burger-menu.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "BurgerMenuEntry",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3949,21 +3879,12 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/component/datenschutz.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "DatenschutzComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/28",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/component/dropdown.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "DropdownComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/24",
+                "coverageCount": "0/25",
                 "status": "low"
             },
             {
@@ -3972,7 +3893,7 @@
                 "linktype": "component",
                 "name": "EmailInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/25",
+                "coverageCount": "0/26",
                 "status": "low"
             },
             {
@@ -3985,12 +3906,39 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/component/logo.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LogoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/component/name-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "NameInputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/23",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/nav-text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavTextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/showcase.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShowcaseComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -4062,7 +4010,7 @@
                 "linktype": "component",
                 "name": "TextareaComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/27",
+                "coverageCount": "0/28",
                 "status": "low"
             },
             {

@@ -31,7 +31,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #1f2937;
+      color: #000000;
+    }
+    .zurueck-icon-button:hover {
+      color: #003d7a;
     }
 
     .icon {

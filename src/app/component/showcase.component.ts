@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-showcase',
   standalone: true,
   template: `
     <div class="container">
-      <p>App-Root — Meldeformular (Platzhalter)</p>
+      <p>Showcase (Platzhalterkomponente)</p>
     </div>
   `,
   styles: [],
 })
-export class App {}
+export class ShowcaseComponent {}

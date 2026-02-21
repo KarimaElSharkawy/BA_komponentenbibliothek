@@ -31,6 +31,8 @@ Storybook lokal starten:
 npm run storybook
 ```
 
+Danach ist Storybook unter `http://localhost:6007` erreichbar.
+
 Storybook-Build erzeugen:
 
 ```bash

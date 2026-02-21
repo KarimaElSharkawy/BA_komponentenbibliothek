@@ -9,6 +9,8 @@ import { TextH1Component } from './text-h1.component';
 import { TextLinkComponent } from './text-link.component';
 import { ZurueckIconButtonComponent } from './zurueck-icon-button.component';
 import { WeiterButtonComponent } from './weiter-button.component';
+import { LogoComponent } from './logo.component';
+import { ShowcaseComponent } from './showcase.component';
 
 const meta: Meta = {
   title: 'Formulare/Showcase/Meldeformular',
@@ -24,6 +26,7 @@ const meta: Meta = {
         TextLinkComponent,
         ZurueckIconButtonComponent,
         WeiterButtonComponent,
+        LogoComponent,
       ],
     }),
   ],
@@ -65,6 +68,15 @@ export const Standard: Story = {
     },
     template: `
       <div class="container">
+        <div class="mb-5">
+          <app-logo
+            src="/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg"
+            alt="HTW Berlin Logo"
+            ariaLabel="Hochschule für Technik und Wirtschaft Berlin"
+            [width]="350"
+            [height]="140"
+          ></app-logo>
+        </div>
         <div>
           <div class="header position-relative d-flex align-items-center justify-content-center mb-3">
             <div class="position-absolute start-0">
@@ -139,7 +151,7 @@ export const Standard: Story = {
               ></app-email-input>
             </div>
 
-            <div class="d-grid gap-2" aria-label="Datenschutzhinweis und Einverständniserklärung">
+            <div class="d-grid gap-2" aria-label="Datenschutzhinweis und Einverständniserklärung" role="region">
               <div>
                 <p class="mb-1 fw-semibold">Datenschutzhinweis und Einverständniserklärung</p>
                 <p class="mb-0">
