@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { WeiterButtonComponent } from './weiter-button.component';
+import { ButtonComponent } from './button.component';
 
-const meta: Meta<WeiterButtonComponent> = {
-  title: 'Formulare/Felder/Buttons/Weiter Button',
-  component: WeiterButtonComponent,
+const meta: Meta<ButtonComponent> = {
+  title: 'Formulare/Felder/Buttons/Button',
+  component: ButtonComponent,
   parameters: {
     layout: 'padded',
   },
 };
 
 export default meta;
-type Story = StoryObj<WeiterButtonComponent>;
+type Story = StoryObj<ButtonComponent>;
 
 export const Enabled: Story = {
   args: {

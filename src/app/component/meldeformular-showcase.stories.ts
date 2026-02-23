@@ -7,8 +7,8 @@ import { NameInputComponent } from './name-input.component';
 import { TextareaComponent } from './textarea.component';
 import { TextH1Component } from './text-h1.component';
 import { TextLinkComponent } from './text-link.component';
-import { ZurueckIconButtonComponent } from './zurueck-icon-button.component';
-import { WeiterButtonComponent } from './weiter-button.component';
+import { IconButtonComponent } from './icon-button.component';
+import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
 import { ShowcaseComponent } from './showcase.component';
 
@@ -24,8 +24,8 @@ const meta: Meta = {
         TextareaComponent,
         TextH1Component,
         TextLinkComponent,
-        ZurueckIconButtonComponent,
-        WeiterButtonComponent,
+        IconButtonComponent,
+        ButtonComponent,
         LogoComponent,
       ],
     }),
@@ -79,7 +79,7 @@ export const Standard: Story = {
         <div>
           <div class="header position-relative d-flex align-items-center justify-content-center mb-3">
             <div class="position-absolute start-0">
-              <app-zurueck-icon-button ariaLabel="Zurück"></app-zurueck-icon-button>
+              <app-icon-button ariaLabel="Zurück"></app-icon-button>
             </div>
             <div class="text-center">
               <app-text-h1 text="Meldeformular"></app-text-h1>
@@ -189,11 +189,11 @@ export const Standard: Story = {
             </div>
 
             <div id="bttn-container">
-              <app-weiter-button
+              <app-button
                 label="Weiter"
                 ariaLabel="Weiter zur Zusammenfassung"
                 [disabled]="isWeiterDisabled(gruppeValue, freitextValue, contactConsent, emailValue, datenschutzAccepted)"
-              ></app-weiter-button>
+              ></app-button>
             </div>
           </form>
         </div>

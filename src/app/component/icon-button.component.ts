@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-zurueck-icon-button',
+  selector: 'app-icon-button',
   standalone: true,
   template: `
     <button
       type="button"
-      class="zurueck-icon-button"
+      class="icon-button"
       [attr.aria-label]="ariaLabel"
       (click)="onClick()"
     >
@@ -22,7 +22,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
   styles: [
     `
-    .zurueck-icon-button {
+    .icon-button {
       width: 48px;
       height: 48px;
       border: 0;
@@ -33,7 +33,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       justify-content: center;
       color: #000000;
     }
-    .zurueck-icon-button:hover {
+    .icon-button:hover {
       color: #003d7a;
     }
 
@@ -49,7 +49,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
   ],
 })
-export class ZurueckIconButtonComponent {
+export class IconButtonComponent {
   @Input() ariaLabel = 'Zurück';
   @Output() clicked = new EventEmitter<void>();
 

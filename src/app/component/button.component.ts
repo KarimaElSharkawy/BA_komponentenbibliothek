@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-weiter-button',
+  selector: 'app-button',
   standalone: true,
   template: `
     <button
@@ -40,9 +40,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     }
   `],
 })
-export class WeiterButtonComponent {
+export class ButtonComponent {
   @Input() disabled = false;
-  @Input() label = 'Weiter';
+  @Input() label = '';
   @Input() ariaLabel = 'Weiter zur Zusammenfassung';
   @Output() clicked = new EventEmitter<void>();
 
