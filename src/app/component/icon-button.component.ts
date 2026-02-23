@@ -23,8 +23,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styles: [
     `
     .icon-button {
-      width: 48px;
-      height: 48px;
+      width: 3rem;
+      height: 3rem;
       border: 0;
       padding: 0;
       background: transparent;
@@ -38,8 +38,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     }
 
     .icon {
-      width: 28px;
-      height: 28px;
+      width: 1.75rem;
+      height: 1.75rem;
       stroke: currentColor;
       stroke-width: 2.5;
       fill: none;

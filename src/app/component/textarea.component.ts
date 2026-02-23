@@ -40,7 +40,6 @@ import {
       [ngModelOptions]="{ standalone: true }"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-required]="required ? 'true' : null"
       [attr.aria-label]="ariaLabel || label"
       [attr.minlength]="minlength"
       [placeholder]="placeholder"

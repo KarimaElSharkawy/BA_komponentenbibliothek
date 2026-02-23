@@ -73,10 +73,10 @@ export const Navigation: Story = {
       <style>
         .bs-dropdown {
           background: #ffffff;
-          border: 1px solid #e9ecef;
+          border: 0.0625rem solid #e9ecef;
           border-radius: 0.25rem;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-          min-width: 160px;
+          box-shadow: 0 0.375rem 1.125rem rgba(0,0,0,0.08);
+          min-width: 10rem;
           overflow: hidden;
         }
         .bs-dropdown .dropdown-item {
@@ -93,7 +93,7 @@ export const Navigation: Story = {
         .bs-dropdown .dropdown-item:hover { background: #f8f9fa; }
         .nav-shell {
           padding: 0.75rem 1rem;
-          border-top: 1px solid #e9ecef;
+          border-top: 0.0625rem solid #e9ecef;
           color: #555555;
         }
         .nav-items {
@@ -103,7 +103,7 @@ export const Navigation: Story = {
           justify-content: space-evenly;
           gap: 0.5rem 1rem;
           margin: 0 auto;
-          max-width: 1200px;
+          max-width: 75rem;
         }
         .nav-item {
           text-align: center;
@@ -140,14 +140,14 @@ export const Navigation: Story = {
         .lang-caret {
           width: 0;
           height: 0;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 5px solid #555555;
-          margin-top: 2px;
+          border-left: 0.25rem solid transparent;
+          border-right: 0.25rem solid transparent;
+          border-top: 0.3125rem solid #555555;
+          margin-top: 0.125rem;
         }
         .lang-menu {
           position: absolute;
-          bottom: calc(100% + 8px);
+          bottom: calc(100% + 0.5rem);
           left: 50%;
           transform: translateX(-50%);
           z-index: 1000;
@@ -162,11 +162,11 @@ export const Navigation: Story = {
         }
         .logout-button:hover { color: #000000; }
         app-nav-text, .nav-text-link { font-size: 0.95rem; line-height: 1.2; }
-        @media (max-width: 1099.98px) {
+        @media (max-width: 68.74875rem) {
           .nav-mobile-footer { display: block; }
           .nav-desktop-footer { display: none; }
         }
-        @media (max-width: 767.98px) {
+        @media (max-width: 47.99875rem) {
           .nav-shell { padding: 0.625rem 0.9rem; }
           app-nav-text, .nav-text-link, .logout-button { font-size: 0.9rem; }
         }
@@ -262,10 +262,10 @@ export const NavigationLoggedIn: Story = {
       <style>
         .bs-dropdown {
           background: #ffffff;
-          border: 1px solid #e9ecef;
+          border: 0.0625rem solid #e9ecef;
           border-radius: 0.25rem;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-          min-width: 160px;
+          box-shadow: 0 0.375rem 1.125rem rgba(0,0,0,0.08);
+          min-width: 10rem;
           overflow: hidden;
         }
         .bs-dropdown .dropdown-item {
@@ -282,7 +282,7 @@ export const NavigationLoggedIn: Story = {
         .bs-dropdown .dropdown-item:hover { background: #f8f9fa; }
         .nav-shell {
           padding: 0.75rem 1rem;
-          border-top: 1px solid #e9ecef;
+          border-top: 0.0625rem solid #e9ecef;
           color: #555555;
         }
         .nav-items {
@@ -292,7 +292,7 @@ export const NavigationLoggedIn: Story = {
           justify-content: space-evenly;
           gap: 0.5rem 1rem;
           margin: 0 auto;
-          max-width: 1200px;
+          max-width: 75rem;
         }
         .nav-item {
           text-align: center;
@@ -329,14 +329,14 @@ export const NavigationLoggedIn: Story = {
         .lang-caret {
           width: 0;
           height: 0;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 5px solid #555555;
-          margin-top: 2px;
+          border-left: 0.25rem solid transparent;
+          border-right: 0.25rem solid transparent;
+          border-top: 0.3125rem solid #555555;
+          margin-top: 0.125rem;
         }
         .lang-menu {
           position: absolute;
-          bottom: calc(100% + 8px);
+          bottom: calc(100% + 0.5rem);
           left: 50%;
           transform: translateX(-50%);
           z-index: 1000;
@@ -351,11 +351,11 @@ export const NavigationLoggedIn: Story = {
         }
         .logout-button:hover { color: #000000; }
         app-nav-text, .nav-text-link { font-size: 0.95rem; line-height: 1.2; }
-        @media (max-width: 1099.98px) {
+        @media (max-width: 68.74875rem) {
           .nav-mobile-footer { display: block; }
           .nav-desktop-footer { display: none; }
         }
-        @media (max-width: 767.98px) {
+        @media (max-width: 47.99875rem) {
           .nav-shell { padding: 0.625rem 0.9rem; }
           app-nav-text, .nav-text-link, .logout-button { font-size: 0.9rem; }
         }

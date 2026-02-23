@@ -58,27 +58,27 @@ export const Dropdown: Story = {
       languageMenuId: 'nav-text-language-menu',
     },
     template: `
-      <div style="display: flex; align-items: center; gap: 12px; padding: 20px; position: relative;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; padding: 1.25rem; position: relative;">
         <style>
-          .nav-text-link { color: #555555; text-decoration: none; font-size: 1rem; transition: color 0.15s ease; display:inline-flex; align-items:center; gap:6px; }
+          .nav-text-link { color: #555555; text-decoration: none; font-size: 1rem; transition: color 0.15s ease; display:inline-flex; align-items:center; gap:0.375rem; }
           button.nav-text-link { border: 0; background: transparent; padding: 0; font: inherit; }
           .nav-text-link:hover { color: #000000; }
           .nav-text-link.active { color: #8BC34A; font-weight: 600; }
-          .nav-text-caret { width: 12px; height: 12px; display:inline-block; }
+          .nav-text-caret { width: 0.75rem; height: 0.75rem; display:inline-block; }
 
           /* Bootstrap-like dropdown styles for the selection box */
           .bs-dropdown {
             background: #ffffff;
-            border: 1px solid #e9ecef;
+            border: 0.0625rem solid #e9ecef;
             border-radius: 0.25rem;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            min-width: 160px;
+            box-shadow: 0 0.375rem 1.125rem rgba(0,0,0,0.08);
+            min-width: 10rem;
             overflow: hidden;
           }
           .bs-dropdown .dropdown-item {
             display: block;
             width: 100%;
-            padding: 0.375rem 1rem; /* 6px 16px approx */
+            padding: 0.375rem 1rem;
             color: #212529;
             background: transparent;
             border: 0;
@@ -109,7 +109,7 @@ export const Dropdown: Story = {
           </svg>
         </button>
 
-        <div *ngIf="langOpen" [id]="languageMenuId" aria-label="Sprachauswahl" role="group" (keydown.escape)="langOpen = false; langTrigger.focus()" style="position: absolute; top: 40px; left: 0; z-index:1000;">
+        <div *ngIf="langOpen" [id]="languageMenuId" aria-label="Sprachauswahl" role="group" (keydown.escape)="langOpen = false; langTrigger.focus()" style="position: absolute; top: 2.5rem; left: 0; z-index:1000;">
           <div class="bs-dropdown">
             <button type="button" class="dropdown-item" (click)="selectedLanguage='de'; langOpen=false">Deutsch</button>
             <button type="button" class="dropdown-item" (click)="selectedLanguage='en'; langOpen=false">English</button>

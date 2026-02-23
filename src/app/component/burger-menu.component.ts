@@ -43,12 +43,12 @@ let burgerMenuIdCounter = 0;
     }
 
     .burger-button {
-      width: 44px;
-      height: 40px;
-      border: 1px solid #dcdcdc;
-      border-radius: 8px;
+      width: 2.75rem;
+      height: 2.5rem;
+      border: 0.0625rem solid #dcdcdc;
+      border-radius: 0.5rem;
       background: #ffffff;
-      padding: 8px;
+      padding: 0.5rem;
       cursor: pointer;
       display: inline-flex;
       flex-direction: column;
@@ -57,38 +57,38 @@ let burgerMenuIdCounter = 0;
 
     .burger-button span {
       display: block;
-      height: 2px;
+      height: 0.125rem;
       background: #2a2a2a;
-      border-radius: 999px;
+      border-radius: 999rem;
     }
 
     .menu-list {
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + 0.5rem);
       left: 0;
-      min-width: 160px;
+      min-width: 10rem;
       background: #ffffff;
-      border: 1px solid #e9ecef;
-      border-radius: 6px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      padding: 6px;
+      border: 0.0625rem solid #e9ecef;
+      border-radius: 0.375rem;
+      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.08);
+      padding: 0.375rem;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 0.25rem;
       z-index: 1000;
     }
 
     .menu-list.menu-up {
       top: auto;
-      bottom: calc(100% + 8px);
+      bottom: calc(100% + 0.5rem);
     }
 
     .menu-item {
       list-style: none;
       width: 100%;
       text-align: left;
-      padding: 2px 4px;
-      border-radius: 4px;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
     }
 
     .menu-items {
@@ -103,7 +103,7 @@ let burgerMenuIdCounter = 0;
     .menu-item-text {
       display: inline-block;
       width: 100%;
-      padding: 6px 8px;
+      padding: 0.375rem 0.5rem;
       color: #212529;
     }
   `],

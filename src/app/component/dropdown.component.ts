@@ -39,7 +39,6 @@ import {
       [ngModelOptions]="{ standalone: true }"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-required]="required ? 'true' : null"
       [attr.aria-label]="ariaLabel || label"
       [attr.aria-invalid]="showError ? 'true' : null"
       [attr.aria-describedby]="showError ? errorId : null"

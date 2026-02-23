@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       type="button"
       class="w-100 btn btn-lg"
       [disabled]="disabled"
-      [attr.aria-disabled]="disabled"
       [attr.aria-label]="ariaLabel"
       (click)="onClick()"
     >
