@@ -72,7 +72,6 @@ export const Standard: Story = {
           <app-logo
             src="/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg"
             alt="HTW Berlin Logo"
-            ariaLabel="Hochschule für Technik und Wirtschaft Berlin"
             [width]="350"
             [height]="140"
           ></app-logo>

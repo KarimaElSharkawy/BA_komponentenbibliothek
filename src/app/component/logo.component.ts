@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
       [width]="width"
       [height]="height"
       class="logo"
-      [attr.aria-label]="ariaLabel"
     />
   `,
   styles: [`
@@ -24,7 +23,6 @@ import { Component, Input } from '@angular/core';
 export class LogoComponent {
   @Input() src = '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg';
   @Input() alt = 'HTW Berlin Logo';
-  @Input() ariaLabel = 'Hochschule für Technik und Wirtschaft Berlin';
   @Input() width = 300;
   @Input() height = 120;
 }

@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
       [routerLink]="href"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      ariaCurrentWhenActive="page"
       class="nav-text-link"
     >
       {{ text }}

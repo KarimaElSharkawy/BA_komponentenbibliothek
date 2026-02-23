@@ -55,11 +55,13 @@ export const Dropdown: Story = {
     props: {
       selectedLanguage: 'de',
       langOpen: false,
+      languageMenuId: 'nav-text-language-menu',
     },
     template: `
       <div style="display: flex; align-items: center; gap: 12px; padding: 20px; position: relative;">
         <style>
           .nav-text-link { color: #555555; text-decoration: none; font-size: 1rem; transition: color 0.15s ease; display:inline-flex; align-items:center; gap:6px; }
+          button.nav-text-link { border: 0; background: transparent; padding: 0; font: inherit; }
           .nav-text-link:hover { color: #000000; }
           .nav-text-link.active { color: #8BC34A; font-weight: 600; }
           .nav-text-caret { width: 12px; height: 12px; display:inline-block; }
@@ -79,6 +81,7 @@ export const Dropdown: Story = {
             padding: 0.375rem 1rem; /* 6px 16px approx */
             color: #212529;
             background: transparent;
+            border: 0;
             text-align: left;
             cursor: pointer;
             font-size: 0.9375rem;
@@ -89,24 +92,27 @@ export const Dropdown: Story = {
           }
         </style>
 
-        <a
-          role="button"
+        <button
+          #langTrigger
+          type="button"
           class="nav-text-link"
           [class.active]="selectedLanguage !== ''"
           (click)="langOpen = !langOpen"
-          aria-haspopup="listbox"
+          aria-haspopup="true"
+          [attr.aria-controls]="languageMenuId"
           [attr.aria-expanded]="langOpen"
+          aria-label="Sprache auswählen"
         >
           {{ selectedLanguage === 'de' ? 'Deutsch' : (selectedLanguage === 'en' ? 'English' : 'Sprache') }}
           <svg class="nav-text-caret" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path d="M4 6 L8 10 L12 6" stroke="#2a2a2a" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-        </a>
+        </button>
 
-        <div *ngIf="langOpen" role="listbox" aria-label="Sprachauswahl" style="position: absolute; top: 40px; left: 0; z-index:1000;">
+        <div *ngIf="langOpen" [id]="languageMenuId" aria-label="Sprachauswahl" role="group" (keydown.escape)="langOpen = false; langTrigger.focus()" style="position: absolute; top: 40px; left: 0; z-index:1000;">
           <div class="bs-dropdown">
-            <div class="dropdown-item" (click)="selectedLanguage='de'; langOpen=false">Deutsch</div>
-            <div class="dropdown-item" (click)="selectedLanguage='en'; langOpen=false">English</div>
+            <button type="button" class="dropdown-item" (click)="selectedLanguage='de'; langOpen=false">Deutsch</button>
+            <button type="button" class="dropdown-item" (click)="selectedLanguage='en'; langOpen=false">English</button>
           </div>
         </div>
       </div>

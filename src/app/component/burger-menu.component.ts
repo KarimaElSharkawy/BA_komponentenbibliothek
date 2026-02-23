@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { NavTextComponent } from './nav-text.component';
 
 type BurgerMenuEntry = string | { text: string; href?: string };
+let burgerMenuIdCounter = 0;
 
 @Component({
   selector: 'app-burger-menu',
@@ -15,22 +16,24 @@ type BurgerMenuEntry = string | { text: string; href?: string };
         class="burger-button"
         (click)="isOpen = !isOpen"
         [attr.aria-expanded]="isOpen"
-        aria-controls="burger-menu-list"
-        aria-label="Menü öffnen"
+        [attr.aria-controls]="menuId"
+        [attr.aria-label]="isOpen ? 'Menü schließen' : 'Menü öffnen'"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <div *ngIf="isOpen" id="burger-menu-list" [class]="menuClass" role="menu" aria-label="Menüeinträge">
-        <div class="menu-item" role="menuitem" *ngFor="let item of normalizedItems">
-          <app-nav-text *ngIf="item.href; else staticText" [text]="item.text" [href]="item.href"></app-nav-text>
-          <ng-template #staticText>
-            <span class="menu-item-text">{{ item.text }}</span>
-          </ng-template>
-        </div>
-      </div>
+      <nav [id]="menuId" [class]="menuClass" [hidden]="!isOpen" aria-label="Menüeinträge">
+        <ul class="menu-items">
+          <li class="menu-item" *ngFor="let item of normalizedItems">
+            <app-nav-text *ngIf="item.href; else staticText" [text]="item.text" [href]="item.href"></app-nav-text>
+            <ng-template #staticText>
+              <span class="menu-item-text">{{ item.text }}</span>
+            </ng-template>
+          </li>
+        </ul>
+      </nav>
     </div>
   `,
   styles: [`
@@ -81,10 +84,16 @@ type BurgerMenuEntry = string | { text: string; href?: string };
     }
 
     .menu-item {
+      list-style: none;
       width: 100%;
       text-align: left;
       padding: 2px 4px;
       border-radius: 4px;
+    }
+
+    .menu-items {
+      margin: 0;
+      padding: 0;
     }
 
     .menu-item:hover {
@@ -104,6 +113,7 @@ export class BurgerMenuComponent {
   @Input() openDirection: 'down' | 'up' = 'down';
 
   isOpen = false;
+  readonly menuId = `burger-menu-list-${++burgerMenuIdCounter}`;
 
   get normalizedItems(): { text: string; href?: string }[] {
     return this.items.map((item) => (typeof item === 'string' ? { text: item } : item));

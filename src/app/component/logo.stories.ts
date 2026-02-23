@@ -13,7 +13,6 @@ export const Accessible: Story = {
   args: {
     src: '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg',
     alt: 'HTW Berlin Logo',
-    ariaLabel: 'Hochschule für Technik und Wirtschaft Berlin',
     width: 300,
     height: 120,
   },
@@ -23,7 +22,6 @@ export const Accessible: Story = {
       <app-logo
         [src]="src"
         [alt]="alt"
-        [ariaLabel]="ariaLabel"
         [width]="width"
         [height]="height"
       ></app-logo>

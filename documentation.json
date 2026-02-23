@@ -165,7 +165,7 @@
         },
         {
             "name": "BurgerMenuComponent",
-            "id": "component-BurgerMenuComponent-92cc184f5bbcc3e14710d62c88cd6f379532e620908cb57dda5d25e878943d00632052070db8a7977eb52c28d0daf8d1caf674e55648a7ffe4daee0bc516ca39",
+            "id": "component-BurgerMenuComponent-2489a59ff88e2767190b20549f387f885b6a625ce9503d026180420530ee413f97fff8ec14e8b00c61d9944fa04aa4e3af1fcbbf8759f3b2c078aa404342db65",
             "file": "src/app/component/burger-menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -175,9 +175,9 @@
             "selector": "app-burger-menu",
             "styleUrls": [],
             "styles": [
-                "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  "
+                "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      list-style: none;\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-items {\n      margin: 0;\n      padding: 0;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  "
             ],
-            "template": "<div class=\"burger-menu\">\n  <button\n    type=\"button\"\n    class=\"burger-button\"\n    (click)=\"isOpen = !isOpen\"\n    [attr.aria-expanded]=\"isOpen\"\n    aria-controls=\"burger-menu-list\"\n    aria-label=\"Menü öffnen\"\n  >\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div *ngIf=\"isOpen\" id=\"burger-menu-list\" [class]=\"menuClass\" role=\"menu\" aria-label=\"Menüeinträge\">\n    <div class=\"menu-item\" role=\"menuitem\" *ngFor=\"let item of normalizedItems\">\n      <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n      <ng-template #staticText>\n        <span class=\"menu-item-text\">{{ item.text }}</span>\n      </ng-template>\n    </div>\n  </div>\n</div>\n",
+            "template": "<div class=\"burger-menu\">\n  <button\n    type=\"button\"\n    class=\"burger-button\"\n    (click)=\"isOpen = !isOpen\"\n    [attr.aria-expanded]=\"isOpen\"\n    [attr.aria-controls]=\"menuId\"\n    [attr.aria-label]=\"isOpen ? 'Menü schließen' : 'Menü öffnen'\"\n  >\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <nav [id]=\"menuId\" [class]=\"menuClass\" [hidden]=\"!isOpen\" aria-label=\"Menüeinträge\">\n    <ul class=\"menu-items\">\n      <li class=\"menu-item\" *ngFor=\"let item of normalizedItems\">\n        <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n        <ng-template #staticText>\n          <span class=\"menu-item-text\">{{ item.text }}</span>\n        </ng-template>\n      </li>\n    </ul>\n  </nav>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -187,7 +187,7 @@
                     "defaultValue": "['text 1', 'text 2', 'text 3']",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 103,
+                    "line": 112,
                     "type": "unknown",
                     "decorators": []
                 },
@@ -196,7 +196,7 @@
                     "defaultValue": "'down'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 104,
+                    "line": 113,
                     "type": "\"down\" | \"up\"",
                     "decorators": []
                 }
@@ -212,7 +212,21 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 106
+                    "line": 115
+                },
+                {
+                    "name": "menuId",
+                    "defaultValue": "`burger-menu-list-${++burgerMenuIdCounter}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 116,
+                    "modifierKind": [
+                        148
+                    ]
                 }
             ],
             "methodsClass": [],
@@ -234,10 +248,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { NavTextComponent } from './nav-text.component';\n\ntype BurgerMenuEntry = string | { text: string; href?: string };\n\n@Component({\n  selector: 'app-burger-menu',\n  standalone: true,\n  imports: [CommonModule, NavTextComponent],\n  template: `\n    <div class=\"burger-menu\">\n      <button\n        type=\"button\"\n        class=\"burger-button\"\n        (click)=\"isOpen = !isOpen\"\n        [attr.aria-expanded]=\"isOpen\"\n        aria-controls=\"burger-menu-list\"\n        aria-label=\"Menü öffnen\"\n      >\n        <span></span>\n        <span></span>\n        <span></span>\n      </button>\n\n      <div *ngIf=\"isOpen\" id=\"burger-menu-list\" [class]=\"menuClass\" role=\"menu\" aria-label=\"Menüeinträge\">\n        <div class=\"menu-item\" role=\"menuitem\" *ngFor=\"let item of normalizedItems\">\n          <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n          <ng-template #staticText>\n            <span class=\"menu-item-text\">{{ item.text }}</span>\n          </ng-template>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: [`\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  `],\n})\nexport class BurgerMenuComponent {\n  @Input() items: readonly BurgerMenuEntry[] = ['text 1', 'text 2', 'text 3'];\n  @Input() openDirection: 'down' | 'up' = 'down';\n\n  isOpen = false;\n\n  get normalizedItems(): { text: string; href?: string }[] {\n    return this.items.map((item) => (typeof item === 'string' ? { text: item } : item));\n  }\n\n  get menuClass(): string {\n    return this.openDirection === 'up' ? 'menu-list menu-up' : 'menu-list';\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { NavTextComponent } from './nav-text.component';\n\ntype BurgerMenuEntry = string | { text: string; href?: string };\nlet burgerMenuIdCounter = 0;\n\n@Component({\n  selector: 'app-burger-menu',\n  standalone: true,\n  imports: [CommonModule, NavTextComponent],\n  template: `\n    <div class=\"burger-menu\">\n      <button\n        type=\"button\"\n        class=\"burger-button\"\n        (click)=\"isOpen = !isOpen\"\n        [attr.aria-expanded]=\"isOpen\"\n        [attr.aria-controls]=\"menuId\"\n        [attr.aria-label]=\"isOpen ? 'Menü schließen' : 'Menü öffnen'\"\n      >\n        <span></span>\n        <span></span>\n        <span></span>\n      </button>\n\n      <nav [id]=\"menuId\" [class]=\"menuClass\" [hidden]=\"!isOpen\" aria-label=\"Menüeinträge\">\n        <ul class=\"menu-items\">\n          <li class=\"menu-item\" *ngFor=\"let item of normalizedItems\">\n            <app-nav-text *ngIf=\"item.href; else staticText\" [text]=\"item.text\" [href]=\"item.href\"></app-nav-text>\n            <ng-template #staticText>\n              <span class=\"menu-item-text\">{{ item.text }}</span>\n            </ng-template>\n          </li>\n        </ul>\n      </nav>\n    </div>\n  `,\n  styles: [`\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      list-style: none;\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-items {\n      margin: 0;\n      padding: 0;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  `],\n})\nexport class BurgerMenuComponent {\n  @Input() items: readonly BurgerMenuEntry[] = ['text 1', 'text 2', 'text 3'];\n  @Input() openDirection: 'down' | 'up' = 'down';\n\n  isOpen = false;\n  readonly menuId = `burger-menu-list-${++burgerMenuIdCounter}`;\n\n  get normalizedItems(): { text: string; href?: string }[] {\n    return this.items.map((item) => (typeof item === 'string' ? { text: item } : item));\n  }\n\n  get menuClass(): string {\n    return this.openDirection === 'up' ? 'menu-list menu-up' : 'menu-list';\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  \n",
+            "stylesData": "\n    .burger-menu {\n      position: relative;\n      display: inline-block;\n    }\n\n    .burger-button {\n      width: 44px;\n      height: 40px;\n      border: 1px solid #dcdcdc;\n      border-radius: 8px;\n      background: #ffffff;\n      padding: 8px;\n      cursor: pointer;\n      display: inline-flex;\n      flex-direction: column;\n      justify-content: space-between;\n    }\n\n    .burger-button span {\n      display: block;\n      height: 2px;\n      background: #2a2a2a;\n      border-radius: 999px;\n    }\n\n    .menu-list {\n      position: absolute;\n      top: calc(100% + 8px);\n      left: 0;\n      min-width: 160px;\n      background: #ffffff;\n      border: 1px solid #e9ecef;\n      border-radius: 6px;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);\n      padding: 6px;\n      display: flex;\n      flex-direction: column;\n      gap: 4px;\n      z-index: 1000;\n    }\n\n    .menu-list.menu-up {\n      top: auto;\n      bottom: calc(100% + 8px);\n    }\n\n    .menu-item {\n      list-style: none;\n      width: 100%;\n      text-align: left;\n      padding: 2px 4px;\n      border-radius: 4px;\n    }\n\n    .menu-items {\n      margin: 0;\n      padding: 0;\n    }\n\n    .menu-item:hover {\n      background: #f8f9fa;\n    }\n\n    .menu-item-text {\n      display: inline-block;\n      width: 100%;\n      padding: 6px 8px;\n      color: #212529;\n    }\n  \n",
             "extends": [],
             "accessors": {
                 "normalizedItems": {
@@ -246,7 +260,7 @@
                         "name": "normalizedItems",
                         "type": "[]",
                         "returnType": "literal type[]",
-                        "line": 108
+                        "line": 118
                     }
                 },
                 "menuClass": {
@@ -255,7 +269,7 @@
                         "name": "menuClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 112
+                        "line": 122
                     }
                 }
             }
@@ -756,7 +770,7 @@
         },
         {
             "name": "DropdownComponent",
-            "id": "component-DropdownComponent-43503e31c9f386b11e26b3c1d15893b5d76c04f3876cc10c2a06dc411901e62465a8ff331405505c5c429a450b3bb93d8078fa3a6c10f37d746e1cd2a3f84260",
+            "id": "component-DropdownComponent-b49319a872f870312767c22ef04f94508ee99b8264c19981a4eca7569c60fd55094665ed5f7c4dcb96b60c78fb00c361534c43f6ad0b8e0e6e513e4dcc494a68",
             "file": "src/app/component/dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -775,7 +789,7 @@
             "styles": [
                 "\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
             ],
-            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<select\n  [id]=\"id\"\n  class=\"form-select\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"showError ? errorId : null\"\n  (blur)=\"markTouched()\"\n>\n  <option value=\"\" disabled>{{ placeholder }}</option>\n  <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n</select>\n<div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n  {{ errorText }}\n</div>\n",
+            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n</label>\n<select\n  [id]=\"id\"\n  class=\"form-select\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"showError ? errorId : null\"\n  (blur)=\"markTouched()\"\n>\n  <option value=\"\" disabled>{{ placeholder }}</option>\n  <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n</select>\n<div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n  {{ errorText }}\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -1229,7 +1243,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-dropdown',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <select\n      [id]=\"id\"\n      class=\"form-select\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n    </select>\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class DropdownComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'dropdown-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() options: readonly string[] = [];\n  @Input() placeholder = 'Bitte auswählen';\n  @Input() required = false;\n  @Input() errorText = 'Bitte wählen Sie eine Option aus.';\n  @Input() errorId = 'dropdown-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.required && !this.value && (this.touched || this.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-dropdown',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => DropdownComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <select\n      [id]=\"id\"\n      class=\"form-select\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    >\n      <option value=\"\" disabled>{{ placeholder }}</option>\n      <option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</option>\n    </select>\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class DropdownComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'dropdown-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() options: readonly string[] = [];\n  @Input() placeholder = 'Bitte auswählen';\n  @Input() required = false;\n  @Input() errorText = 'Bitte wählen Sie eine Option aus.';\n  @Input() errorId = 'dropdown-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.required && !this.value && (this.touched || this.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .form-select {\n      min-height: 2.5rem;\n      display: block;\n    }\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -1252,7 +1266,7 @@
         },
         {
             "name": "EmailInputComponent",
-            "id": "component-EmailInputComponent-1a10420a35f5204d4ce261e19e3382f5ecaa474c644f5ac2f3d93265605df96b4c725e74c917a796308b22018b0137e2bdbdc30ebce9b302826318b4588e67fc",
+            "id": "component-EmailInputComponent-fb37783145b3d98c9fbba1634e98d7735b0d6704bc0016d59c989e08bb612a169620a2a57f8ef516b541a9394cd18076b8c73ca6bc5e42945ec85911ac351fdb",
             "file": "src/app/component/email-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1271,7 +1285,7 @@
             "styles": [
                 "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
             ],
-            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"email\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n  {{ formatErrorText }}\n</div>\n",
+            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"email\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n  {{ formatErrorText }}\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -1734,7 +1748,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'email-field';\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = 'email-required-error';\n  @Input() formatErrorId = 'email-format-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showFormatError(): boolean {\n    return this.isFormatError && (this.touched || this.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  private get normalizedValue(): string {\n    return this.value.trim();\n  }\n\n  private get isRequiredError(): boolean {\n    return this.required && !this.normalizedValue;\n  }\n\n  private get isFormatError(): boolean {\n    if (!this.normalizedValue) {\n      return false;\n    }\n\n    return !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(this.normalizedValue);\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isFormatError;\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.isRequiredError) {\n      return { required: true };\n    }\n\n    if (!this.normalizedValue) {\n      return null;\n    }\n\n    if (this.isFormatError) {\n      return { email: true };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'email-field';\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = 'email-required-error';\n  @Input() formatErrorId = 'email-format-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showFormatError(): boolean {\n    return this.isFormatError && (this.touched || this.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  private get normalizedValue(): string {\n    return this.value.trim();\n  }\n\n  private get isRequiredError(): boolean {\n    return this.required && !this.normalizedValue;\n  }\n\n  private get isFormatError(): boolean {\n    if (!this.normalizedValue) {\n      return false;\n    }\n\n    return !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(this.normalizedValue);\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isFormatError;\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.isRequiredError) {\n      return { required: true };\n    }\n\n    if (!this.normalizedValue) {\n      return null;\n    }\n\n    if (this.isFormatError) {\n      return { email: true };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -1870,7 +1884,7 @@
         },
         {
             "name": "LogoComponent",
-            "id": "component-LogoComponent-2a276936c724f98ae47195eebb245817bb6d0d76cd6d5b2f8db6d626b5ac9128d25b2bb35202b224a6400f4be0f547d001701808400ba7d6fe029a29212a74fa",
+            "id": "component-LogoComponent-74c2324b0a14daf130f8c9dc5d9b177fb2b08da8b79301adf4a3d34973e37b9680e52c1501c034fcb145f0f614f496228aa597d8e930db304ed21e9e06be419e",
             "file": "src/app/component/logo.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1882,7 +1896,7 @@
             "styles": [
                 "\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  "
             ],
-            "template": "<img\n  [src]=\"src\"\n  [alt]=\"alt\"\n  [width]=\"width\"\n  [height]=\"height\"\n  class=\"logo\"\n  [attr.aria-label]=\"ariaLabel\"\n/>\n",
+            "template": "<img\n  [src]=\"src\"\n  [alt]=\"alt\"\n  [width]=\"width\"\n  [height]=\"height\"\n  class=\"logo\"\n/>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -1892,16 +1906,7 @@
                     "defaultValue": "'HTW Berlin Logo'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "ariaLabel",
-                    "defaultValue": "'Hochschule für Technik und Wirtschaft Berlin'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 27,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -1910,7 +1915,7 @@
                     "defaultValue": "120",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 27,
                     "type": "number",
                     "decorators": []
                 },
@@ -1919,7 +1924,7 @@
                     "defaultValue": "'/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -1928,7 +1933,7 @@
                     "defaultValue": "300",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 26,
                     "type": "number",
                     "decorators": []
                 }
@@ -1945,7 +1950,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-logo',\n  standalone: true,\n  template: `\n    <img\n      [src]=\"src\"\n      [alt]=\"alt\"\n      [width]=\"width\"\n      [height]=\"height\"\n      class=\"logo\"\n      [attr.aria-label]=\"ariaLabel\"\n    />\n  `,\n  styles: [`\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  `],\n})\nexport class LogoComponent {\n  @Input() src = '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg';\n  @Input() alt = 'HTW Berlin Logo';\n  @Input() ariaLabel = 'Hochschule für Technik und Wirtschaft Berlin';\n  @Input() width = 300;\n  @Input() height = 120;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-logo',\n  standalone: true,\n  template: `\n    <img\n      [src]=\"src\"\n      [alt]=\"alt\"\n      [width]=\"width\"\n      [height]=\"height\"\n      class=\"logo\"\n    />\n  `,\n  styles: [`\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  `],\n})\nexport class LogoComponent {\n  @Input() src = '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg';\n  @Input() alt = 'HTW Berlin Logo';\n  @Input() width = 300;\n  @Input() height = 120;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .logo {\n      display: block;\n      max-width: 100%;\n      height: auto;\n    }\n  \n",
@@ -1953,7 +1958,7 @@
         },
         {
             "name": "NameInputComponent",
-            "id": "component-NameInputComponent-6fdb533195759ceac2ae90ebeedcc8ee95c1885f56d1e2380fae411417c56b9ecaa0ab57a36788eb91d43e4606e874eead35bed8e58050fac845ba92c353cf0a",
+            "id": "component-NameInputComponent-97a53e894eb652ac807fd3503885d5ca6e41136f9648eedee9e9db116f5216061e672e150de324ce6c7d8a96f8c1f54bbff53d5e2a1169b0bf6be5f9c99fe5ac",
             "file": "src/app/component/name-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1972,7 +1977,7 @@
             "styles": [
                 "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
             ],
-            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"text\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"showError ? errorId : null\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n  {{ errorText }}\n</div>\n",
+            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n</label>\n<input\n  [id]=\"id\"\n  type=\"text\"\n  class=\"form-control\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"showError ? errorId : null\"\n  (blur)=\"markTouched()\"\n/>\n\n<div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n  {{ errorText }}\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -2401,7 +2406,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-name-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => NameInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => NameInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"text\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class NameInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'name-field';\n  @Input() label = 'Name';\n  @Input() ariaLabel = '';\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() errorText = 'Bitte geben Sie Ihren Namen ein.';\n  @Input() errorId = 'name-error';\n\n  value = '';\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, forwardRef, inject } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  NgControl,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-name-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => NameInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => NameInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"text\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"showError ? errorId : null\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ errorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showError\" aria-live=\"polite\">\n      {{ errorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class NameInputComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'name-field';\n  @Input() label = 'Name';\n  @Input() ariaLabel = '';\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() errorText = 'Bitte geben Sie Ihren Namen ein.';\n  @Input() errorId = 'name-error';\n\n  value = '';\n  disabled = false;\n\n  private readonly ngControl = inject(NgControl, { optional: true, self: true });\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  constructor() {\n    if (this.ngControl) {\n      this.ngControl.valueAccessor = this;\n    }\n  }\n\n  get showError(): boolean {\n    const control = this.ngControl?.control;\n    return !!control && control.invalid && (control.touched || control.dirty);\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.onChange(value);\n    this.onValidatorChange();\n  }\n\n  markTouched(): void {\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -2432,7 +2437,7 @@
         },
         {
             "name": "NavTextComponent",
-            "id": "component-NavTextComponent-d8c7449e13b32b6030e743c6b8c6bcc57a6bbde795aa58bf1d20731c5ec0971f35c1e0f58a3abc656a38f45506717504a9ca5f6fb2ce9282ac0382b3e6b6fa31",
+            "id": "component-NavTextComponent-ba7719ddf357f6eae3681f0cc0599f529df760c429d88fe186b01e07637b62f39898f6b0c99ceaaa84db293814dfaa61f08d62ef6c7fa5e88bcbbda0fbc09e5e",
             "file": "src/app/component/nav-text.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2444,7 +2449,7 @@
             "styles": [
                 "\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  "
             ],
-            "template": "<a\n  *ngIf=\"interactive; else textOnly\"\n  [routerLink]=\"href\"\n  routerLinkActive=\"active\"\n  [routerLinkActiveOptions]=\"{ exact: true }\"\n  class=\"nav-text-link\"\n>\n  {{ text }}\n</a>\n<ng-template #textOnly>\n  <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n</ng-template>\n",
+            "template": "<a\n  *ngIf=\"interactive; else textOnly\"\n  [routerLink]=\"href\"\n  routerLinkActive=\"active\"\n  [routerLinkActiveOptions]=\"{ exact: true }\"\n  ariaCurrentWhenActive=\"page\"\n  class=\"nav-text-link\"\n>\n  {{ text }}\n</a>\n<ng-template #textOnly>\n  <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n</ng-template>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -2454,7 +2459,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 49,
                     "type": "string",
                     "decorators": []
                 },
@@ -2463,7 +2468,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49,
+                    "line": 50,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2472,7 +2477,7 @@
                     "defaultValue": "'Link'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
+                    "line": 48,
                     "type": "string",
                     "decorators": []
                 }
@@ -2498,7 +2503,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'app-nav-text',\n  standalone: true,\n  imports: [CommonModule, RouterModule],\n  template: `\n    <a\n      *ngIf=\"interactive; else textOnly\"\n      [routerLink]=\"href\"\n      routerLinkActive=\"active\"\n      [routerLinkActiveOptions]=\"{ exact: true }\"\n      class=\"nav-text-link\"\n    >\n      {{ text }}\n    </a>\n    <ng-template #textOnly>\n      <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n    </ng-template>\n  `,\n  styles: [`\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  `],\n})\nexport class NavTextComponent {\n  @Input() text = 'Link';\n  @Input() href = '';\n  @Input() interactive = true;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'app-nav-text',\n  standalone: true,\n  imports: [CommonModule, RouterModule],\n  template: `\n    <a\n      *ngIf=\"interactive; else textOnly\"\n      [routerLink]=\"href\"\n      routerLinkActive=\"active\"\n      [routerLinkActiveOptions]=\"{ exact: true }\"\n      ariaCurrentWhenActive=\"page\"\n      class=\"nav-text-link\"\n    >\n      {{ text }}\n    </a>\n    <ng-template #textOnly>\n      <span class=\"nav-text-link nav-text-static\">{{ text }}</span>\n    </ng-template>\n  `,\n  styles: [`\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  `],\n})\nexport class NavTextComponent {\n  @Input() text = 'Link';\n  @Input() href = '';\n  @Input() interactive = true;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .nav-text-link {\n      color: #555555;\n      text-decoration: none;\n      font-size: 1rem;\n      transition: color 0.2s ease;\n      cursor: pointer;\n    }\n\n    .nav-text-link:hover {\n      color: #000000;\n    }\n\n    .nav-text-link.active {\n      color: #2E7D32;\n      font-weight: 600;\n    }\n\n    .nav-text-static {\n      cursor: default;\n    }\n  \n",
@@ -2541,7 +2546,7 @@
         },
         {
             "name": "TextareaComponent",
-            "id": "component-TextareaComponent-3469d5bcba608cf6811cb40206c6d584cea86e7a760dbc1a22547b677565371ce89725e6ba4fa4d93251c7cfa311f7f8cc290fc6245a84a41c7400665ec5b49f",
+            "id": "component-TextareaComponent-46149fc118d877680251c9a73bb0911de415654c75a014f984f68ffc66a4ebc2cc7d282a7515e66fb231d34cd7a04cadc371222e72197c41134a4d595516caf7",
             "file": "src/app/component/textarea.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2560,7 +2565,7 @@
             "styles": [
                 "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  "
             ],
-            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n</label>\n<textarea\n  [id]=\"id\"\n  class=\"form-control\"\n  [rows]=\"rows\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [attr.minlength]=\"minlength\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n></textarea>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n  {{ minlengthErrorText }}\n</div>\n",
+            "template": "<label [for]=\"id\" class=\"form-label\">\n  {{ label }}\n  <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n</label>\n<textarea\n  [id]=\"id\"\n  class=\"form-control\"\n  [rows]=\"rows\"\n  [ngModel]=\"value\"\n  (ngModelChange)=\"onValueChange($event)\"\n  [ngModelOptions]=\"{ standalone: true }\"\n  [disabled]=\"disabled\"\n  [required]=\"required\"\n  [attr.aria-required]=\"required ? 'true' : null\"\n  [attr.aria-label]=\"ariaLabel || label\"\n  [attr.minlength]=\"minlength\"\n  [placeholder]=\"placeholder\"\n  [attr.aria-invalid]=\"showError ? 'true' : null\"\n  [attr.aria-describedby]=\"ariaDescribedBy\"\n  (blur)=\"markTouched()\"\n></textarea>\n\n<div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n  {{ requiredErrorText }}\n</div>\n<div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n  {{ minlengthErrorText }}\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -3047,7 +3052,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-textarea',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\" aria-disabled=\"true\">*</span>\n    </label>\n    <textarea\n      [id]=\"id\"\n      class=\"form-control\"\n      [rows]=\"rows\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.minlength]=\"minlength\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    ></textarea>\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n      {{ minlengthErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class TextareaComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'textarea-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() rows = 4;\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() minlength = 0;\n  @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';\n  @Input() minlengthErrorText = '';\n  @Input() requiredErrorId = 'textarea-required-error';\n  @Input() minlengthErrorId = 'textarea-minlength-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n  private touched = false;\n  private dirty = false;\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showMinlengthError(): boolean {\n    return this.isMinlengthError && (this.touched || this.dirty);\n  }\n\n  private get isRequiredError(): boolean {\n    return !!(this.required && !this.value.trim());\n  }\n\n  private get isMinlengthError(): boolean {\n    return !!(\n      this.minlength > 0 &&\n      this.value.trim().length > 0 &&\n      this.value.trim().length < this.minlength\n    );\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isMinlengthError;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showMinlengthError) {\n      return this.minlengthErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n\n    if (this.minlength > 0 && this.value.trim().length < this.minlength) {\n      return {\n        minlength: {\n          requiredLength: this.minlength,\n          actualLength: this.value.trim().length,\n        },\n      };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\n@Component({\n  selector: 'app-textarea',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => TextareaComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <textarea\n      [id]=\"id\"\n      class=\"form-control\"\n      [rows]=\"rows\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-required]=\"required ? 'true' : null\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [attr.minlength]=\"minlength\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    ></textarea>\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ minlengthErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showMinlengthError\" aria-live=\"polite\">\n      {{ minlengthErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\nexport class TextareaComponent implements ControlValueAccessor, Validator {\n  @Input() id = 'textarea-field';\n  @Input() label = '';\n  @Input() ariaLabel = '';\n  @Input() rows = 4;\n  @Input() placeholder = '';\n  @Input() required = false;\n  @Input() minlength = 0;\n  @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';\n  @Input() minlengthErrorText = '';\n  @Input() requiredErrorId = 'textarea-required-error';\n  @Input() minlengthErrorId = 'textarea-minlength-error';\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n  private touched = false;\n  private dirty = false;\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showMinlengthError(): boolean {\n    return this.isMinlengthError && (this.touched || this.dirty);\n  }\n\n  private get isRequiredError(): boolean {\n    return !!(this.required && !this.value.trim());\n  }\n\n  private get isMinlengthError(): boolean {\n    return !!(\n      this.minlength > 0 &&\n      this.value.trim().length > 0 &&\n      this.value.trim().length < this.minlength\n    );\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isMinlengthError;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showMinlengthError) {\n      return this.minlengthErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.required && !this.value.trim()) {\n      return { required: true };\n    }\n\n    if (this.minlength > 0 && this.value.trim().length < this.minlength) {\n      return {\n        minlength: {\n          requiredLength: this.minlength,\n          actualLength: this.value.trim().length,\n        },\n      };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -3725,6 +3730,16 @@
                 "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
             },
             {
+                "name": "burgerMenuIdCounter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/burger-menu.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "0"
+            },
+            {
                 "name": "routes",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3761,6 +3776,18 @@
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
                     "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(),\n    provideRouter(routes)\n  ]\n}"
+                }
+            ],
+            "src/app/component/burger-menu.component.ts": [
+                {
+                    "name": "burgerMenuIdCounter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/burger-menu.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "0"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -3856,7 +3883,17 @@
                 "linktype": "component",
                 "name": "BurgerMenuComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/burger-menu.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "burgerMenuIdCounter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3911,7 +3948,7 @@
                 "linktype": "component",
                 "name": "LogoComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

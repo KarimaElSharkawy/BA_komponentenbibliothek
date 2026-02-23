@@ -55,6 +55,8 @@ export const Navigation: Story = {
       selectedLanguage: 'de',
       langOpenMobile: false,
       langOpenDesktop: false,
+      langMenuIdMobile: 'nav-showcase-lang-menu-mobile',
+      langMenuIdDesktop: 'nav-showcase-lang-menu-desktop',
       mobileMenuItems: [
         { text: 'Home', href: '/' },
         { text: 'Meldeformular', href: '/meldeformular' },
@@ -83,6 +85,7 @@ export const Navigation: Story = {
           padding: 0.375rem 1rem;
           color: #212529;
           background: transparent;
+          border: 0;
           text-align: left;
           cursor: pointer;
           font-size: 0.9375rem;
@@ -127,6 +130,11 @@ export const Navigation: Story = {
           align-items: center;
           justify-content: center;
           gap: 0.35rem;
+          border: 0;
+          background: transparent;
+          padding: 0;
+          color: inherit;
+          font: inherit;
           cursor: pointer;
         }
         .lang-caret {
@@ -168,16 +176,15 @@ export const Navigation: Story = {
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-mobile-footer">
         <div class="nav-mobile-bar">
           <app-burger-menu [items]="mobileMenuItems" [openDirection]="'up'"></app-burger-menu>
-          <span class="mobile-title">Navigation</span>
           <div class="nav-item lang-item">
-            <div class="lang-trigger" role="button" (click)="langOpenMobile = !langOpenMobile" aria-haspopup="listbox" [attr.aria-expanded]="langOpenMobile">
+            <button #langTriggerMobile type="button" class="lang-trigger" (click)="langOpenMobile = !langOpenMobile" aria-haspopup="true" [attr.aria-controls]="langMenuIdMobile" [attr.aria-expanded]="langOpenMobile" aria-label="Sprache auswählen">
               <app-nav-text [text]="selectedLanguage === 'de' ? 'DE' : 'EN'" [interactive]="false"></app-nav-text>
               <span class="lang-caret" aria-hidden="true"></span>
-            </div>
-            <div *ngIf="langOpenMobile" class="lang-menu">
+            </button>
+            <div *ngIf="langOpenMobile" [id]="langMenuIdMobile" class="lang-menu" role="group" aria-label="Sprachauswahl" (keydown.escape)="langOpenMobile = false; langTriggerMobile.focus()">
               <div class="bs-dropdown">
-                <div class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenMobile = false">Deutsch</div>
-                <div class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenMobile = false">English</div>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenMobile = false">Deutsch</button>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenMobile = false">English</button>
               </div>
             </div>
           </div>
@@ -212,14 +219,14 @@ export const Navigation: Story = {
             <app-nav-text text="Login" [href]="'/login-forwarder'"></app-nav-text>
           </div>
           <div class="nav-item lang-item">
-            <div class="lang-trigger" role="button" (click)="langOpenDesktop = !langOpenDesktop" aria-haspopup="listbox" [attr.aria-expanded]="langOpenDesktop">
+            <button #langTriggerDesktop type="button" class="lang-trigger" (click)="langOpenDesktop = !langOpenDesktop" aria-haspopup="true" [attr.aria-controls]="langMenuIdDesktop" [attr.aria-expanded]="langOpenDesktop" aria-label="Sprache auswählen">
               <app-nav-text [text]="selectedLanguage === 'de' ? 'Deutsch' : 'English'" [interactive]="false"></app-nav-text>
               <span class="lang-caret" aria-hidden="true"></span>
-            </div>
-            <div *ngIf="langOpenDesktop" class="lang-menu">
+            </button>
+            <div *ngIf="langOpenDesktop" [id]="langMenuIdDesktop" class="lang-menu" role="group" aria-label="Sprachauswahl" (keydown.escape)="langOpenDesktop = false; langTriggerDesktop.focus()">
               <div class="bs-dropdown">
-                <div class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenDesktop = false">Deutsch</div>
-                <div class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenDesktop = false">English</div>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenDesktop = false">Deutsch</button>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenDesktop = false">English</button>
               </div>
             </div>
           </div>
@@ -238,6 +245,8 @@ export const NavigationLoggedIn: Story = {
       isLoggedIn: true,
       langOpenMobileLogin: false,
       langOpenDesktopLogin: false,
+      langMenuIdMobileLogin: 'nav-showcase-lang-menu-mobile-login',
+      langMenuIdDesktopLogin: 'nav-showcase-lang-menu-desktop-login',
       mobileMenuItemsLogin: [
         { text: 'Home', href: '/' },
         { text: 'Meldeformular', href: '/meldeformular' },
@@ -246,7 +255,6 @@ export const NavigationLoggedIn: Story = {
         { text: 'Kontaktperson finden', href: '/kontaktperson' },
         { text: 'Impressum', href: '/imprint' },
         { text: 'Datenschutz', href: '/privacypolicy' },
-        { text: 'Admin', href: '/admin-home' },
         { text: 'Logout' },
       ],
     },
@@ -266,6 +274,7 @@ export const NavigationLoggedIn: Story = {
           padding: 0.375rem 1rem;
           color: #212529;
           background: transparent;
+          border: 0;
           text-align: left;
           cursor: pointer;
           font-size: 0.9375rem;
@@ -310,6 +319,11 @@ export const NavigationLoggedIn: Story = {
           align-items: center;
           justify-content: center;
           gap: 0.35rem;
+          border: 0;
+          background: transparent;
+          padding: 0;
+          color: inherit;
+          font: inherit;
           cursor: pointer;
         }
         .lang-caret {
@@ -350,16 +364,15 @@ export const NavigationLoggedIn: Story = {
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-mobile-footer">
         <div class="nav-mobile-bar">
           <app-burger-menu [items]="mobileMenuItemsLogin" [openDirection]="'up'"></app-burger-menu>
-          <span class="mobile-title">Navigation</span>
           <div class="nav-item lang-item">
-            <div class="lang-trigger" role="button" (click)="langOpenMobileLogin = !langOpenMobileLogin" aria-haspopup="listbox" [attr.aria-expanded]="langOpenMobileLogin">
+            <button #langTriggerMobileLogin type="button" class="lang-trigger" (click)="langOpenMobileLogin = !langOpenMobileLogin" aria-haspopup="true" [attr.aria-controls]="langMenuIdMobileLogin" [attr.aria-expanded]="langOpenMobileLogin" aria-label="Sprache auswählen">
               <app-nav-text [text]="selectedLanguage === 'de' ? 'DE' : 'EN'" [interactive]="false"></app-nav-text>
               <span class="lang-caret" aria-hidden="true"></span>
-            </div>
-            <div *ngIf="langOpenMobileLogin" class="lang-menu">
+            </button>
+            <div *ngIf="langOpenMobileLogin" [id]="langMenuIdMobileLogin" class="lang-menu" role="group" aria-label="Sprachauswahl" (keydown.escape)="langOpenMobileLogin = false; langTriggerMobileLogin.focus()">
               <div class="bs-dropdown">
-                <div class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenMobileLogin = false">Deutsch</div>
-                <div class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenMobileLogin = false">English</div>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenMobileLogin = false">Deutsch</button>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenMobileLogin = false">English</button>
               </div>
             </div>
           </div>
@@ -388,23 +401,17 @@ export const NavigationLoggedIn: Story = {
             <app-nav-text text="Profil" [href]="'/login-forwarder'"></app-nav-text>
           </div>
           <div class="nav-item">
-            <app-nav-text text="Login" [href]="'/login'"></app-nav-text>
-          </div>
-          <div class="nav-item">
-            <app-nav-text text="Admin" [href]="'/admin-home'"></app-nav-text>
-          </div>
-          <div class="nav-item">
             <button class="logout-button">Logout</button>
           </div>
           <div class="nav-item lang-item">
-            <div class="lang-trigger" role="button" (click)="langOpenDesktopLogin = !langOpenDesktopLogin" aria-haspopup="listbox" [attr.aria-expanded]="langOpenDesktopLogin">
+            <button #langTriggerDesktopLogin type="button" class="lang-trigger" (click)="langOpenDesktopLogin = !langOpenDesktopLogin" aria-haspopup="true" [attr.aria-controls]="langMenuIdDesktopLogin" [attr.aria-expanded]="langOpenDesktopLogin" aria-label="Sprache auswählen">
               <app-nav-text [text]="selectedLanguage === 'de' ? 'Deutsch' : 'English'" [interactive]="false"></app-nav-text>
               <span class="lang-caret" aria-hidden="true"></span>
-            </div>
-            <div *ngIf="langOpenDesktopLogin" class="lang-menu">
+            </button>
+            <div *ngIf="langOpenDesktopLogin" [id]="langMenuIdDesktopLogin" class="lang-menu" role="group" aria-label="Sprachauswahl" (keydown.escape)="langOpenDesktopLogin = false; langTriggerDesktopLogin.focus()">
               <div class="bs-dropdown">
-                <div class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenDesktopLogin = false">Deutsch</div>
-                <div class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenDesktopLogin = false">English</div>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'de'; langOpenDesktopLogin = false">Deutsch</button>
+                <button type="button" class="dropdown-item" (click)="selectedLanguage = 'en'; langOpenDesktopLogin = false">English</button>
               </div>
             </div>
           </div>

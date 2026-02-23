@@ -29,7 +29,7 @@ import {
   template: `
     <label [for]="id" class="form-label">
       {{ label }}
-      <span *ngIf="required" class="required-indicator" aria-hidden="true" aria-disabled="true">*</span>
+      <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
     </label>
     <select
       [id]="id"
