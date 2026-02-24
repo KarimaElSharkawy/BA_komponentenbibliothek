@@ -15,37 +15,37 @@ const meta: Meta<HeadingComponent> = {
 export default meta;
 type Story = StoryObj<HeadingComponent>;
 
-export const H1: Story = {
+export const h1: Story = {
   args: {
     level: 1,
-    text: 'Überschrift H1',
+    text: 'Überschrift h1',
   },
 };
 
-export const H2: Story = {
+export const h2: Story = {
   args: {
     level: 2,
-    text: 'Überschrift H2',
+    text: 'Überschrift h2',
   },
 };
 
-export const H3: Story = {
+export const h3: Story = {
   args: {
     level: 3,
-    text: 'Überschrift H3',
+    text: 'Überschrift h3',
   },
 };
 
-export const H4: Story = {
+export const h4: Story = {
   args: {
     level: 4,
-    text: 'Überschrift H4',
+    text: 'Überschrift h4',
   },
 };
 
-export const H5: Story = {
+export const h5: Story = {
   args: {
     level: 5,
-    text: 'Überschrift H5',
+    text: 'Überschrift h5',
   },
 };

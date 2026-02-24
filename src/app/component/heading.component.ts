@@ -23,9 +23,7 @@ import { Component, Input } from '@angular/core';
     }
   `,
 })
-/**
- * Komponente: Rendert semantische Ueberschriften H1 bis H5 fuer Screenreader und WCAG.
- */
+
 export class HeadingComponent {
   @Input() text = 'Überschrift';
   @Input() level: 1 | 2 | 3 | 4 | 5 = 2;
