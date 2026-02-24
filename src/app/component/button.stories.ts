@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
-/**
- * Storybook: Zeigt aktivierte und deaktivierte Button Varianten.
- */
+
 const meta: Meta<ButtonComponent> = {
   title: 'Formulare/Felder/Buttons/Button',
   component: ButtonComponent,

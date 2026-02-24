@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { BurgerMenuComponent } from './burger-menu.component';
 
-/**
- * Storybook: Zeigt das Burger Menue in Storybook.
- */
+
 const meta: Meta<BurgerMenuComponent> = {
   title: 'Formulare/Felder/Menü',
   component: BurgerMenuComponent,

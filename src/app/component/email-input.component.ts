@@ -62,9 +62,7 @@ let emailInputInstanceCounter = 0;
     }
   `],
 })
-/**
- * Komponente: Form E Mail Eingabefeld mit Required und Formatvalidierung.
- */
+
 export class EmailInputComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++emailInputInstanceCounter;
   @HostBinding('attr.id') externalId: string | null = null;

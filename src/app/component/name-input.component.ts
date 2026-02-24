@@ -60,9 +60,7 @@ let nameInputInstanceCounter = 0;
     }
   `],
 })
-/**
- * Komponente: Form Textfeld fuer Namen mit Angular Form Anbindung.
- */
+
 export class NameInputComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++nameInputInstanceCounter;
   @HostBinding('attr.id') externalId: string | null = null;

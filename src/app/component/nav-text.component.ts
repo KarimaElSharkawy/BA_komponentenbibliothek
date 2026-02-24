@@ -44,9 +44,7 @@ import { RouterModule } from '@angular/router';
     }
   `],
 })
-/**
- * Komponente: Rendert Navigationstext als Link oder statischen Text.
- */
+
 export class NavTextComponent {
   @Input() text = 'Link';
   @Input() href = '';

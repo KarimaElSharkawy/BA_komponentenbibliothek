@@ -1,9 +1,7 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { LogoComponent } from './logo.component';
 
-/**
- * Storybook: Dokumentiert das Logo mit barrierearmen Alternativtexten.
- */
+
 const meta: Meta<LogoComponent> = {
   title: 'Formulare/Felder/Logo',
   component: LogoComponent,

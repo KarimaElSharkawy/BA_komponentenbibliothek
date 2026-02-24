@@ -52,9 +52,7 @@ let checkboxInstanceCounter = 0;
     </div>
   `,
 })
-/**
- * Komponente: Form Checkbox mit ControlValueAccessor, Pflichtvalidierung und Fehlermeldung.
- */
+
 export class CheckboxComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++checkboxInstanceCounter;
   @HostBinding('attr.id') externalId: string | null = null;

@@ -123,9 +123,7 @@ const NAV_SHOWCASE_STYLES = `
   </style>
 `;
 
-/**
- * Storybook: Stellt mobile und Desktop Navigation als Showcase dar.
- */
+
 const meta: Meta<ShowcaseComponent> = {
   title: 'Formulare/Showcase/Navigation',
   component: ShowcaseComponent,
@@ -172,7 +170,7 @@ export const Navigation: Story = {
     template: `
       ${NAV_SHOWCASE_STYLES}
 
-      <!-- Mobile / narrow widths - Not Logged In -->
+      
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-mobile-footer">
         <div class="nav-mobile-bar">
           <app-burger-menu [items]="mobileMenuItems" [openDirection]="'up'"></app-burger-menu>
@@ -191,7 +189,7 @@ export const Navigation: Story = {
         </div>
       </footer>
 
-      <!-- Large window (Desktop) - Not Logged In -->
+      
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-desktop-footer">
         <div class="nav-items">
           <div class="nav-item">
@@ -257,7 +255,7 @@ export const NavigationLoggedIn: Story = {
     },
     template: `
       ${NAV_SHOWCASE_STYLES}
-      <!-- Mobile / narrow widths - Logged In -->
+      
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-mobile-footer">
         <div class="nav-mobile-bar">
           <app-burger-menu [items]="mobileMenuItemsLogin" [openDirection]="'up'"></app-burger-menu>
@@ -276,7 +274,7 @@ export const NavigationLoggedIn: Story = {
         </div>
       </footer>
 
-      <!-- Large window (Desktop) - Logged In -->
+      
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-desktop-footer">
         <div class="nav-items">
           <div class="nav-item">

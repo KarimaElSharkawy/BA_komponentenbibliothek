@@ -63,9 +63,7 @@ let textareaInstanceCounter = 0;
     }
   `],
 })
-/**
- * Komponente: Mehrzeiliges Form Textfeld mit Required und Minlength Validierung.
- */
+
 export class TextareaComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++textareaInstanceCounter;
   @HostBinding('attr.id') externalId: string | null = null;

@@ -69,9 +69,7 @@ let dropdownInstanceCounter = 0;
     }
   `],
 })
-/**
- * Komponente: Form Select Feld mit Optionen, Pflichtvalidierung und Fehlerausgabe.
- */
+
 export class DropdownComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++dropdownInstanceCounter;
   @HostBinding('attr.id') externalId: string | null = null;

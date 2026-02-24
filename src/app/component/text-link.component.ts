@@ -18,9 +18,7 @@ import { Component, Input } from '@angular/core';
     </p>
   `,
 })
-/**
- * Komponente: Kombiniert Begleittext mit einem konfigurierbaren Hyperlink.
- */
+
 export class TextLinkComponent {
   @Input() text = 'Mehr Informationen finden Sie unter';
   @Input() linkText = 'diesem Link';

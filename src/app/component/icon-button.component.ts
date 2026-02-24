@@ -49,9 +49,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
   ],
 })
-/**
- * Komponente: Kompakter Icon Button fuer Navigationsaktionen wie Zurueck.
- */
+
 export class IconButtonComponent {
   @Input() ariaLabel = 'Zurück';
   @Output() clicked = new EventEmitter<void>();

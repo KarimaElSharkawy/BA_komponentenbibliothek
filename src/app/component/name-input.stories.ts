@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { NameInputComponent } from './name-input.component';
 
-/**
- * Storybook: Dokumentiert Name Eingabefeld in Pflicht und Optional Variante.
- */
+
 const meta: Meta<NameInputComponent> = {
   title: 'Formulare/Felder/Textfelder/Name',
   component: NameInputComponent,

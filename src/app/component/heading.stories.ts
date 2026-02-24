@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { HeadingComponent } from './heading.component';
 
-/**
- * Storybook: Dokumentiert semantische Ueberschriften ueber ein einheitliches Heading API.
- */
+
 const meta: Meta<HeadingComponent> = {
   title: 'Formulare/Felder/Text/heading',
   component: HeadingComponent,

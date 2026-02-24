@@ -10,9 +10,7 @@ import { IconButtonComponent } from './icon-button.component';
 import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
 
-/**
- * Storybook: Stellt das komplette Meldeformular als integrierten Showcase dar.
- */
+
 const meta: Meta = {
   title: 'Formulare/Showcase/Meldeformular',
   decorators: [

@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DropdownComponent } from './dropdown.component';
 
-/**
- * Storybook: Dokumentiert Pflicht und optionale Dropdown Zustaende.
- */
+
 const meta: Meta<DropdownComponent> = {
   title: 'Formulare/Felder/Dropdown',
   component: DropdownComponent,

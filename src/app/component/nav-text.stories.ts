@@ -4,9 +4,7 @@ import { NavTextComponent } from './nav-text.component';
 import { CommonModule } from '@angular/common';
 import { provideRouter } from '@angular/router';
 
-/**
- * Storybook: Dokumentiert Link, Active und Sprachauswahl Varianten.
- */
+
 const meta: Meta<NavTextComponent> = {
   title: 'Formulare/Felder/Text/nav-text',
   component: NavTextComponent,
@@ -67,7 +65,7 @@ export const Dropdown: Story = {
           .nav-text-link.active { color: #2E7D32; font-weight: 600; }
           .nav-text-caret { width: 0.75rem; height: 0.75rem; display:inline-block; }
 
-          /* Bootstrap-like dropdown styles for the selection box */
+          
           .bs-dropdown {
             background: #ffffff;
             border: 0.0625rem solid #e9ecef;

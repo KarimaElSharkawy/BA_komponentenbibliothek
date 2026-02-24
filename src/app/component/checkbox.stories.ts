@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { CheckboxComponent } from './checkbox.component';
 
-/**
- * Storybook: Dokumentiert Pflicht und optionale Checkbox Zustaende.
- */
+
 const meta: Meta<CheckboxComponent> = {
   title: 'Formulare/Felder/Checkbox',
   component: CheckboxComponent,

@@ -9,7 +9,5 @@ import { Component } from '@angular/core';
     </div>
   `,
 })
-/**
- * Komponente: Einfache Platzhalterkomponente fuer Story und Routing Showcases.
- */
+
 export class ShowcaseComponent {}

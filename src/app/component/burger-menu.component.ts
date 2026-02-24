@@ -108,9 +108,7 @@ let burgerMenuIdCounter = 0;
     }
   `],
 })
-/**
- * Komponente: Stellt ein auf und zuklappbares Burger-Menue mit Navigationseintraegen bereit.
- */
+
 export class BurgerMenuComponent {
   @Input() items: readonly BurgerMenuEntry[] = ['text 1', 'text 2', 'text 3'];
   @Input() openDirection: 'down' | 'up' = 'down';
