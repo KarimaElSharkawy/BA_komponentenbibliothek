@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
     <p class="mb-0">{{ text }}</p>
   `,
 })
+/**
+ * Komponente: Stellt einen einfachen Absatztext als Komponente bereit.
+ */
 export class TextParagraphComponent {
   @Input() text = 'Dies ist ein Beispielabsatz mit Fließtext.';
 }

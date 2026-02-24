@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, HostBinding, Input, forwardRef, inject } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -10,6 +10,8 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+
+let nameInputInstanceCounter = 0;
 
 @Component({
   selector: 'app-name-input',
@@ -58,14 +60,19 @@ import {
     }
   `],
 })
+/**
+ * Komponente: Form Textfeld fuer Namen mit Angular Form Anbindung.
+ */
 export class NameInputComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'name-field';
+  private readonly instanceId = ++nameInputInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
+  @Input() id = `name-field-${this.instanceId}`;
   @Input() label = 'Name';
   @Input() ariaLabel = '';
   @Input() placeholder = '';
   @Input() required = false;
   @Input() errorText = 'Bitte geben Sie Ihren Namen ein.';
-  @Input() errorId = 'name-error';
+  @Input() errorId = `name-error-${this.instanceId}`;
 
   value = '';
   disabled = false;

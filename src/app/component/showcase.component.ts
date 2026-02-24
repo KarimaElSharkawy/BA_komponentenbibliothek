@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
       <p>Showcase (Platzhalterkomponente)</p>
     </div>
   `,
-  styles: [],
 })
+/**
+ * Komponente: Einfache Platzhalterkomponente fuer Story und Routing Showcases.
+ */
 export class ShowcaseComponent {}

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -9,6 +9,8 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+
+let emailInputInstanceCounter = 0;
 
 @Component({
   selector: 'app-email-input',
@@ -60,16 +62,21 @@ import {
     }
   `],
 })
+/**
+ * Komponente: Form E Mail Eingabefeld mit Required und Formatvalidierung.
+ */
 export class EmailInputComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'email-field';
+  private readonly instanceId = ++emailInputInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
+  @Input() id = `email-field-${this.instanceId}`;
   @Input() label = 'E-Mail';
   @Input() ariaLabel = '';
   @Input() placeholder = 'name@beispiel.de';
   @Input() required = false;
   @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';
   @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-  @Input() requiredErrorId = 'email-required-error';
-  @Input() formatErrorId = 'email-format-error';
+  @Input() requiredErrorId = `email-required-error-${this.instanceId}`;
+  @Input() formatErrorId = `email-format-error-${this.instanceId}`;
   @Output() valueChange = new EventEmitter<string>();
 
   value = '';

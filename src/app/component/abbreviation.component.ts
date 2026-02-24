@@ -17,6 +17,9 @@ import { Component, Input } from '@angular/core';
   `,
   ],
 })
+/**
+ * Komponente: Rendert eine Abkuerzung mit erklaerendem Tooltip.
+ */
 export class AbbreviationComponent {
   @Input() text = 'FAQ';
   @Input() title = 'Frequently Asked Questions';

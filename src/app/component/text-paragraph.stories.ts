@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { TextParagraphComponent } from './text-paragraph.component';
 
+/**
+ * Storybook: Dokumentiert den Absatz Baustein.
+ */
 const meta: Meta<TextParagraphComponent> = {
   title: 'Formulare/Felder/Text/paragraph',
   component: TextParagraphComponent,

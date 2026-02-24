@@ -20,6 +20,9 @@ import { Component, Input } from '@angular/core';
     }
   `],
 })
+/**
+ * Komponente: Zeigt ein responsives Logo Bild mit konfigurierbaren Bildattributen.
+ */
 export class LogoComponent {
   @Input() src = '/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg';
   @Input() alt = 'HTW Berlin Logo';

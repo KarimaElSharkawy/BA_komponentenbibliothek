@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -9,6 +9,8 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+
+let dropdownInstanceCounter = 0;
 
 @Component({
   selector: 'app-dropdown',
@@ -55,21 +57,43 @@ import {
     .form-select {
       min-height: 2.5rem;
       display: block;
+      color: #212529;
+      background-color: #ffffff;
+      background-image: none;
+      appearance: auto;
+      -webkit-appearance: menulist;
+      -moz-appearance: menulist;
     }
     .required-indicator {
       margin-left: 0.15rem;
     }
   `],
 })
+/**
+ * Komponente: Form Select Feld mit Optionen, Pflichtvalidierung und Fehlerausgabe.
+ */
 export class DropdownComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'dropdown-field';
+  private readonly instanceId = ++dropdownInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
+  private resolvedControlId = `dropdown-field-${this.instanceId}`;
+
+  @Input()
+  set id(value: string) {
+    this.resolvedControlId = value || `dropdown-field-${this.instanceId}`;
+  }
+
+  @Input()
+  set controlId(value: string) {
+    this.resolvedControlId = value || `dropdown-field-${this.instanceId}`;
+  }
+
   @Input() label = '';
   @Input() ariaLabel = '';
   @Input() options: readonly string[] = [];
   @Input() placeholder = 'Bitte auswählen';
   @Input() required = false;
   @Input() errorText = 'Bitte wählen Sie eine Option aus.';
-  @Input() errorId = 'dropdown-error';
+  @Input() errorId = `dropdown-error-${this.instanceId}`;
   @Output() valueChange = new EventEmitter<string>();
 
   value = '';
@@ -80,6 +104,10 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
+
+  get id(): string {
+    return this.resolvedControlId;
+  }
 
   get showError(): boolean {
     return this.required && !this.value && (this.touched || this.dirty);

@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata, applicationConfig } from '@storybook/angular';
 import { NavTextComponent } from './nav-text.component';
-import { DropdownComponent } from './dropdown.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { provideRouter } from '@angular/router';
 
+/**
+ * Storybook: Dokumentiert Link, Active und Sprachauswahl Varianten.
+ */
 const meta: Meta<NavTextComponent> = {
   title: 'Formulare/Felder/Text/nav-text',
   component: NavTextComponent,
@@ -14,7 +15,7 @@ const meta: Meta<NavTextComponent> = {
       providers: [provideRouter([])],
     }),
     moduleMetadata({
-      imports: [NavTextComponent, DropdownComponent, CommonModule, FormsModule],
+      imports: [NavTextComponent, CommonModule],
     }),
   ],
 };
@@ -44,7 +45,7 @@ export const LinkAktiv: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Aktiver Link. Erscheint in Grün (#8BC34A) und fett.',
+        story: 'Aktiver Link. Erscheint in Grün (#2E7D32) und fett.',
       },
     },
   },
@@ -63,7 +64,7 @@ export const Dropdown: Story = {
           .nav-text-link { color: #555555; text-decoration: none; font-size: 1rem; transition: color 0.15s ease; display:inline-flex; align-items:center; gap:0.375rem; }
           button.nav-text-link { border: 0; background: transparent; padding: 0; font: inherit; }
           .nav-text-link:hover { color: #000000; }
-          .nav-text-link.active { color: #8BC34A; font-weight: 600; }
+          .nav-text-link.active { color: #2E7D32; font-weight: 600; }
           .nav-text-caret { width: 0.75rem; height: 0.75rem; display:inline-block; }
 
           /* Bootstrap-like dropdown styles for the selection box */
@@ -98,8 +99,7 @@ export const Dropdown: Story = {
           class="nav-text-link"
           [class.active]="selectedLanguage !== ''"
           (click)="langOpen = !langOpen"
-          aria-haspopup="true"
-          [attr.aria-controls]="languageMenuId"
+          aria-haspopup="menu"
           [attr.aria-expanded]="langOpen"
           aria-label="Sprache auswählen"
         >
@@ -109,10 +109,10 @@ export const Dropdown: Story = {
           </svg>
         </button>
 
-        <div *ngIf="langOpen" [id]="languageMenuId" aria-label="Sprachauswahl" role="group" (keydown.escape)="langOpen = false; langTrigger.focus()" style="position: absolute; top: 2.5rem; left: 0; z-index:1000;">
+        <div [hidden]="!langOpen" [id]="languageMenuId" aria-label="Sprachauswahl" role="menu" (keydown.escape)="langOpen = false; langTrigger.focus()" style="position: absolute; top: 2.5rem; left: 0; z-index:1000;">
           <div class="bs-dropdown">
-            <button type="button" class="dropdown-item" (click)="selectedLanguage='de'; langOpen=false">Deutsch</button>
-            <button type="button" class="dropdown-item" (click)="selectedLanguage='en'; langOpen=false">English</button>
+            <button type="button" class="dropdown-item" role="menuitem" (click)="selectedLanguage='de'; langOpen=false">Deutsch</button>
+            <button type="button" class="dropdown-item" role="menuitem" (click)="selectedLanguage='en'; langOpen=false">English</button>
           </div>
         </div>
       </div>

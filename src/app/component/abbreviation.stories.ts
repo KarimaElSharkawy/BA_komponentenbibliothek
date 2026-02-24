@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AbbreviationComponent } from './abbreviation.component';
 
+/**
+ * Storybook: Dokumentiert Varianten der Abkuerzungs Komponente.
+ */
 const meta: Meta<AbbreviationComponent> = {
   title: 'Formulare/Felder/Text/Abbreviation',
   component: AbbreviationComponent,

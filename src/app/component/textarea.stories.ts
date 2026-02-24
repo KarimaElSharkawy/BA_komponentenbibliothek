@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { TextareaComponent } from './textarea.component';
 
+/**
+ * Storybook: Dokumentiert das Freitextfeld in Pflicht und Optional Variante.
+ */
 const meta: Meta<TextareaComponent> = {
   title: 'Formulare/Felder/Textfelder/Freitext',
   component: TextareaComponent,

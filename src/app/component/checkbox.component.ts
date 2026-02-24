@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -9,6 +9,8 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+
+let checkboxInstanceCounter = 0;
 
 @Component({
   selector: 'app-checkbox',
@@ -50,13 +52,18 @@ import {
     </div>
   `,
 })
+/**
+ * Komponente: Form Checkbox mit ControlValueAccessor, Pflichtvalidierung und Fehlermeldung.
+ */
 export class CheckboxComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'checkbox-field';
+  private readonly instanceId = ++checkboxInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
+  @Input() id = `checkbox-field-${this.instanceId}`;
   @Input() label = '';
   @Input() ariaLabel = '';
   @Input() required = false;
   @Input() describedBy: string | null = null;
-  @Input() errorId = 'checkbox-error';
+  @Input() errorId = `checkbox-error-${this.instanceId}`;
   @Input() errorText = 'Bitte bestätigen Sie dieses Feld.';
   @Output() valueChange = new EventEmitter<boolean>();
 

@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { TextLinkComponent } from './text-link.component';
 
+/**
+ * Storybook: Dokumentiert den Text Link Baustein.
+ */
 const meta: Meta<TextLinkComponent> = {
   title: 'Formulare/Felder/Text/link',
   component: TextLinkComponent,

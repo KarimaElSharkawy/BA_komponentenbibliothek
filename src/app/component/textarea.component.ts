@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -9,6 +9,8 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+
+let textareaInstanceCounter = 0;
 
 @Component({
   selector: 'app-textarea',
@@ -61,8 +63,13 @@ import {
     }
   `],
 })
+/**
+ * Komponente: Mehrzeiliges Form Textfeld mit Required und Minlength Validierung.
+ */
 export class TextareaComponent implements ControlValueAccessor, Validator {
-  @Input() id = 'textarea-field';
+  private readonly instanceId = ++textareaInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
+  @Input() id = `textarea-field-${this.instanceId}`;
   @Input() label = '';
   @Input() ariaLabel = '';
   @Input() rows = 4;
@@ -71,8 +78,8 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input() minlength = 0;
   @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';
   @Input() minlengthErrorText = '';
-  @Input() requiredErrorId = 'textarea-required-error';
-  @Input() minlengthErrorId = 'textarea-minlength-error';
+  @Input() requiredErrorId = `textarea-required-error-${this.instanceId}`;
+  @Input() minlengthErrorId = `textarea-minlength-error-${this.instanceId}`;
   @Output() valueChange = new EventEmitter<string>();
 
   value = '';
@@ -143,7 +150,7 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
       return { required: true };
     }
 
-    if (this.minlength > 0 && this.value.trim().length < this.minlength) {
+    if (this.minlength > 0 && this.value.trim().length > 0 && this.value.trim().length < this.minlength) {
       return {
         minlength: {
           requiredLength: this.minlength,

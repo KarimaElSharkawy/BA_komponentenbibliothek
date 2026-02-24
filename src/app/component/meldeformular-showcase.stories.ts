@@ -5,13 +5,14 @@ import { DropdownComponent } from './dropdown.component';
 import { EmailInputComponent } from './email-input.component';
 import { NameInputComponent } from './name-input.component';
 import { TextareaComponent } from './textarea.component';
-import { TextH1Component } from './text-h1.component';
-import { TextLinkComponent } from './text-link.component';
+import { HeadingComponent } from './heading.component';
 import { IconButtonComponent } from './icon-button.component';
 import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
-import { ShowcaseComponent } from './showcase.component';
 
+/**
+ * Storybook: Stellt das komplette Meldeformular als integrierten Showcase dar.
+ */
 const meta: Meta = {
   title: 'Formulare/Showcase/Meldeformular',
   decorators: [
@@ -22,8 +23,7 @@ const meta: Meta = {
         EmailInputComponent,
         NameInputComponent,
         TextareaComponent,
-        TextH1Component,
-        TextLinkComponent,
+        HeadingComponent,
         IconButtonComponent,
         ButtonComponent,
         LogoComponent,
@@ -82,13 +82,13 @@ export const Standard: Story = {
               <app-icon-button ariaLabel="Zurück"></app-icon-button>
             </div>
             <div class="text-center">
-              <app-text-h1 text="Meldeformular"></app-text-h1>
+              <app-heading [level]="1" text="Meldeformular"></app-heading>
             </div>
           </div>
 
           <form class="d-grid gap-3" aria-label="Meldeformular Beispiel">
             <app-dropdown
-              id="showcase-gruppe"
+              controlId="showcase-gruppe"
               label="Zu welcher Gruppe gehören Sie?"
               placeholder="Bitte auswählen"
               [options]="['Studierende', 'Mitarbeitende', 'Externe']"
@@ -113,7 +113,7 @@ export const Standard: Story = {
             ></app-textarea>
 
             <app-dropdown
-              id="showcase-kategorie"
+              controlId="showcase-kategorie"
               label="Welcher Kategorie würden Sie diese Art von Diskriminierung spontan zuordnen? (optional)"
               placeholder="Bitte auswählen"
               [options]="['Kategorie 1', 'Kategorie 2', 'Kategorie 3']"

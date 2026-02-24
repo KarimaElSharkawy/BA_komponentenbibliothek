@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { EmailInputComponent } from './email-input.component';
 
+/**
+ * Storybook: Dokumentiert E Mail Feld mit und ohne Pflichtangabe.
+ */
 const meta: Meta<EmailInputComponent> = {
   title: 'Formulare/Felder/Textfelder/E-Mail',
   component: EmailInputComponent,

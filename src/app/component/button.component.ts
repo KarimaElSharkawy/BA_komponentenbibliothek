@@ -39,6 +39,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     }
   `],
 })
+/**
+ * Komponente: Zeigt einen primaeren Aktionsbutton mit Disabled und Click Event.
+ */
 export class ButtonComponent {
   @Input() disabled = false;
   @Input() label = '';

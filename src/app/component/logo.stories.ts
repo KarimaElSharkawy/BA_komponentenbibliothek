@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { LogoComponent } from './logo.component';
 
+/**
+ * Storybook: Dokumentiert das Logo mit barrierearmen Alternativtexten.
+ */
 const meta: Meta<LogoComponent> = {
   title: 'Formulare/Felder/Logo',
   component: LogoComponent,
@@ -16,15 +19,4 @@ export const Accessible: Story = {
     width: 300,
     height: 120,
   },
-  render: (args) => ({
-    props: args,
-    template: `
-      <app-logo
-        [src]="src"
-        [alt]="alt"
-        [width]="width"
-        [height]="height"
-      ></app-logo>
-    `,
-  }),
 };
