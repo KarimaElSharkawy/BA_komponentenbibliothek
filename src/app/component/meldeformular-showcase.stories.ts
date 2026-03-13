@@ -80,7 +80,7 @@ export const Standard: Story = {
               <app-icon-button ariaLabel="Zurück"></app-icon-button>
             </div>
             <div class="text-center">
-              <app-heading [level]="1" text="Meldeformular"></app-heading>
+              <app-heading tag="h1" text="Meldeformular"></app-heading>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ export const Standard: Story = {
               controlId="showcase-gruppe"
               label="Zu welcher Gruppe gehören Sie?"
               placeholder="Bitte auswählen"
-              [options]="['Studierende', 'Mitarbeitende', 'Externe']"
+              [options]="['Option 1', 'Option 2', 'Option 3']"
               [required]="true"
               (valueChange)="gruppeValue = $event"
               errorText="Bitte wählen Sie eine Mitgliedergruppe aus."
@@ -112,7 +112,7 @@ export const Standard: Story = {
 
             <app-dropdown
               controlId="showcase-kategorie"
-              label="Welcher Kategorie würden Sie diese Art von Diskriminierung spontan zuordnen? (optional)"
+              label="Welcher Kategorie würden Sie diese Art von Diskriminierung zuordnen? (optional)"
               placeholder="Bitte auswählen"
               [options]="['Kategorie 1', 'Kategorie 2', 'Kategorie 3']"
               [required]="false"
