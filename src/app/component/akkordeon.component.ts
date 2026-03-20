@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-let akkordeonInstanceCounter = 0;
-
 export interface AkkordeonItem {
   title: string;
   content: readonly string[];
-  open?: boolean;
 }
 
 @Component({
@@ -16,15 +13,18 @@ export interface AkkordeonItem {
   template: `
     <section class="akkordeon" [attr.aria-label]="ariaLabel">
       <ul class="akkordeon-list">
-        @for (item of items; track item.title; let index = $index) {
+        @for (item of items; track item.title) {
           <li class="akkordeon-item">
-            <details class="akkordeon-panel" [open]="item.open">
-              <summary class="akkordeon-summary" [attr.id]="summaryId(index)">
+            <details class="akkordeon-panel">
+              <summary
+                class="akkordeon-summary"
+                aria-label="FAQ-Eintrag ein- oder ausklappen"
+              >
                 <span class="akkordeon-title">{{ item.title }}</span>
                 <span class="akkordeon-icon" aria-hidden="true"></span>
               </summary>
 
-              <div class="akkordeon-content" [attr.aria-labelledby]="summaryId(index)">
+              <div class="akkordeon-content">
                 @for (paragraph of item.content; track paragraph) {
                   <p class="akkordeon-text">{{ paragraph }}</p>
                 }
@@ -143,22 +143,6 @@ export interface AkkordeonItem {
   ],
 })
 export class AkkordeonComponent {
-  private readonly instanceId = ++akkordeonInstanceCounter;
   @Input() ariaLabel = 'Akkordeon';
   @Input() items: readonly AkkordeonItem[] = [];
-  private customIdPrefix: string | null = null;
-
-  @Input()
-  set idPrefix(value: string | null | undefined) {
-    const normalizedValue = value?.trim();
-    this.customIdPrefix = normalizedValue ? normalizedValue : null;
-  }
-
-  get idPrefix(): string {
-    return this.customIdPrefix ?? `akkordeon-${this.instanceId}`;
-  }
-
-  summaryId(index: number): string {
-    return `${this.idPrefix}-summary-${index}`;
-  }
 }
