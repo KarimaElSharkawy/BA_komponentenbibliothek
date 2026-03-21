@@ -3,7 +3,6 @@ import { Component, HostBinding, Input, forwardRef, inject } from '@angular/core
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   NgControl,
@@ -16,7 +15,7 @@ let nameInputInstanceCounter = 0;
 @Component({
   selector: 'app-name-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,15 +37,15 @@ let nameInputInstanceCounter = 0;
       [id]="id"
       type="text"
       class="form-control"
-      [ngModel]="value"
-      (ngModelChange)="onValueChange($event)"
-      [ngModelOptions]="{ standalone: true }"
+      [class.is-invalid]="showError"
+      [value]="value"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-label]="ariaLabel || null"
       [placeholder]="placeholder"
       [attr.aria-invalid]="showError ? 'true' : null"
       [attr.aria-describedby]="showError ? errorId : null"
+      (input)="onValueChange($event)"
       (blur)="markTouched()"
     />
 
@@ -118,7 +117,9 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
     this.onValidatorChange = fn;
   }
 
-  onValueChange(value: string): void {
+  onValueChange(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+
     this.value = value;
     this.onChange(value);
     this.onValidatorChange();

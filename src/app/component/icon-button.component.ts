@@ -36,6 +36,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     .icon-button:hover {
       color: #003d7a;
     }
+    .icon-button:focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+    }
 
     .icon {
       width: 1.75rem;

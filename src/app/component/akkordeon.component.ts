@@ -18,7 +18,6 @@ export interface AkkordeonItem {
             <details class="akkordeon-panel">
               <summary
                 class="akkordeon-summary"
-                aria-label="FAQ-Eintrag ein- oder ausklappen"
               >
                 <span class="akkordeon-title">{{ item.title }}</span>
                 <span class="akkordeon-icon" aria-hidden="true"></span>

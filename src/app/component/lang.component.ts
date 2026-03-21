@@ -29,7 +29,6 @@ let langComponentIdCounter = 0;
       type="button"
       class="lang-trigger"
       (click)="toggleMenu()"
-      aria-haspopup="menu"
       [attr.aria-expanded]="isOpen"
       [attr.aria-controls]="isOpen ? menuId : null"
       [attr.aria-label]="ariaLabel"
@@ -42,7 +41,6 @@ let langComponentIdCounter = 0;
       [hidden]="!isOpen"
       [id]="menuId"
       class="lang-menu"
-      role="menu"
       [attr.aria-label]="menuAriaLabel"
       (keydown.escape)="closeMenu(langTrigger)"
     >
@@ -51,7 +49,6 @@ let langComponentIdCounter = 0;
           *ngFor="let option of availableLanguages"
           type="button"
           class="dropdown-item"
-          role="menuitem"
           [attr.lang]="option.code"
           (click)="selectLanguage(option.code)"
         >
@@ -82,6 +79,11 @@ let langComponentIdCounter = 0;
 
     .lang-trigger:hover {
       color: #000000;
+    }
+    .lang-trigger:focus-visible,
+    .dropdown-item:focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
     }
 
     .lang-label {
@@ -128,10 +130,6 @@ let langComponentIdCounter = 0;
 
     .dropdown-item:hover {
       background: #f8f9fa;
-    }
-
-    .dropdown-item[aria-checked='true'] {
-      font-weight: 600;
     }
   `],
 })

@@ -3,7 +3,6 @@ import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from 
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -11,11 +10,12 @@ import {
 } from '@angular/forms';
 
 let emailInputInstanceCounter = 0;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 @Component({
   selector: 'app-email-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -37,15 +37,15 @@ let emailInputInstanceCounter = 0;
       [id]="id"
       type="email"
       class="form-control"
-      [ngModel]="value"
-      (ngModelChange)="onValueChange($event)"
-      [ngModelOptions]="{ standalone: true }"
+      [class.is-invalid]="showError"
+      [value]="value"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-label]="ariaLabel || null"
       [placeholder]="placeholder"
       [attr.aria-invalid]="showError ? 'true' : null"
       [attr.aria-describedby]="ariaDescribedBy"
+      (input)="onValueChange($event)"
       (blur)="markTouched()"
     />
 
@@ -86,16 +86,20 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
   private onTouched: () => void = () => {};
   private onValidatorChange: () => void = () => {};
 
+  private get hasInteracted(): boolean {
+    return this.touched || this.dirty;
+  }
+
   get showError(): boolean {
-    return this.isInvalid && (this.touched || this.dirty);
+    return this.isInvalid && this.hasInteracted;
   }
 
   get showRequiredError(): boolean {
-    return this.isRequiredError && (this.touched || this.dirty);
+    return this.isRequiredError && this.hasInteracted;
   }
 
   get showFormatError(): boolean {
-    return this.isFormatError && (this.touched || this.dirty);
+    return this.isFormatError && this.hasInteracted;
   }
 
   get ariaDescribedBy(): string | null {
@@ -125,7 +129,7 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
       return false;
     }
 
-    return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.normalizedValue);
+    return !EMAIL_PATTERN.test(this.normalizedValue);
   }
 
   private get isInvalid(): boolean {
@@ -149,22 +153,16 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
       return { required: true };
     }
 
-    if (!this.normalizedValue) {
-      return null;
-    }
-
-    if (this.isFormatError) {
-      return { email: true };
-    }
-
-    return null;
+    return this.isFormatError ? { email: true } : null;
   }
 
   registerOnValidatorChange(fn: () => void): void {
     this.onValidatorChange = fn;
   }
 
-  onValueChange(value: string): void {
+  onValueChange(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+
     this.value = value;
     this.dirty = true;
     this.onChange(value);

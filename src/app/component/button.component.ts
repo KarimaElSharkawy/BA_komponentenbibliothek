@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       type="button"
       class="w-100 btn btn-lg"
       [disabled]="disabled"
-      [attr.aria-label]="ariaLabel"
+      [attr.aria-label]="ariaLabel || null"
       (click)="onClick()"
     >
       {{ label }}
@@ -27,6 +27,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       border-color: #003d7a;
       color: #ffffff;
     }
+    button:focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+    }
     button:active:not(:disabled) {
       background-color: #002e5a;
       border-color: #002e5a;
@@ -43,7 +47,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() disabled = false;
   @Input() label = '';
-  @Input() ariaLabel = 'Weiter zur Zusammenfassung';
+  @Input() ariaLabel = '';
   @Output() clicked = new EventEmitter<void>();
 
   onClick(): void {

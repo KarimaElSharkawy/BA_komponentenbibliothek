@@ -161,7 +161,29 @@ export const Standard: Story = {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Datenschutzinformationen
+                    <span>Datenschutzinformationen</span>
+                    <span
+                      aria-hidden="true"
+                      class="d-inline-flex align-items-center ms-1"
+                      style="width: 1em; height: 1em; vertical-align: text-bottom;"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        focusable="false"
+                        style="width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round;"
+                      >
+                        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7zm0 0v5h5" />
+                        <path d="M8 15h1.5a1.5 1.5 0 0 0 0-3H8v6" />
+                        <path d="M12 18h1.2a2.8 2.8 0 0 0 0-5.6H12z" />
+                        <path d="M16 12h3" />
+                        <path d="M16 15h2.5" />
+                      </svg>
+                    </span>
+                    <span
+                      style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"
+                    >
+                      (PDF-Dokument, öffnet in neuem Tab)
+                    </span>
                   </a>
                   sowie in der
                   <a
@@ -170,7 +192,29 @@ export const Standard: Story = {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Antidiskriminierungsrichtlinie
+                    <span>Antidiskriminierungsrichtlinie</span>
+                    <span
+                      aria-hidden="true"
+                      class="d-inline-flex align-items-center ms-1"
+                      style="width: 1em; height: 1em; vertical-align: text-bottom;"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        focusable="false"
+                        style="width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round;"
+                      >
+                        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7zm0 0v5h5" />
+                        <path d="M8 15h1.5a1.5 1.5 0 0 0 0-3H8v6" />
+                        <path d="M12 18h1.2a2.8 2.8 0 0 0 0-5.6H12z" />
+                        <path d="M16 12h3" />
+                        <path d="M16 15h2.5" />
+                      </svg>
+                    </span>
+                    <span
+                      style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"
+                    >
+                      (PDF-Dokument, öffnet in neuem Tab)
+                    </span>
                   </a>
                   der HTW Berlin (§10).
                 </p>
@@ -178,7 +222,7 @@ export const Standard: Story = {
 
               <app-checkbox
                 id="showcase-datenschutz"
-                label="Ich stimme der Datenschutz- und Einverständniserklärung zu. *"
+                label="Ich stimme der Datenschutz- und Einverständniserklärung zu."
                 [required]="true"
                 errorId="showcase-datenschutz-error"
                 errorText="Bitte stimmen Sie der Datenschutz- und Einverständniserklärung zu."

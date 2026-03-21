@@ -3,7 +3,6 @@ import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from 
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -15,7 +14,7 @@ let dropdownInstanceCounter = 0;
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,14 +35,14 @@ let dropdownInstanceCounter = 0;
     <select
       [id]="id"
       class="form-select"
-      [ngModel]="value"
-      (ngModelChange)="onValueChange($event)"
-      [ngModelOptions]="{ standalone: true }"
+      [class.is-invalid]="showError"
+      [value]="value"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-label]="ariaLabel || null"
       [attr.aria-invalid]="showError ? 'true' : null"
       [attr.aria-describedby]="showError ? errorId : null"
+      (change)="onValueChange($event)"
       (blur)="markTouched()"
     >
       <option value="" disabled>{{ placeholder }}</option>
@@ -138,7 +137,9 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
     this.onValidatorChange = fn;
   }
 
-  onValueChange(value: string): void {
+  onValueChange(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
+
     this.value = value;
     this.dirty = true;
     this.onChange(value);

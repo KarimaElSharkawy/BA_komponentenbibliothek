@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "AkkordeonItem",
-            "id": "interface-AkkordeonItem-aaf74774fd9623360f29aa4a2b4aa33f2d27d9106a38cbae0e5ce993554300423c939ca1d0892594f2e0bfa6cc588d08c5aeaee7c75d0caa3a2b4644f49c0b64",
+            "id": "interface-AkkordeonItem-3c7d22cea0e1aa2e479b5b790a72b6a9d128fb421bc49807a16963c10dc4d2ab2e719d515b60bd6c858ed8016766796ea5e0d4b1db76ab8d659bc3f0bd3e8a4e",
             "file": "src/app/component/akkordeon.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\nlet akkordeonInstanceCounter = 0;\n\nexport interface AkkordeonItem {\n  title: string;\n  content: readonly string[];\n  open?: boolean;\n}\n\n@Component({\n  selector: 'app-akkordeon',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n      <ul class=\"akkordeon-list\">\n        @for (item of items; track item.title; let index = $index) {\n          <li class=\"akkordeon-item\">\n            <details class=\"akkordeon-panel\" [open]=\"item.open\">\n              <summary class=\"akkordeon-summary\" [attr.id]=\"summaryId(index)\">\n                <span class=\"akkordeon-title\">{{ item.title }}</span>\n                <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n              </summary>\n\n              <div class=\"akkordeon-content\" [attr.aria-labelledby]=\"summaryId(index)\">\n                @for (paragraph of item.content; track paragraph) {\n                  <p class=\"akkordeon-text\">{{ paragraph }}</p>\n                }\n              </div>\n            </details>\n          </li>\n        }\n      </ul>\n    </section>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    `,\n  ],\n})\nexport class AkkordeonComponent {\n  private readonly instanceId = ++akkordeonInstanceCounter;\n  @Input() ariaLabel = 'Akkordeon';\n  @Input() items: readonly AkkordeonItem[] = [];\n  private customIdPrefix: string | null = null;\n\n  @Input()\n  set idPrefix(value: string | null | undefined) {\n    const normalizedValue = value?.trim();\n    this.customIdPrefix = normalizedValue ? normalizedValue : null;\n  }\n\n  get idPrefix(): string {\n    return this.customIdPrefix ?? `akkordeon-${this.instanceId}`;\n  }\n\n  summaryId(index: number): string {\n    return `${this.idPrefix}-summary-${index}`;\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\nexport interface AkkordeonItem {\n  title: string;\n  content: readonly string[];\n}\n\n@Component({\n  selector: 'app-akkordeon',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n      <ul class=\"akkordeon-list\">\n        @for (item of items; track item.title) {\n          <li class=\"akkordeon-item\">\n            <details class=\"akkordeon-panel\">\n              <summary\n                class=\"akkordeon-summary\"\n                aria-label=\"FAQ-Eintrag ein- oder ausklappen\"\n              >\n                <span class=\"akkordeon-title\">{{ item.title }}</span>\n                <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n              </summary>\n\n              <div class=\"akkordeon-content\">\n                @for (paragraph of item.content; track paragraph) {\n                  <p class=\"akkordeon-text\">{{ paragraph }}</p>\n                }\n              </div>\n            </details>\n          </li>\n        }\n      </ul>\n    </section>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    `,\n  ],\n})\nexport class AkkordeonComponent {\n  @Input() ariaLabel = 'Akkordeon';\n  @Input() items: readonly AkkordeonItem[] = [];\n}\n",
             "properties": [
                 {
                     "name": "content",
@@ -18,17 +18,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "open",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": true,
-                    "description": "",
-                    "line": 9
+                    "line": 6
                 },
                 {
                     "name": "title",
@@ -38,7 +28,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 7
+                    "line": 5
                 }
             ],
             "indexSignatures": [],
@@ -111,7 +101,7 @@
         },
         {
             "name": "AkkordeonComponent",
-            "id": "component-AkkordeonComponent-aaf74774fd9623360f29aa4a2b4aa33f2d27d9106a38cbae0e5ce993554300423c939ca1d0892594f2e0bfa6cc588d08c5aeaee7c75d0caa3a2b4644f49c0b64",
+            "id": "component-AkkordeonComponent-3c7d22cea0e1aa2e479b5b790a72b6a9d128fb421bc49807a16963c10dc4d2ab2e719d515b60bd6c858ed8016766796ea5e0d4b1db76ab8d659bc3f0bd3e8a4e",
             "file": "src/app/component/akkordeon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -123,7 +113,7 @@
             "styles": [
                 "\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    "
             ],
-            "template": "<section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n  <ul class=\"akkordeon-list\">\n    @for (item of items; track item.title; let index = $index) {\n      <li class=\"akkordeon-item\">\n        <details class=\"akkordeon-panel\" [open]=\"item.open\">\n          <summary class=\"akkordeon-summary\" [attr.id]=\"summaryId(index)\">\n            <span class=\"akkordeon-title\">{{ item.title }}</span>\n            <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"akkordeon-content\" [attr.aria-labelledby]=\"summaryId(index)\">\n            @for (paragraph of item.content; track paragraph) {\n              <p class=\"akkordeon-text\">{{ paragraph }}</p>\n            }\n          </div>\n        </details>\n      </li>\n    }\n  </ul>\n</section>\n",
+            "template": "<section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n  <ul class=\"akkordeon-list\">\n    @for (item of items; track item.title) {\n      <li class=\"akkordeon-item\">\n        <details class=\"akkordeon-panel\">\n          <summary\n            class=\"akkordeon-summary\"\n            aria-label=\"FAQ-Eintrag ein- oder ausklappen\"\n          >\n            <span class=\"akkordeon-title\">{{ item.title }}</span>\n            <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"akkordeon-content\">\n            @for (paragraph of item.content; track paragraph) {\n              <p class=\"akkordeon-text\">{{ paragraph }}</p>\n            }\n          </div>\n        </details>\n      </li>\n    }\n  </ul>\n</section>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -133,16 +123,8 @@
                     "defaultValue": "'Akkordeon'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 147,
+                    "line": 146,
                     "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "idPrefix",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 152,
-                    "type": "string | null | undefined",
                     "decorators": []
                 },
                 {
@@ -150,77 +132,14 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 148,
+                    "line": 147,
                     "type": "unknown",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "customIdPrefix",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string | null",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 149,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "instanceId",
-                    "defaultValue": "++akkordeonInstanceCounter",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "unknown",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 146,
-                    "modifierKind": [
-                        123,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "summaryId",
-                    "args": [
-                        {
-                            "name": "index",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "string",
-                    "typeParameters": [],
-                    "line": 161,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "index",
-                            "type": "number",
-                            "optional": false,
-                            "dotDotDotToken": false,
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
+            "propertiesClass": [],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -235,53 +154,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\nlet akkordeonInstanceCounter = 0;\n\nexport interface AkkordeonItem {\n  title: string;\n  content: readonly string[];\n  open?: boolean;\n}\n\n@Component({\n  selector: 'app-akkordeon',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n      <ul class=\"akkordeon-list\">\n        @for (item of items; track item.title; let index = $index) {\n          <li class=\"akkordeon-item\">\n            <details class=\"akkordeon-panel\" [open]=\"item.open\">\n              <summary class=\"akkordeon-summary\" [attr.id]=\"summaryId(index)\">\n                <span class=\"akkordeon-title\">{{ item.title }}</span>\n                <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n              </summary>\n\n              <div class=\"akkordeon-content\" [attr.aria-labelledby]=\"summaryId(index)\">\n                @for (paragraph of item.content; track paragraph) {\n                  <p class=\"akkordeon-text\">{{ paragraph }}</p>\n                }\n              </div>\n            </details>\n          </li>\n        }\n      </ul>\n    </section>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    `,\n  ],\n})\nexport class AkkordeonComponent {\n  private readonly instanceId = ++akkordeonInstanceCounter;\n  @Input() ariaLabel = 'Akkordeon';\n  @Input() items: readonly AkkordeonItem[] = [];\n  private customIdPrefix: string | null = null;\n\n  @Input()\n  set idPrefix(value: string | null | undefined) {\n    const normalizedValue = value?.trim();\n    this.customIdPrefix = normalizedValue ? normalizedValue : null;\n  }\n\n  get idPrefix(): string {\n    return this.customIdPrefix ?? `akkordeon-${this.instanceId}`;\n  }\n\n  summaryId(index: number): string {\n    return `${this.idPrefix}-summary-${index}`;\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\nexport interface AkkordeonItem {\n  title: string;\n  content: readonly string[];\n}\n\n@Component({\n  selector: 'app-akkordeon',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <section class=\"akkordeon\" [attr.aria-label]=\"ariaLabel\">\n      <ul class=\"akkordeon-list\">\n        @for (item of items; track item.title) {\n          <li class=\"akkordeon-item\">\n            <details class=\"akkordeon-panel\">\n              <summary\n                class=\"akkordeon-summary\"\n                aria-label=\"FAQ-Eintrag ein- oder ausklappen\"\n              >\n                <span class=\"akkordeon-title\">{{ item.title }}</span>\n                <span class=\"akkordeon-icon\" aria-hidden=\"true\"></span>\n              </summary>\n\n              <div class=\"akkordeon-content\">\n                @for (paragraph of item.content; track paragraph) {\n                  <p class=\"akkordeon-text\">{{ paragraph }}</p>\n                }\n              </div>\n            </details>\n          </li>\n        }\n      </ul>\n    </section>\n  `,\n  styles: [\n    `\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    `,\n  ],\n})\nexport class AkkordeonComponent {\n  @Input() ariaLabel = 'Akkordeon';\n  @Input() items: readonly AkkordeonItem[] = [];\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n      :host {\n        display: block;\n      }\n\n      .akkordeon-list {\n        list-style: none;\n        margin: 0;\n        padding: 0;\n        display: grid;\n        gap: 0.75rem;\n      }\n\n      .akkordeon-panel {\n        border: 1px solid #2E7D32;\n        border-radius: 0.75rem;\n        background: #ffffff;\n        overflow: hidden;\n      }\n\n      .akkordeon-summary {\n        display: flex;\n        align-items: center;\n        justify-content: space-between;\n        gap: 1rem;\n        width: 100%;\n        padding: 1rem 1.25rem;\n        cursor: pointer;\n        font-weight: 600;\n        color: #0f2f25;\n        background: #f3f8f5;\n      }\n\n      .akkordeon-summary::-webkit-details-marker {\n        display: none;\n      }\n\n      .akkordeon-summary::marker {\n        content: '';\n      }\n\n      .akkordeon-summary:focus-visible {\n        outline: 3px solid #005fcc;\n        outline-offset: -3px;\n      }\n\n      .akkordeon-title {\n        flex: 1;\n      }\n\n      .akkordeon-icon {\n        position: relative;\n        width: 2rem;\n        height: 2rem;\n        flex: 0 0 auto;\n        display: inline-block;\n        color: #ffffff;\n        background: #2E7D32;\n        border: 2.5px solid #2E7D32;\n        border-radius: 999px;\n      }\n\n      .akkordeon-icon::before,\n      .akkordeon-icon::after {\n        content: '';\n        position: absolute;\n        top: 50%;\n        left: 50%;\n        width: 0.875rem;\n        height: 2.5px;\n        background: currentColor;\n        transform: translate(-50%, -50%);\n      }\n\n      .akkordeon-icon::after {\n        width: 2.5px;\n        height: 0.875rem;\n      }\n\n      .akkordeon-panel[open] .akkordeon-icon::after {\n        display: none;\n      }\n\n      .akkordeon-content {\n        padding: 1rem 1.25rem 1.25rem;\n      }\n\n      .akkordeon-text {\n        margin: 0;\n        color: #1f2933;\n        line-height: 1.5;\n      }\n\n      .akkordeon-text + .akkordeon-text {\n        margin-top: 0.75rem;\n      }\n\n      @media (prefers-reduced-motion: reduce) {\n        .akkordeon-icon::before,\n        .akkordeon-icon::after {\n          transition: none;\n        }\n      }\n    \n",
-            "extends": [],
-            "accessors": {
-                "idPrefix": {
-                    "name": "idPrefix",
-                    "setSignature": {
-                        "name": "idPrefix",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "value",
-                                "type": "string | null | undefined",
-                                "optional": false,
-                                "dotDotDotToken": false,
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 152,
-                        "jsdoctags": [
-                            {
-                                "name": "value",
-                                "type": "string | null | undefined",
-                                "optional": false,
-                                "dotDotDotToken": false,
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "idPrefix",
-                        "type": "string",
-                        "returnType": "string",
-                        "line": 157
-                    }
-                }
-            }
+            "extends": []
         },
         {
             "name": "App",
@@ -1691,7 +1568,7 @@
         },
         {
             "name": "EmailInputComponent",
-            "id": "component-EmailInputComponent-f2b98ac94763c755ac3d24a1599ee74e10f99351d87c704ba370767cb6c5bc2ccf51913e2661da0bd72ab9313b4d1f16659fc995bbec91920b5fcd6a0f4f7a5a",
+            "id": "component-EmailInputComponent-50bd7d766a3271f2352e6418f233fae759de1e3b3576018e94de2c1d29a645b5c3d62b99d5eed645b29c6c737a7413ca389e34b0e31a01e1c51ab5f834d93fea",
             "file": "src/app/component/email-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1720,7 +1597,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 71,
+                    "line": 72,
                     "type": "string",
                     "decorators": []
                 },
@@ -1729,7 +1606,7 @@
                     "defaultValue": "`email-format-error-${this.instanceId}`",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 77,
+                    "line": 78,
                     "type": "string",
                     "decorators": []
                 },
@@ -1738,7 +1615,7 @@
                     "defaultValue": "'Bitte geben Sie eine gültige E-Mail-Adresse ein.'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 75,
+                    "line": 76,
                     "type": "string",
                     "decorators": []
                 },
@@ -1747,7 +1624,7 @@
                     "defaultValue": "`email-field-${this.instanceId}`",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
+                    "line": 70,
                     "type": "string",
                     "decorators": []
                 },
@@ -1756,7 +1633,7 @@
                     "defaultValue": "'E-Mail'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70,
+                    "line": 71,
                     "type": "string",
                     "decorators": []
                 },
@@ -1765,7 +1642,7 @@
                     "defaultValue": "'name@beispiel.de'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
+                    "line": 73,
                     "type": "string",
                     "decorators": []
                 },
@@ -1774,7 +1651,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 73,
+                    "line": 74,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -1783,7 +1660,7 @@
                     "defaultValue": "`email-required-error-${this.instanceId}`",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 76,
+                    "line": 77,
                     "type": "string",
                     "decorators": []
                 },
@@ -1792,7 +1669,7 @@
                     "defaultValue": "'Bitte geben Sie Ihre E-Mail-Adresse ein.'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 74,
+                    "line": 75,
                     "type": "string",
                     "decorators": []
                 }
@@ -1803,7 +1680,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 78,
+                    "line": 79,
                     "type": "EventEmitter"
                 }
             ],
@@ -1817,7 +1694,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 83
+                    "line": 84
                 },
                 {
                     "name": "disabled",
@@ -1828,7 +1705,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 81
+                    "line": 82
                 },
                 {
                     "name": "externalId",
@@ -1839,7 +1716,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68,
+                    "line": 69,
                     "decorators": [
                         {
                             "name": "HostBinding",
@@ -1859,7 +1736,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 67,
+                    "line": 68,
                     "modifierKind": [
                         123,
                         148
@@ -1874,7 +1751,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 85,
+                    "line": 86,
                     "modifierKind": [
                         123
                     ]
@@ -1888,7 +1765,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 86,
+                    "line": 87,
                     "modifierKind": [
                         123
                     ]
@@ -1902,7 +1779,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 87,
+                    "line": 88,
                     "modifierKind": [
                         123
                     ]
@@ -1916,7 +1793,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 82
+                    "line": 83
                 },
                 {
                     "name": "value",
@@ -1927,7 +1804,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 80
+                    "line": 81
                 }
             ],
             "methodsClass": [
@@ -1937,7 +1814,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 175,
+                    "line": 172,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1956,7 +1833,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 167,
+                    "line": 164,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1998,7 +1875,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 135,
+                    "line": 140,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2041,7 +1918,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 139,
+                    "line": 144,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2075,7 +1952,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 163,
+                    "line": 160,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2108,7 +1985,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 143,
+                    "line": 148,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2140,7 +2017,7 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 152,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2172,7 +2049,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 111,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2198,7 +2075,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 68,
+                    "line": 69,
                     "type": "string | null",
                     "decorators": []
                 }
@@ -2218,7 +2095,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\nlet emailInputInstanceCounter = 0;\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\n\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  private readonly instanceId = ++emailInputInstanceCounter;\n  @HostBinding('attr.id') externalId: string | null = null;\n  @Input() id = `email-field-${this.instanceId}`;\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = `email-required-error-${this.instanceId}`;\n  @Input() formatErrorId = `email-format-error-${this.instanceId}`;\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  get showError(): boolean {\n    return this.isInvalid && (this.touched || this.dirty);\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && (this.touched || this.dirty);\n  }\n\n  get showFormatError(): boolean {\n    return this.isFormatError && (this.touched || this.dirty);\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  private get normalizedValue(): string {\n    return this.value.trim();\n  }\n\n  private get isRequiredError(): boolean {\n    return this.required && !this.normalizedValue;\n  }\n\n  private get isFormatError(): boolean {\n    if (!this.normalizedValue) {\n      return false;\n    }\n\n    return !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(this.normalizedValue);\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isFormatError;\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.isRequiredError) {\n      return { required: true };\n    }\n\n    if (!this.normalizedValue) {\n      return null;\n    }\n\n    if (this.isFormatError) {\n      return { email: true };\n    }\n\n    return null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';\nimport {\n  AbstractControl,\n  ControlValueAccessor,\n  FormsModule,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR,\n  ValidationErrors,\n  Validator,\n} from '@angular/forms';\n\nlet emailInputInstanceCounter = 0;\nconst EMAIL_PATTERN = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n\n@Component({\n  selector: 'app-email-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => EmailInputComponent),\n      multi: true,\n    },\n  ],\n  template: `\n    <label [for]=\"id\" class=\"form-label\">\n      {{ label }}\n      <span *ngIf=\"required\" class=\"required-indicator\" aria-hidden=\"true\">*</span>\n    </label>\n    <input\n      [id]=\"id\"\n      type=\"email\"\n      class=\"form-control\"\n      [ngModel]=\"value\"\n      (ngModelChange)=\"onValueChange($event)\"\n      [ngModelOptions]=\"{ standalone: true }\"\n      [disabled]=\"disabled\"\n      [required]=\"required\"\n      [attr.aria-label]=\"ariaLabel || label\"\n      [placeholder]=\"placeholder\"\n      [attr.aria-invalid]=\"showError ? 'true' : null\"\n      [attr.aria-describedby]=\"ariaDescribedBy\"\n      (blur)=\"markTouched()\"\n    />\n\n    <div id=\"{{ requiredErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showRequiredError\" aria-live=\"polite\">\n      {{ requiredErrorText }}\n    </div>\n    <div id=\"{{ formatErrorId }}\" class=\"invalid-feedback d-block\" *ngIf=\"showFormatError\" aria-live=\"polite\">\n      {{ formatErrorText }}\n    </div>\n  `,\n  styles: [`\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  `],\n})\n\nexport class EmailInputComponent implements ControlValueAccessor, Validator {\n  private readonly instanceId = ++emailInputInstanceCounter;\n  @HostBinding('attr.id') externalId: string | null = null;\n  @Input() id = `email-field-${this.instanceId}`;\n  @Input() label = 'E-Mail';\n  @Input() ariaLabel = '';\n  @Input() placeholder = 'name@beispiel.de';\n  @Input() required = false;\n  @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';\n  @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';\n  @Input() requiredErrorId = `email-required-error-${this.instanceId}`;\n  @Input() formatErrorId = `email-format-error-${this.instanceId}`;\n  @Output() valueChange = new EventEmitter<string>();\n\n  value = '';\n  disabled = false;\n  touched = false;\n  dirty = false;\n\n  private onChange: (value: string) => void = () => {};\n  private onTouched: () => void = () => {};\n  private onValidatorChange: () => void = () => {};\n\n  private get hasInteracted(): boolean {\n    return this.touched || this.dirty;\n  }\n\n  get showError(): boolean {\n    return this.isInvalid && this.hasInteracted;\n  }\n\n  get showRequiredError(): boolean {\n    return this.isRequiredError && this.hasInteracted;\n  }\n\n  get showFormatError(): boolean {\n    return this.isFormatError && this.hasInteracted;\n  }\n\n  get ariaDescribedBy(): string | null {\n    if (this.showRequiredError) {\n      return this.requiredErrorId;\n    }\n    if (this.showFormatError) {\n      return this.formatErrorId;\n    }\n    return null;\n  }\n\n  writeValue(value: string | null): void {\n    this.value = value ?? '';\n  }\n\n  private get normalizedValue(): string {\n    return this.value.trim();\n  }\n\n  private get isRequiredError(): boolean {\n    return this.required && !this.normalizedValue;\n  }\n\n  private get isFormatError(): boolean {\n    if (!this.normalizedValue) {\n      return false;\n    }\n\n    return !EMAIL_PATTERN.test(this.normalizedValue);\n  }\n\n  private get isInvalid(): boolean {\n    return this.isRequiredError || this.isFormatError;\n  }\n\n  registerOnChange(fn: (value: string) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  setDisabledState(isDisabled: boolean): void {\n    this.disabled = isDisabled;\n  }\n\n  validate(_: AbstractControl): ValidationErrors | null {\n    if (this.isRequiredError) {\n      return { required: true };\n    }\n\n    return this.isFormatError ? { email: true } : null;\n  }\n\n  registerOnValidatorChange(fn: () => void): void {\n    this.onValidatorChange = fn;\n  }\n\n  onValueChange(value: string): void {\n    this.value = value;\n    this.dirty = true;\n    this.onChange(value);\n    this.onValidatorChange();\n    this.valueChange.emit(value);\n  }\n\n  markTouched(): void {\n    this.touched = true;\n    this.onTouched();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    .required-indicator {\n      margin-left: 0.15rem;\n    }\n  \n",
@@ -2228,13 +2105,22 @@
                 "Validator"
             ],
             "accessors": {
+                "hasInteracted": {
+                    "name": "hasInteracted",
+                    "getSignature": {
+                        "name": "hasInteracted",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 90
+                    }
+                },
                 "showError": {
                     "name": "showError",
                     "getSignature": {
                         "name": "showError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 89
+                        "line": 94
                     }
                 },
                 "showRequiredError": {
@@ -2243,7 +2129,7 @@
                         "name": "showRequiredError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 93
+                        "line": 98
                     }
                 },
                 "showFormatError": {
@@ -2252,7 +2138,7 @@
                         "name": "showFormatError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 97
+                        "line": 102
                     }
                 },
                 "ariaDescribedBy": {
@@ -2261,7 +2147,7 @@
                         "name": "ariaDescribedBy",
                         "type": "unknown",
                         "returnType": "string | null",
-                        "line": 101
+                        "line": 106
                     }
                 },
                 "normalizedValue": {
@@ -2270,7 +2156,7 @@
                         "name": "normalizedValue",
                         "type": "string",
                         "returnType": "string",
-                        "line": 115
+                        "line": 120
                     }
                 },
                 "isRequiredError": {
@@ -2279,7 +2165,7 @@
                         "name": "isRequiredError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 119
+                        "line": 124
                     }
                 },
                 "isFormatError": {
@@ -2288,7 +2174,7 @@
                         "name": "isFormatError",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 123
+                        "line": 128
                     }
                 },
                 "isInvalid": {
@@ -2297,7 +2183,7 @@
                         "name": "isInvalid",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 131
+                        "line": 136
                     }
                 }
             }
@@ -2709,7 +2595,7 @@
         },
         {
             "name": "LangComponent",
-            "id": "component-LangComponent-af0009f6ff676e63078665fd96ab2377557bb12380ddc24f6f31a5928e5ed463d5c72eaf0873c78606ae3bcffd8e0955b721ae62f1a441fe7bc85f754cdecde3",
+            "id": "component-LangComponent-10a9d4f1d1cc7e44540bba115b33addc2f05d9de7f3c59e711fac6485cc69a46bb65fa6a72d7cdf011515debcd1e77116350e3e8c4176aee794a2a82521d5c2d",
             "file": "src/app/component/lang.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2721,7 +2607,7 @@
             "styles": [
                 "\n    :host {\n      position: relative;\n      display: inline-block;\n    }\n\n    .lang-trigger {\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      gap: 0.35rem;\n      border: 0;\n      background: transparent;\n      padding: 0;\n      color: #555555;\n      font: inherit;\n      cursor: pointer;\n      transition: color 0.2s ease;\n    }\n\n    .lang-trigger:hover {\n      color: #000000;\n    }\n\n    .lang-label {\n      line-height: 1.2;\n    }\n\n    .lang-caret {\n      width: 0;\n      height: 0;\n      border-left: 0.25rem solid transparent;\n      border-right: 0.25rem solid transparent;\n      border-top: 0.3125rem solid currentColor;\n      margin-top: 0.125rem;\n    }\n\n    .lang-menu {\n      position: absolute;\n      bottom: calc(100% + 0.5rem);\n      left: 50%;\n      transform: translateX(-50%);\n      z-index: 1000;\n    }\n\n    .lang-dropdown {\n      background: #ffffff;\n      border: 0.0625rem solid #e9ecef;\n      border-radius: 0.25rem;\n      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.08);\n      min-width: 10rem;\n      overflow: hidden;\n    }\n\n    .dropdown-item {\n      display: block;\n      width: 100%;\n      padding: 0.375rem 1rem;\n      color: #212529;\n      background: transparent;\n      border: 0;\n      text-align: left;\n      cursor: pointer;\n      font-size: 0.9375rem;\n    }\n\n    .dropdown-item:hover {\n      background: #f8f9fa;\n    }\n\n    .dropdown-item[aria-checked='true'] {\n      font-weight: 600;\n    }\n  "
             ],
-            "template": "<button\n  #langTrigger\n  type=\"button\"\n  class=\"lang-trigger\"\n  (click)=\"isOpen = !isOpen\"\n  aria-haspopup=\"menu\"\n  [attr.aria-expanded]=\"isOpen\"\n  [attr.aria-controls]=\"menuId\"\n  [attr.aria-label]=\"ariaLabel\"\n>\n  <span class=\"lang-label\">{{ currentLabel }}</span>\n  <span class=\"lang-caret\" aria-hidden=\"true\"></span>\n</button>\n\n<div\n  [hidden]=\"!isOpen\"\n  [id]=\"menuId\"\n  class=\"lang-menu\"\n  role=\"menu\"\n  [attr.aria-label]=\"menuAriaLabel\"\n  (keydown.escape)=\"closeMenu(langTrigger)\"\n>\n  <div class=\"lang-dropdown\">\n    <button\n      *ngFor=\"let option of availableLanguages\"\n      type=\"button\"\n      class=\"dropdown-item\"\n      role=\"menuitemradio\"\n      [attr.lang]=\"option.code\"\n      (click)=\"selectLanguage(option.code)\"\n    >\n      {{ option.label }}\n    </button>\n  </div>\n</div>\n",
+            "template": "<button\n  #langTrigger\n  type=\"button\"\n  class=\"lang-trigger\"\n  (click)=\"toggleMenu()\"\n  aria-haspopup=\"menu\"\n  [attr.aria-expanded]=\"isOpen\"\n  [attr.aria-controls]=\"isOpen ? menuId : null\"\n  [attr.aria-label]=\"ariaLabel\"\n>\n  <span class=\"lang-label\" [attr.lang]=\"language\">{{ currentLabel }}</span>\n  <span class=\"lang-caret\" aria-hidden=\"true\"></span>\n</button>\n\n<div\n  [hidden]=\"!isOpen\"\n  [id]=\"menuId\"\n  class=\"lang-menu\"\n  role=\"menu\"\n  [attr.aria-label]=\"menuAriaLabel\"\n  (keydown.escape)=\"closeMenu(langTrigger)\"\n>\n  <div class=\"lang-dropdown\">\n    <button\n      *ngFor=\"let option of availableLanguages\"\n      type=\"button\"\n      class=\"dropdown-item\"\n      role=\"menuitem\"\n      [attr.lang]=\"option.code\"\n      (click)=\"selectLanguage(option.code)\"\n    >\n      {{ option.label }}\n    </button>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -2731,7 +2617,7 @@
                     "defaultValue": "'Sprache auswählen'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 133,
+                    "line": 143,
                     "type": "string",
                     "decorators": []
                 },
@@ -2740,7 +2626,7 @@
                     "defaultValue": "'long'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 132,
+                    "line": 142,
                     "type": "\"short\" | \"long\"",
                     "decorators": []
                 },
@@ -2749,7 +2635,7 @@
                     "defaultValue": "'de'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 131,
+                    "line": 141,
                     "type": "string",
                     "decorators": []
                 },
@@ -2758,7 +2644,7 @@
                     "defaultValue": "[\n    { code: 'de', label: 'Deutsch', shortLabel: 'DE' },\n    { code: 'en', label: 'English', shortLabel: 'EN' },\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 135,
+                    "line": 145,
                     "type": "unknown",
                     "decorators": []
                 },
@@ -2767,7 +2653,7 @@
                     "defaultValue": "'Sprachauswahl'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 134,
+                    "line": 144,
                     "type": "string",
                     "decorators": []
                 }
@@ -2778,7 +2664,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 139,
+                    "line": 149,
                     "type": "EventEmitter"
                 }
             ],
@@ -2792,7 +2678,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129,
+                    "line": 139,
                     "modifierKind": [
                         123,
                         148
@@ -2807,7 +2693,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 141
+                    "line": 151
                 },
                 {
                     "name": "menuId",
@@ -2818,7 +2704,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 142,
+                    "line": 152,
                     "modifierKind": [
                         148
                     ]
@@ -2840,7 +2726,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 177,
+                    "line": 203,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2858,12 +2744,38 @@
                     ]
                 },
                 {
+                    "name": "focusFirstMenuItem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 229,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "focusTrigger",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 234,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
                     "name": "ngOnChanges",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 150,
+                    "line": 163,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2873,9 +2785,50 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 146,
+                    "line": 159,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "onDocumentClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 209,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:click', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "selectLanguage",
@@ -2892,7 +2845,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 170,
+                    "line": 195,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2915,18 +2868,48 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 182,
+                    "line": 219,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
                         123
                     ]
+                },
+                {
+                    "name": "toggleMenu",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 183,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 }
             ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
-            "hostListeners": [],
+            "hostListeners": [
+                {
+                    "name": "document:click",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 209
+                }
+            ],
             "standalone": true,
             "imports": [
                 {
@@ -2937,7 +2920,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule, DOCUMENT } from '@angular/common';\nimport { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';\n\ntype LangOption = {\n  code: string;\n  label: string;\n  shortLabel?: string;\n};\n\nlet langComponentIdCounter = 0;\n\n@Component({\n  selector: 'app-lang',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button\n      #langTrigger\n      type=\"button\"\n      class=\"lang-trigger\"\n      (click)=\"isOpen = !isOpen\"\n      aria-haspopup=\"menu\"\n      [attr.aria-expanded]=\"isOpen\"\n      [attr.aria-controls]=\"menuId\"\n      [attr.aria-label]=\"ariaLabel\"\n    >\n      <span class=\"lang-label\">{{ currentLabel }}</span>\n      <span class=\"lang-caret\" aria-hidden=\"true\"></span>\n    </button>\n\n    <div\n      [hidden]=\"!isOpen\"\n      [id]=\"menuId\"\n      class=\"lang-menu\"\n      role=\"menu\"\n      [attr.aria-label]=\"menuAriaLabel\"\n      (keydown.escape)=\"closeMenu(langTrigger)\"\n    >\n      <div class=\"lang-dropdown\">\n        <button\n          *ngFor=\"let option of availableLanguages\"\n          type=\"button\"\n          class=\"dropdown-item\"\n          role=\"menuitemradio\"\n          [attr.lang]=\"option.code\"\n          (click)=\"selectLanguage(option.code)\"\n        >\n          {{ option.label }}\n        </button>\n      </div>\n    </div>\n  `,\n  styles: [`\n    :host {\n      position: relative;\n      display: inline-block;\n    }\n\n    .lang-trigger {\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      gap: 0.35rem;\n      border: 0;\n      background: transparent;\n      padding: 0;\n      color: #555555;\n      font: inherit;\n      cursor: pointer;\n      transition: color 0.2s ease;\n    }\n\n    .lang-trigger:hover {\n      color: #000000;\n    }\n\n    .lang-label {\n      line-height: 1.2;\n    }\n\n    .lang-caret {\n      width: 0;\n      height: 0;\n      border-left: 0.25rem solid transparent;\n      border-right: 0.25rem solid transparent;\n      border-top: 0.3125rem solid currentColor;\n      margin-top: 0.125rem;\n    }\n\n    .lang-menu {\n      position: absolute;\n      bottom: calc(100% + 0.5rem);\n      left: 50%;\n      transform: translateX(-50%);\n      z-index: 1000;\n    }\n\n    .lang-dropdown {\n      background: #ffffff;\n      border: 0.0625rem solid #e9ecef;\n      border-radius: 0.25rem;\n      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.08);\n      min-width: 10rem;\n      overflow: hidden;\n    }\n\n    .dropdown-item {\n      display: block;\n      width: 100%;\n      padding: 0.375rem 1rem;\n      color: #212529;\n      background: transparent;\n      border: 0;\n      text-align: left;\n      cursor: pointer;\n      font-size: 0.9375rem;\n    }\n\n    .dropdown-item:hover {\n      background: #f8f9fa;\n    }\n\n    .dropdown-item[aria-checked='true'] {\n      font-weight: 600;\n    }\n  `],\n})\nexport class LangComponent implements OnInit, OnChanges {\n  private readonly instanceId = ++langComponentIdCounter;\n\n  @Input() language = 'de';\n  @Input() displayMode: 'short' | 'long' = 'long';\n  @Input() ariaLabel = 'Sprache auswählen';\n  @Input() menuAriaLabel = 'Sprachauswahl';\n  @Input() languages: readonly LangOption[] = [\n    { code: 'de', label: 'Deutsch', shortLabel: 'DE' },\n    { code: 'en', label: 'English', shortLabel: 'EN' },\n  ];\n  @Output() languageChange = new EventEmitter<string>();\n\n  isOpen = false;\n  readonly menuId = `lang-menu-${this.instanceId}`;\n\n  constructor(@Inject(DOCUMENT) private readonly document: Document) {}\n\n  ngOnInit(): void {\n    this.syncDocumentLanguage();\n  }\n\n  ngOnChanges(): void {\n    this.syncDocumentLanguage();\n  }\n\n  get currentLabel(): string {\n    const activeLanguage = this.languages.find((option) => option.code === this.language);\n\n    if (!activeLanguage) {\n      return this.displayMode === 'short' ? this.language.toUpperCase() : this.language;\n    }\n\n    return this.displayMode === 'short'\n      ? (activeLanguage.shortLabel ?? activeLanguage.code.toUpperCase())\n      : activeLanguage.label;\n  }\n\n  get availableLanguages(): readonly LangOption[] {\n    return this.languages.filter((option) => option.code !== this.language);\n  }\n\n  selectLanguage(languageCode: string): void {\n    this.language = languageCode;\n    this.isOpen = false;\n    this.syncDocumentLanguage();\n    this.languageChange.emit(languageCode);\n  }\n\n  closeMenu(trigger: HTMLButtonElement): void {\n    this.isOpen = false;\n    trigger.focus();\n  }\n\n  private syncDocumentLanguage(): void {\n    const rootElement = this.document?.documentElement;\n\n    if (!rootElement || !this.language) {\n      return;\n    }\n\n    rootElement.setAttribute('lang', this.language);\n  }\n}\n",
+            "sourceCode": "import { CommonModule, DOCUMENT } from '@angular/common';\nimport {\n  Component,\n  ElementRef,\n  EventEmitter,\n  HostListener,\n  Inject,\n  Input,\n  OnChanges,\n  OnInit,\n  Output,\n} from '@angular/core';\n\ntype LangOption = {\n  code: string;\n  label: string;\n  shortLabel?: string;\n};\n\nlet langComponentIdCounter = 0;\n\n@Component({\n  selector: 'app-lang',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <button\n      #langTrigger\n      type=\"button\"\n      class=\"lang-trigger\"\n      (click)=\"toggleMenu()\"\n      aria-haspopup=\"menu\"\n      [attr.aria-expanded]=\"isOpen\"\n      [attr.aria-controls]=\"isOpen ? menuId : null\"\n      [attr.aria-label]=\"ariaLabel\"\n    >\n      <span class=\"lang-label\" [attr.lang]=\"language\">{{ currentLabel }}</span>\n      <span class=\"lang-caret\" aria-hidden=\"true\"></span>\n    </button>\n\n    <div\n      [hidden]=\"!isOpen\"\n      [id]=\"menuId\"\n      class=\"lang-menu\"\n      role=\"menu\"\n      [attr.aria-label]=\"menuAriaLabel\"\n      (keydown.escape)=\"closeMenu(langTrigger)\"\n    >\n      <div class=\"lang-dropdown\">\n        <button\n          *ngFor=\"let option of availableLanguages\"\n          type=\"button\"\n          class=\"dropdown-item\"\n          role=\"menuitem\"\n          [attr.lang]=\"option.code\"\n          (click)=\"selectLanguage(option.code)\"\n        >\n          {{ option.label }}\n        </button>\n      </div>\n    </div>\n  `,\n  styles: [`\n    :host {\n      position: relative;\n      display: inline-block;\n    }\n\n    .lang-trigger {\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      gap: 0.35rem;\n      border: 0;\n      background: transparent;\n      padding: 0;\n      color: #555555;\n      font: inherit;\n      cursor: pointer;\n      transition: color 0.2s ease;\n    }\n\n    .lang-trigger:hover {\n      color: #000000;\n    }\n\n    .lang-label {\n      line-height: 1.2;\n    }\n\n    .lang-caret {\n      width: 0;\n      height: 0;\n      border-left: 0.25rem solid transparent;\n      border-right: 0.25rem solid transparent;\n      border-top: 0.3125rem solid currentColor;\n      margin-top: 0.125rem;\n    }\n\n    .lang-menu {\n      position: absolute;\n      bottom: calc(100% + 0.5rem);\n      left: 50%;\n      transform: translateX(-50%);\n      z-index: 1000;\n    }\n\n    .lang-dropdown {\n      background: #ffffff;\n      border: 0.0625rem solid #e9ecef;\n      border-radius: 0.25rem;\n      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.08);\n      min-width: 10rem;\n      overflow: hidden;\n    }\n\n    .dropdown-item {\n      display: block;\n      width: 100%;\n      padding: 0.375rem 1rem;\n      color: #212529;\n      background: transparent;\n      border: 0;\n      text-align: left;\n      cursor: pointer;\n      font-size: 0.9375rem;\n    }\n\n    .dropdown-item:hover {\n      background: #f8f9fa;\n    }\n\n    .dropdown-item[aria-checked='true'] {\n      font-weight: 600;\n    }\n  `],\n})\nexport class LangComponent implements OnInit, OnChanges {\n  private readonly instanceId = ++langComponentIdCounter;\n\n  @Input() language = 'de';\n  @Input() displayMode: 'short' | 'long' = 'long';\n  @Input() ariaLabel = 'Sprache auswählen';\n  @Input() menuAriaLabel = 'Sprachauswahl';\n  @Input() languages: readonly LangOption[] = [\n    { code: 'de', label: 'Deutsch', shortLabel: 'DE' },\n    { code: 'en', label: 'English', shortLabel: 'EN' },\n  ];\n  @Output() languageChange = new EventEmitter<string>();\n\n  isOpen = false;\n  readonly menuId = `lang-menu-${this.instanceId}`;\n\n  constructor(\n    @Inject(DOCUMENT) private readonly document: Document,\n    private readonly hostElement: ElementRef<HTMLElement>,\n  ) {}\n\n  ngOnInit(): void {\n    this.syncDocumentLanguage();\n  }\n\n  ngOnChanges(): void {\n    this.syncDocumentLanguage();\n  }\n\n  get currentLabel(): string {\n    const activeLanguage = this.languages.find((option) => option.code === this.language);\n\n    if (!activeLanguage) {\n      return this.displayMode === 'short' ? this.language.toUpperCase() : this.language;\n    }\n\n    return this.displayMode === 'short'\n      ? (activeLanguage.shortLabel ?? activeLanguage.code.toUpperCase())\n      : activeLanguage.label;\n  }\n\n  get availableLanguages(): readonly LangOption[] {\n    return this.languages.filter((option) => option.code !== this.language);\n  }\n\n  toggleMenu(): void {\n    if (!this.isOpen && this.availableLanguages.length === 0) {\n      return;\n    }\n\n    this.isOpen = !this.isOpen;\n\n    if (this.isOpen) {\n      queueMicrotask(() => this.focusFirstMenuItem());\n    }\n  }\n\n  selectLanguage(languageCode: string): void {\n    this.language = languageCode;\n    this.isOpen = false;\n    this.syncDocumentLanguage();\n    this.languageChange.emit(languageCode);\n    this.focusTrigger();\n  }\n\n  closeMenu(trigger: HTMLButtonElement): void {\n    this.isOpen = false;\n    trigger.focus();\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    if (!this.isOpen) {\n      return;\n    }\n\n    if (!this.hostElement.nativeElement.contains(event.target as Node)) {\n      this.isOpen = false;\n    }\n  }\n\n  private syncDocumentLanguage(): void {\n    const rootElement = this.document?.documentElement;\n\n    if (!rootElement || !this.language) {\n      return;\n    }\n\n    rootElement.setAttribute('lang', this.language);\n  }\n\n  private focusFirstMenuItem(): void {\n    const firstMenuItem = this.hostElement.nativeElement.querySelector<HTMLButtonElement>('.dropdown-item');\n    firstMenuItem?.focus();\n  }\n\n  private focusTrigger(): void {\n    const trigger = this.hostElement.nativeElement.querySelector<HTMLButtonElement>('.lang-trigger');\n    trigger?.focus();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n    :host {\n      position: relative;\n      display: inline-block;\n    }\n\n    .lang-trigger {\n      display: inline-flex;\n      align-items: center;\n      justify-content: center;\n      gap: 0.35rem;\n      border: 0;\n      background: transparent;\n      padding: 0;\n      color: #555555;\n      font: inherit;\n      cursor: pointer;\n      transition: color 0.2s ease;\n    }\n\n    .lang-trigger:hover {\n      color: #000000;\n    }\n\n    .lang-label {\n      line-height: 1.2;\n    }\n\n    .lang-caret {\n      width: 0;\n      height: 0;\n      border-left: 0.25rem solid transparent;\n      border-right: 0.25rem solid transparent;\n      border-top: 0.3125rem solid currentColor;\n      margin-top: 0.125rem;\n    }\n\n    .lang-menu {\n      position: absolute;\n      bottom: calc(100% + 0.5rem);\n      left: 50%;\n      transform: translateX(-50%);\n      z-index: 1000;\n    }\n\n    .lang-dropdown {\n      background: #ffffff;\n      border: 0.0625rem solid #e9ecef;\n      border-radius: 0.25rem;\n      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.08);\n      min-width: 10rem;\n      overflow: hidden;\n    }\n\n    .dropdown-item {\n      display: block;\n      width: 100%;\n      padding: 0.375rem 1rem;\n      color: #212529;\n      background: transparent;\n      border: 0;\n      text-align: left;\n      cursor: pointer;\n      font-size: 0.9375rem;\n    }\n\n    .dropdown-item:hover {\n      background: #f8f9fa;\n    }\n\n    .dropdown-item[aria-checked='true'] {\n      font-weight: 600;\n    }\n  \n",
@@ -2954,13 +2937,32 @@
                         "dotDotDotToken": false,
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "hostElement",
+                        "type": "ElementRef<HTMLElement>",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
-                "line": 142,
+                "line": 152,
                 "jsdoctags": [
                     {
                         "name": "document",
                         "type": "Document",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "hostElement",
+                        "type": "ElementRef<HTMLElement>",
                         "optional": false,
                         "dotDotDotToken": false,
                         "deprecated": false,
@@ -2983,7 +2985,7 @@
                         "name": "currentLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 154
+                        "line": 167
                     }
                 },
                 "availableLanguages": {
@@ -2992,7 +2994,7 @@
                         "name": "availableLanguages",
                         "type": "unknown",
                         "returnType": "LangOption[]",
-                        "line": 166
+                        "line": 179
                     }
                 }
             }
@@ -4472,16 +4474,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "akkordeonInstanceCounter",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/component/akkordeon.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "number",
-                "defaultValue": "0"
-            },
-            {
                 "name": "appConfig",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4520,6 +4512,16 @@
                 "deprecationMessage": "",
                 "type": "number",
                 "defaultValue": "0"
+            },
+            {
+                "name": "EMAIL_PATTERN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/component/email-input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "unknown",
+                "defaultValue": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
             },
             {
                 "name": "emailInputInstanceCounter",
@@ -4620,18 +4622,6 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "src/app/component/akkordeon.component.ts": [
-                {
-                    "name": "akkordeonInstanceCounter",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/component/akkordeon.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "defaultValue": "0"
-                }
-            ],
             "src/app/app.config.ts": [
                 {
                     "name": "appConfig",
@@ -4681,6 +4671,16 @@
                 }
             ],
             "src/app/component/email-input.component.ts": [
+                {
+                    "name": "EMAIL_PATTERN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/component/email-input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "defaultValue": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+                },
                 {
                     "name": "emailInputInstanceCounter",
                     "ctype": "miscellaneous",
@@ -4850,7 +4850,7 @@
                 "linktype": "component",
                 "name": "AkkordeonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -4859,17 +4859,7 @@
                 "linktype": "interface",
                 "name": "AkkordeonItem",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/component/akkordeon.component.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "akkordeonInstanceCounter",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -4955,6 +4945,16 @@
                 "name": "EmailInputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/29",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/component/email-input.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EMAIL_PATTERN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -5065,7 +5065,7 @@
                 "linktype": "component",
                 "name": "LangComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {

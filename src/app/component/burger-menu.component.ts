@@ -19,14 +19,18 @@ let burgerMenuIdCounter = 0;
         [attr.aria-controls]="menuId"
         [attr.aria-label]="isOpen ? 'Menü schließen' : 'Menü öffnen'"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </button>
 
       <nav [id]="menuId" [class]="menuClass" [hidden]="!isOpen" aria-label="Menüeinträge">
         <ul class="menu-items">
-          <li class="menu-item" *ngFor="let item of normalizedItems">
+          <li
+            class="menu-item"
+            *ngFor="let item of normalizedItems"
+            [class.menu-item-interactive]="!!item.href"
+          >
             <app-nav-text *ngIf="item.href; else staticText" [text]="item.text" [href]="item.href"></app-nav-text>
             <ng-template #staticText>
               <span class="menu-item-text">{{ item.text }}</span>
@@ -62,6 +66,12 @@ let burgerMenuIdCounter = 0;
       border-radius: 999rem;
     }
 
+    .burger-button:focus-visible,
+    .menu-item :is(a, span):focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+    }
+
     .menu-list {
       position: absolute;
       top: calc(100% + 0.5rem);
@@ -89,6 +99,7 @@ let burgerMenuIdCounter = 0;
       text-align: left;
       padding: 0.125rem 0.25rem;
       border-radius: 0.25rem;
+      transition: background-color 0.15s ease;
     }
 
     .menu-items {
@@ -96,8 +107,23 @@ let burgerMenuIdCounter = 0;
       padding: 0;
     }
 
-    .menu-item:hover {
-      background: #f8f9fa;
+    .menu-item app-nav-text {
+      display: block;
+      width: 100%;
+    }
+
+    .menu-item-interactive {
+      cursor: pointer;
+    }
+
+    .menu-item-interactive:hover,
+    .menu-item-interactive:focus-within {
+      background: #e9f3ff;
+    }
+
+    .menu-item-interactive app-nav-text,
+    .menu-item-interactive :is(a, .nav-text-link) {
+      cursor: pointer;
     }
 
     .menu-item-text {

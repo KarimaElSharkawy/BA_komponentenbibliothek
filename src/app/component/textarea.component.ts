@@ -3,7 +3,6 @@ import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from 
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -15,7 +14,7 @@ let textareaInstanceCounter = 0;
 @Component({
   selector: 'app-textarea',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,17 +35,17 @@ let textareaInstanceCounter = 0;
     <textarea
       [id]="id"
       class="form-control"
+      [class.is-invalid]="showError"
       [rows]="rows"
-      [ngModel]="value"
-      (ngModelChange)="onValueChange($event)"
-      [ngModelOptions]="{ standalone: true }"
+      [value]="value"
       [disabled]="disabled"
       [required]="required"
-      [attr.aria-label]="ariaLabel || label"
+      [attr.aria-label]="ariaLabel || null"
       [attr.minlength]="minlength"
       [placeholder]="placeholder"
       [attr.aria-invalid]="showError ? 'true' : null"
       [attr.aria-describedby]="ariaDescribedBy"
+      (input)="onValueChange($event)"
       (blur)="markTouched()"
     ></textarea>
 
@@ -164,7 +163,9 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
     this.onValidatorChange = fn;
   }
 
-  onValueChange(value: string): void {
+  onValueChange(event: Event): void {
+    const value = (event.target as HTMLTextAreaElement).value;
+
     this.value = value;
     this.dirty = true;
     this.onChange(value);

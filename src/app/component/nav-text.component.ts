@@ -34,6 +34,11 @@ import { RouterModule } from '@angular/router';
       color: #000000;
     }
 
+    .nav-text-link:focus-visible {
+      outline: 3px solid #005fcc;
+      outline-offset: 2px;
+    }
+
     .nav-text-link.active {
       color: #2E7D32;
       font-weight: 600;

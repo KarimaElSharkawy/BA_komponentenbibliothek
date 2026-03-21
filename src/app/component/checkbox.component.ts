@@ -3,7 +3,6 @@ import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from 
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -15,7 +14,7 @@ let checkboxInstanceCounter = 0;
 @Component({
   selector: 'app-checkbox',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -34,23 +33,31 @@ let checkboxInstanceCounter = 0;
         [id]="id"
         type="checkbox"
         class="form-check-input"
-        [ngModel]="value"
-        (ngModelChange)="onValueChange($event)"
-        [ngModelOptions]="{ standalone: true }"
+        [class.is-invalid]="showError"
+        [checked]="value"
         [disabled]="disabled"
         [required]="required"
-        [attr.aria-label]="ariaLabel || label"
+        [attr.aria-label]="ariaLabel || null"
         [attr.aria-invalid]="showError ? 'true' : null"
         [attr.aria-describedby]="ariaDescribedBy"
+        (change)="onCheckedChange($event)"
         (blur)="markTouched()"
       />
-      <label class="form-check-label" [for]="id">{{ label }}</label>
+      <label class="form-check-label" [for]="id">
+        {{ label }}
+        <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+      </label>
     </div>
 
     <div id="{{ errorId }}" class="invalid-feedback d-block" *ngIf="showError" aria-live="polite">
       {{ errorText }}
     </div>
   `,
+  styles: [`
+    .required-indicator {
+      margin-left: 0.15rem;
+    }
+  `],
 })
 
 export class CheckboxComponent implements ControlValueAccessor, Validator {
@@ -112,12 +119,14 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
     this.onValidatorChange = fn;
   }
 
-  onValueChange(value: boolean): void {
-    this.value = value;
+  onCheckedChange(event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+
+    this.value = checked;
     this.dirty = true;
-    this.onChange(value);
+    this.onChange(checked);
     this.onValidatorChange();
-    this.valueChange.emit(value);
+    this.valueChange.emit(checked);
   }
 
   markTouched(): void {
