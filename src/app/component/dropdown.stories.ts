@@ -28,9 +28,10 @@ export const Standard: Story = {
 export const Optional: Story = {
   args: {
     id: 'gruppe-optional',
-    label: 'Mitgliedergruppe (optional)',
+    label: 'Mitgliedergruppe',
     placeholder: 'Bitte auswählen',
     options: ['Studierende', 'Mitarbeitende', 'Externe'],
     required: false,
+    showOptionalIndicator: true,
   },
 };

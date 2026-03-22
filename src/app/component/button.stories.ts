@@ -28,3 +28,10 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const IconOnly: Story = {
+  args: {
+    ariaLabel: 'Zurück',
+    iconOnly: true,
+  },
+};

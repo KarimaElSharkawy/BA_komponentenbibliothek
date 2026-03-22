@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata, applicationConfig } from '@storybook/angular';
 import { NavTextComponent } from './nav-text.component';
-import { CommonModule } from '@angular/common';
 import { provideRouter } from '@angular/router';
 
 
@@ -13,7 +12,7 @@ const meta: Meta<NavTextComponent> = {
       providers: [provideRouter([])],
     }),
     moduleMetadata({
-      imports: [NavTextComponent, CommonModule],
+      imports: [NavTextComponent],
     }),
   ],
 };

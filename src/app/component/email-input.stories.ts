@@ -29,8 +29,9 @@ export const Required: Story = {
 export const Optional: Story = {
   args: {
     id: 'email-optional',
-    label: 'E-Mail (optional)',
+    label: 'E-Mail',
     placeholder: 'name@beispiel.de',
     required: false,
+    showOptionalIndicator: true,
   },
 };

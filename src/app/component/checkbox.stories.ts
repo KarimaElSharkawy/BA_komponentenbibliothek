@@ -28,5 +28,6 @@ export const Optional: Story = {
     id: 'datenschutz-optional',
     label: 'Ich möchte weitere Informationen erhalten.',
     required: false,
+    showOptionalIndicator: true,
   },
 };

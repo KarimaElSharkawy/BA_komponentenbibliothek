@@ -32,6 +32,9 @@ let nameInputInstanceCounter = 0;
     <label [for]="id" class="form-label">
       {{ label }}
       <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+      <span *ngIf="showOptionalIndicator && !required" class="optional-indicator" aria-hidden="true">
+        {{ optionalText }}
+      </span>
     </label>
     <input
       [id]="id"
@@ -57,6 +60,10 @@ let nameInputInstanceCounter = 0;
     .required-indicator {
       margin-left: 0.15rem;
     }
+    .optional-indicator {
+      margin-left: 0.35rem;
+      font-weight: 400;
+    }
   `],
 })
 
@@ -68,6 +75,8 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
   @Input() ariaLabel = '';
   @Input() placeholder = '';
   @Input() required = false;
+  @Input() showOptionalIndicator = false;
+  @Input() optionalText = '(optional)';
   @Input() errorText = 'Bitte geben Sie Ihren Namen ein.';
   @Input() errorId = `name-error-${this.instanceId}`;
 

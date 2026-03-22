@@ -4,7 +4,6 @@ import { ShowcaseComponent } from './showcase.component';
 import { NavTextComponent } from './nav-text.component';
 import { BurgerMenuComponent } from './burger-menu.component';
 import { LangComponent } from './lang.component';
-import { CommonModule } from '@angular/common';
 import { provideRouter } from '@angular/router';
 
 const routes = [
@@ -34,7 +33,9 @@ const NAV_SHOWCASE_STYLES = `
       justify-content: space-evenly;
       gap: 0.5rem 1rem;
       margin: 0 auto;
+      padding: 0;
       max-width: 75rem;
+      list-style: none;
     }
     .nav-item {
       text-align: center;
@@ -42,6 +43,20 @@ const NAV_SHOWCASE_STYLES = `
     }
     .nav-mobile-footer { display: none; }
     .nav-desktop-footer { display: block; }
+    .nav-desktop-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 0.5rem 1rem;
+      margin: 0 auto;
+      max-width: 75rem;
+    }
+    .nav-desktop-tools {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      flex: 0 1 auto;
+    }
     .nav-mobile-bar {
       display: flex;
       align-items: center;
@@ -88,7 +103,6 @@ const meta: Meta<ShowcaseComponent> = {
         NavTextComponent,
         BurgerMenuComponent,
         LangComponent,
-        CommonModule,
       ],
     }),
   ],
@@ -132,37 +146,43 @@ export const Navigation: Story = {
 
       
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-desktop-footer">
-        <div class="nav-items">
-          <div class="nav-item">
+        <div class="nav-desktop-bar">
+        <nav aria-label="Hauptnavigation">
+          <ul class="nav-items">
+          <li class="nav-item">
             <app-nav-text text="Home" [href]="'/'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Meldeformular" [href]="'/meldeformular'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Kontaktformular" [href]="'/kontaktformular'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="FAQs" [href]="'/faqs'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Kontaktperson finden" [href]="'/kontaktperson'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Impressum" [href]="'/imprint'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Datenschutz" [href]="'/privacypolicy'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Login" [href]="'/login-forwarder'"></app-nav-text>
-          </div>
+          </li>
+        </ul>
+        </nav>
+        <div class="nav-desktop-tools">
           <div class="nav-item">
             <app-lang
               [language]="selectedLanguage"
               (languageChange)="selectedLanguage = $event"
             ></app-lang>
           </div>
+        </div>
         </div>
       </footer>
     `,
@@ -200,25 +220,30 @@ export const NavigationLoggedIn: Story = {
 
       
       <footer class="bg-light text-muted fixed-bottom nav-shell nav-desktop-footer">
-        <div class="nav-items">
-          <div class="nav-item">
+        <div class="nav-desktop-bar">
+        <nav aria-label="Hauptnavigation">
+        <ul class="nav-items">
+          <li class="nav-item">
             <app-nav-text text="Home" [href]="'/'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Meldeformular" [href]="'/meldeformular'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Kontaktformular" [href]="'/kontaktformular'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="FAQs" [href]="'/faqs'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Kontaktperson finden" [href]="'/kontaktperson'"></app-nav-text>
-          </div>
-          <div class="nav-item">
+          </li>
+          <li class="nav-item">
             <app-nav-text text="Profil" [href]="'/login-forwarder'"></app-nav-text>
-          </div>
+          </li>
+        </ul>
+        </nav>
+        <div class="nav-desktop-tools">
           <div class="nav-item">
             <button class="logout-button">Logout</button>
           </div>
@@ -228,6 +253,7 @@ export const NavigationLoggedIn: Story = {
               (languageChange)="selectedLanguage = $event"
             ></app-lang>
           </div>
+        </div>
         </div>
       </footer>
     `,

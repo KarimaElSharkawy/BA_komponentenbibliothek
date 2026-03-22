@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav-text',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   template: `
     <a
-      *ngIf="interactive; else textOnly"
+      [hidden]="!interactive"
       [routerLink]="href"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -17,9 +16,7 @@ import { RouterModule } from '@angular/router';
     >
       {{ text }}
     </a>
-    <ng-template #textOnly>
-      <span class="nav-text-link nav-text-static">{{ text }}</span>
-    </ng-template>
+    <span [hidden]="interactive" class="nav-text-link nav-text-static">{{ text }}</span>
   `,
   styles: [`
     .nav-text-link {

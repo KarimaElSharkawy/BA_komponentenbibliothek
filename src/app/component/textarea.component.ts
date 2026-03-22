@@ -31,6 +31,9 @@ let textareaInstanceCounter = 0;
     <label [for]="id" class="form-label">
       {{ label }}
       <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+      <span *ngIf="showOptionalIndicator && !required" class="optional-indicator" aria-hidden="true">
+        {{ optionalText }}
+      </span>
     </label>
     <textarea
       [id]="id"
@@ -60,6 +63,10 @@ let textareaInstanceCounter = 0;
     .required-indicator {
       margin-left: 0.15rem;
     }
+    .optional-indicator {
+      margin-left: 0.35rem;
+      font-weight: 400;
+    }
   `],
 })
 
@@ -72,6 +79,8 @@ export class TextareaComponent implements ControlValueAccessor, Validator {
   @Input() rows = 4;
   @Input() placeholder = '';
   @Input() required = false;
+  @Input() showOptionalIndicator = false;
+  @Input() optionalText = '(optional)';
   @Input() minlength = 0;
   @Input() requiredErrorText = 'Dieses Feld ist erforderlich.';
   @Input() minlengthErrorText = '';

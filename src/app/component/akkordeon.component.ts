@@ -15,17 +15,15 @@ export interface AkkordeonItem {
       <ul class="akkordeon-list">
         @for (item of items; track item.title) {
           <li class="akkordeon-item">
-            <details class="akkordeon-panel">
-              <summary
-                class="akkordeon-summary"
-              >
-                <span class="akkordeon-title">{{ item.title }}</span>
-                <span class="akkordeon-icon" aria-hidden="true"></span>
+            <details class="faq-item">
+              <summary class="faq-toggle">
+                <span class="faq-question">{{ item.title }}</span>
+                <span class="faq-icon" aria-hidden="true"></span>
               </summary>
 
-              <div class="akkordeon-content">
+              <div class="faq-answer">
                 @for (paragraph of item.content; track paragraph) {
-                  <p class="akkordeon-text">{{ paragraph }}</p>
+                  <p class="faq-answer-text">{{ paragraph }}</p>
                 }
               </div>
             </details>
@@ -48,14 +46,14 @@ export interface AkkordeonItem {
         gap: 0.75rem;
       }
 
-      .akkordeon-panel {
+      .faq-item {
         border: 1px solid #2E7D32;
         border-radius: 0.75rem;
         background: #ffffff;
         overflow: hidden;
       }
 
-      .akkordeon-summary {
+      .faq-toggle {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -68,75 +66,54 @@ export interface AkkordeonItem {
         background: #f3f8f5;
       }
 
-      .akkordeon-summary::-webkit-details-marker {
+      .faq-toggle::-webkit-details-marker {
         display: none;
       }
 
-      .akkordeon-summary::marker {
+      .faq-toggle::marker {
         content: '';
       }
 
-      .akkordeon-summary:focus-visible {
+      .faq-toggle:focus-visible {
         outline: 3px solid #005fcc;
         outline-offset: -3px;
       }
 
-      .akkordeon-title {
+      .faq-question {
         flex: 1;
       }
 
-      .akkordeon-icon {
-        position: relative;
-        width: 2rem;
-        height: 2rem;
+      .faq-icon {
         flex: 0 0 auto;
-        display: inline-block;
-        color: #ffffff;
-        background: #2E7D32;
-        border: 2.5px solid #2E7D32;
-        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        font-size: 1.5rem;
+        line-height: 1;
+        color: #2E7D32;
       }
 
-      .akkordeon-icon::before,
-      .akkordeon-icon::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0.875rem;
-        height: 2.5px;
-        background: currentColor;
-        transform: translate(-50%, -50%);
+      .faq-icon::before {
+        content: '+' / '';
       }
 
-      .akkordeon-icon::after {
-        width: 2.5px;
-        height: 0.875rem;
+      details[open] .faq-icon::before {
+        content: '−' / '';
       }
 
-      .akkordeon-panel[open] .akkordeon-icon::after {
-        display: none;
-      }
-
-      .akkordeon-content {
+      .faq-answer {
         padding: 1rem 1.25rem 1.25rem;
       }
 
-      .akkordeon-text {
+      .faq-answer-text {
         margin: 0;
         color: #1f2933;
         line-height: 1.5;
       }
 
-      .akkordeon-text + .akkordeon-text {
+      .faq-answer-text + .faq-answer-text {
         margin-top: 0.75rem;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .akkordeon-icon::before,
-        .akkordeon-icon::after {
-          transition: none;
-        }
       }
     `,
   ],

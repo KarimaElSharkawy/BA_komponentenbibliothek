@@ -27,8 +27,9 @@ export const Required: Story = {
 export const Optional: Story = {
   args: {
     id: 'name-optional',
-    label: 'Name (optional)',
+    label: 'Name',
     placeholder: 'Max',
     required: false,
+    showOptionalIndicator: true,
   },
 };

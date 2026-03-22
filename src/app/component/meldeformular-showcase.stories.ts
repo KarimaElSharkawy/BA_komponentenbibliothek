@@ -6,7 +6,6 @@ import { EmailInputComponent } from './email-input.component';
 import { NameInputComponent } from './name-input.component';
 import { TextareaComponent } from './textarea.component';
 import { HeadingComponent } from './heading.component';
-import { IconButtonComponent } from './icon-button.component';
 import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
 
@@ -22,7 +21,6 @@ const meta: Meta = {
         NameInputComponent,
         TextareaComponent,
         HeadingComponent,
-        IconButtonComponent,
         ButtonComponent,
         LogoComponent,
       ],
@@ -65,7 +63,7 @@ export const Standard: Story = {
       },
     },
     template: `
-      <div class="container">
+      <main class="container" aria-label="Meldeformular">
         <div class="mb-5">
           <app-logo
             src="/assets/images/Q11_HTW_Berlin_Logo_quer_pos_GRUEN_RGB.jpg"
@@ -75,14 +73,14 @@ export const Standard: Story = {
           ></app-logo>
         </div>
         <div>
-          <div class="header position-relative d-flex align-items-center justify-content-center mb-3">
+          <header class="header position-relative d-flex align-items-center justify-content-center mb-3">
             <div class="position-absolute start-0">
-              <app-icon-button ariaLabel="Zurück"></app-icon-button>
+              <app-button ariaLabel="Zurück" [iconOnly]="true"></app-button>
             </div>
             <div class="text-center">
               <app-heading tag="h1" text="Meldeformular"></app-heading>
             </div>
-          </div>
+          </header>
 
           <form class="d-grid gap-3" aria-label="Meldeformular Beispiel">
             <app-dropdown
@@ -112,10 +110,11 @@ export const Standard: Story = {
 
             <app-dropdown
               controlId="showcase-kategorie"
-              label="Welcher Kategorie würden Sie diese Art von Diskriminierung zuordnen? (optional)"
+              label="Welcher Kategorie würden Sie diese Art von Diskriminierung zuordnen?"
               placeholder="Bitte auswählen"
               [options]="['Kategorie 1', 'Kategorie 2', 'Kategorie 3']"
               [required]="false"
+              [showOptionalIndicator]="true"
             ></app-dropdown>
 
             <app-checkbox
@@ -128,14 +127,16 @@ export const Standard: Story = {
             <div *ngIf="contactConsent">
               <app-name-input
                 id="showcase-nachname"
-                label="Nachname (optional)"
+                label="Nachname"
                 [required]="false"
+                [showOptionalIndicator]="true"
               ></app-name-input>
 
               <app-name-input
                 id="showcase-vorname"
-                label="Vorname (optional)"
+                label="Vorname"
                 [required]="false"
+                [showOptionalIndicator]="true"
               ></app-name-input>
 
               <app-email-input
@@ -239,7 +240,7 @@ export const Standard: Story = {
             </div>
           </form>
         </div>
-      </div>
+      </main>
     `,
   }),
 };

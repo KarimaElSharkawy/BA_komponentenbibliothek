@@ -32,6 +32,9 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     <label [for]="id" class="form-label">
       {{ label }}
       <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+      <span *ngIf="showOptionalIndicator && !required" class="optional-indicator" aria-hidden="true">
+        {{ optionalText }}
+      </span>
     </label>
     <input
       [id]="id"
@@ -60,6 +63,10 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     .required-indicator {
       margin-left: 0.15rem;
     }
+    .optional-indicator {
+      margin-left: 0.35rem;
+      font-weight: 400;
+    }
   `],
 })
 
@@ -71,6 +78,8 @@ export class EmailInputComponent implements ControlValueAccessor, Validator {
   @Input() ariaLabel = '';
   @Input() placeholder = 'name@beispiel.de';
   @Input() required = false;
+  @Input() showOptionalIndicator = false;
+  @Input() optionalText = '(optional)';
   @Input() requiredErrorText = 'Bitte geben Sie Ihre E-Mail-Adresse ein.';
   @Input() formatErrorText = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
   @Input() requiredErrorId = `email-required-error-${this.instanceId}`;

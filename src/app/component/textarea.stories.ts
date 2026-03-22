@@ -31,9 +31,10 @@ export const Required: Story = {
 export const Optional: Story = {
   args: {
     id: 'message-optional',
-    label: 'Schilderung (optional)',
+    label: 'Schilderung',
     rows: 4,
     required: false,
     placeholder: 'Bitte beschreiben Sie den Vorfall.',
+    showOptionalIndicator: true,
   },
 };

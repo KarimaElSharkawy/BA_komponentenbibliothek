@@ -31,6 +31,9 @@ let dropdownInstanceCounter = 0;
     <label [for]="id" class="form-label">
       {{ label }}
       <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+      <span *ngIf="showOptionalIndicator && !required" class="optional-indicator" aria-hidden="true">
+        {{ optionalText }}
+      </span>
     </label>
     <select
       [id]="id"
@@ -66,6 +69,10 @@ let dropdownInstanceCounter = 0;
     .required-indicator {
       margin-left: 0.15rem;
     }
+    .optional-indicator {
+      margin-left: 0.35rem;
+      font-weight: 400;
+    }
   `],
 })
 
@@ -89,6 +96,8 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
   @Input() options: readonly string[] = [];
   @Input() placeholder = 'Bitte auswählen';
   @Input() required = false;
+  @Input() showOptionalIndicator = false;
+  @Input() optionalText = '(optional)';
   @Input() errorText = 'Bitte wählen Sie eine Option aus.';
   @Input() errorId = `dropdown-error-${this.instanceId}`;
   @Output() valueChange = new EventEmitter<string>();

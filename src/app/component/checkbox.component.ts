@@ -46,6 +46,9 @@ let checkboxInstanceCounter = 0;
       <label class="form-check-label" [for]="id">
         {{ label }}
         <span *ngIf="required" class="required-indicator" aria-hidden="true">*</span>
+        <span *ngIf="showOptionalIndicator && !required" class="optional-indicator" aria-hidden="true">
+          {{ optionalText }}
+        </span>
       </label>
     </div>
 
@@ -57,6 +60,10 @@ let checkboxInstanceCounter = 0;
     .required-indicator {
       margin-left: 0.15rem;
     }
+    .optional-indicator {
+      margin-left: 0.35rem;
+      font-weight: 400;
+    }
   `],
 })
 
@@ -67,6 +74,8 @@ export class CheckboxComponent implements ControlValueAccessor, Validator {
   @Input() label = '';
   @Input() ariaLabel = '';
   @Input() required = false;
+  @Input() showOptionalIndicator = false;
+  @Input() optionalText = '(optional)';
   @Input() describedBy: string | null = null;
   @Input() errorId = `checkbox-error-${this.instanceId}`;
   @Input() errorText = 'Bitte bestätigen Sie dieses Feld.';
