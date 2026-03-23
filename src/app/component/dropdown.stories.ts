@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { DropdownComponent } from './dropdown.component';
 
-
 const meta: Meta<DropdownComponent> = {
   title: 'Formulare/Felder/Dropdown',
   component: DropdownComponent,

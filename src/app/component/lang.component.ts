@@ -25,7 +25,6 @@ let langComponentIdCounter = 0;
   imports: [CommonModule],
   template: `
     <button
-      #langTrigger
       type="button"
       class="lang-trigger"
       (click)="toggleMenu()"
@@ -42,7 +41,7 @@ let langComponentIdCounter = 0;
       [id]="menuId"
       class="lang-menu"
       [attr.aria-label]="menuAriaLabel"
-      (keydown.escape)="closeMenu(langTrigger)"
+      (keydown.escape)="closeMenu()"
     >
       <div class="lang-dropdown">
         <button
@@ -82,8 +81,8 @@ let langComponentIdCounter = 0;
     }
     .lang-trigger:focus-visible,
     .dropdown-item:focus-visible {
-      outline: 3px solid #005fcc;
-      outline-offset: 2px;
+      outline: 0.1875rem solid #005fcc;
+      outline-offset: 0.125rem;
     }
 
     .lang-label {
@@ -163,15 +162,13 @@ export class LangComponent implements OnInit, OnChanges {
   }
 
   get currentLabel(): string {
-    const activeLanguage = this.languages.find((option) => option.code === this.language);
+    const option = this.languages.find((language) => language.code === this.language);
 
-    if (!activeLanguage) {
-      return this.displayMode === 'short' ? this.language.toUpperCase() : this.language;
+    if (this.displayMode === 'short') {
+      return option?.shortLabel ?? option?.code.toUpperCase() ?? this.language.toUpperCase();
     }
 
-    return this.displayMode === 'short'
-      ? (activeLanguage.shortLabel ?? activeLanguage.code.toUpperCase())
-      : activeLanguage.label;
+    return option?.label ?? this.language;
   }
 
   get availableLanguages(): readonly LangOption[] {
@@ -198,9 +195,9 @@ export class LangComponent implements OnInit, OnChanges {
     this.focusTrigger();
   }
 
-  closeMenu(trigger: HTMLButtonElement): void {
+  closeMenu(): void {
     this.isOpen = false;
-    trigger.focus();
+    this.focusTrigger();
   }
 
   @HostListener('document:click', ['$event'])

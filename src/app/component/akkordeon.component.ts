@@ -47,7 +47,7 @@ export interface AkkordeonItem {
       }
 
       .faq-item {
-        border: 1px solid #2E7D32;
+        border: 0.0625rem solid #2E7D32;
         border-radius: 0.75rem;
         background: #ffffff;
         overflow: hidden;
@@ -75,8 +75,8 @@ export interface AkkordeonItem {
       }
 
       .faq-toggle:focus-visible {
-        outline: 3px solid #005fcc;
-        outline-offset: -3px;
+        outline: 0.1875rem solid #005fcc;
+        outline-offset: -0.1875rem;
       }
 
       .faq-question {

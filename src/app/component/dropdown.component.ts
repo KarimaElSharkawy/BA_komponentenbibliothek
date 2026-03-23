@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -78,7 +78,6 @@ let dropdownInstanceCounter = 0;
 
 export class DropdownComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++dropdownInstanceCounter;
-  @HostBinding('attr.id') externalId: string | null = null;
   private resolvedControlId = `dropdown-field-${this.instanceId}`;
 
   @Input()
@@ -136,10 +135,7 @@ export class DropdownComponent implements ControlValueAccessor, Validator {
   }
 
   validate(_: AbstractControl): ValidationErrors | null {
-    if (this.required && !this.value) {
-      return { required: true };
-    }
-    return null;
+    return this.required && !this.value ? { required: true } : null;
   }
 
   registerOnValidatorChange(fn: () => void): void {

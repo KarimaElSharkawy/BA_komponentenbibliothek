@@ -30,10 +30,10 @@ import { Component, Input } from '@angular/core';
   styles: [`
     .visually-hidden {
       position: absolute;
-      width: 1px;
-      height: 1px;
+      width: 0.0625rem;
+      height: 0.0625rem;
       padding: 0;
-      margin: -1px;
+      margin: -0.0625rem;
       overflow: hidden;
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
@@ -57,8 +57,8 @@ import { Component, Input } from '@angular/core';
     }
 
     a:focus-visible {
-      outline: 3px solid #005fcc;
-      outline-offset: 2px;
+      outline: 0.1875rem solid #005fcc;
+      outline-offset: 0.125rem;
     }
   `],
 })

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding, Input, forwardRef, inject } from '@angular/core';
+import { Component, Input, forwardRef, inject } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -69,7 +69,6 @@ let nameInputInstanceCounter = 0;
 
 export class NameInputComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++nameInputInstanceCounter;
-  @HostBinding('attr.id') externalId: string | null = null;
   @Input() id = `name-field-${this.instanceId}`;
   @Input() label = 'Name';
   @Input() ariaLabel = '';
@@ -91,9 +90,7 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
   private onValidatorChange: () => void = () => {};
 
   constructor() {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
+    this.ngControl && (this.ngControl.valueAccessor = this);
   }
 
   get showError(): boolean {
@@ -123,10 +120,7 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
   }
 
   validate(_: AbstractControl): ValidationErrors | null {
-    if (this.required && !this.value.trim()) {
-      return { required: true };
-    }
-    return null;
+    return this.required && !this.value.trim() ? { required: true } : null;
   }
 
   registerOnValidatorChange(fn: () => void): void {

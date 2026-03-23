@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { CheckboxComponent } from './checkbox.component';
 
-
 const meta: Meta<CheckboxComponent> = {
   title: 'Formulare/Felder/Checkbox',
   component: CheckboxComponent,
@@ -9,7 +8,7 @@ const meta: Meta<CheckboxComponent> = {
     layout: 'padded',
   },
 };
- 
+
 export default meta;
 type Story = StoryObj<CheckboxComponent>;
 

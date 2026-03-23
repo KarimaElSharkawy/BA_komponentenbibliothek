@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -72,7 +72,6 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export class EmailInputComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++emailInputInstanceCounter;
-  @HostBinding('attr.id') externalId: string | null = null;
   @Input() id = `email-field-${this.instanceId}`;
   @Input() label = 'E-Mail';
   @Input() ariaLabel = '';

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
-
 const meta: Meta<ButtonComponent> = {
   title: 'Formulare/Felder/Buttons/Button',
   component: ButtonComponent,

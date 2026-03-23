@@ -8,6 +8,5 @@ import { Component } from '@angular/core';
       <p>App-Root — Meldeformular (Platzhalter)</p>
     </div>
   `,
-  styles: [],
 })
 export class App {}

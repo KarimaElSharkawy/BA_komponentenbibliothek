@@ -10,7 +10,6 @@ import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
 import { TextLinkComponent } from './text-link.component';
 
-
 const meta: Meta = {
   title: 'Formulare/Showcase/Meldeformular',
   decorators: [

@@ -12,7 +12,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       [class.icon-button]="iconOnly"
       [disabled]="disabled"
       [attr.aria-label]="ariaLabel || null"
-      (click)="onClick()"
+      (click)="clicked.emit()"
     >
       @if (iconOnly) {
         <i class="bi bi-chevron-left icon" aria-hidden="true"></i>
@@ -35,8 +35,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       color: #ffffff;
     }
     button:focus-visible {
-      outline: 3px solid #005fcc;
-      outline-offset: 2px;
+      outline: 0.1875rem solid #005fcc;
+      outline-offset: 0.125rem;
     }
     button:active:not(:disabled) {
       background-color: #002e5a;
@@ -81,8 +81,4 @@ export class ButtonComponent {
   @Input() ariaLabel = '';
   @Input() iconOnly = false;
   @Output() clicked = new EventEmitter<void>();
-
-  onClick(): void {
-    this.clicked.emit();
-  }
 }

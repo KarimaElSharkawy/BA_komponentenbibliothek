@@ -6,17 +6,19 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   template: `
-    <a
-      [hidden]="!interactive"
-      [routerLink]="href"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      ariaCurrentWhenActive="page"
-      class="nav-text-link"
-    >
-      {{ text }}
-    </a>
-    <span [hidden]="interactive" class="nav-text-link nav-text-static">{{ text }}</span>
+    @if (interactive) {
+      <a
+        [routerLink]="href"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="nav-text-link"
+      >
+        {{ text }}
+      </a>
+    } @else {
+      <span class="nav-text-link nav-text-static">{{ text }}</span>
+    }
   `,
   styles: [`
     .nav-text-link {
@@ -32,8 +34,8 @@ import { RouterModule } from '@angular/router';
     }
 
     .nav-text-link:focus-visible {
-      outline: 3px solid #005fcc;
-      outline-offset: 2px;
+      outline: 0.1875rem solid #005fcc;
+      outline-offset: 0.125rem;
     }
 
     .nav-text-link.active {

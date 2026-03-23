@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -72,7 +72,6 @@ let textareaInstanceCounter = 0;
 
 export class TextareaComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++textareaInstanceCounter;
-  @HostBinding('attr.id') externalId: string | null = null;
   @Input() id = `textarea-field-${this.instanceId}`;
   @Input() label = '';
   @Input() ariaLabel = '';

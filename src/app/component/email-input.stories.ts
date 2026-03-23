@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { EmailInputComponent } from './email-input.component';
 
-
 const meta: Meta<EmailInputComponent> = {
   title: 'Formulare/Felder/Textfelder/E-Mail',
   component: EmailInputComponent,
@@ -9,7 +8,7 @@ const meta: Meta<EmailInputComponent> = {
     layout: 'padded',
   },
 };
- 
+
 export default meta;
 type Story = StoryObj<EmailInputComponent>;
 

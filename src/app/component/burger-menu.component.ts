@@ -24,7 +24,7 @@ let burgerMenuIdCounter = 0;
         <span aria-hidden="true"></span>
       </button>
 
-      <nav [id]="menuId" [class]="menuClass" [hidden]="!isOpen" aria-label="Menüeinträge">
+      <nav [id]="menuId" class="menu-list" [class.menu-up]="openDirection === 'up'" [hidden]="!isOpen" aria-label="Menüeinträge">
         <ul class="menu-items">
           <li
             class="menu-item"
@@ -68,8 +68,8 @@ let burgerMenuIdCounter = 0;
 
     .burger-button:focus-visible,
     .menu-item :is(a, span):focus-visible {
-      outline: 3px solid #005fcc;
-      outline-offset: 2px;
+      outline: 0.1875rem solid #005fcc;
+      outline-offset: 0.125rem;
     }
 
     .menu-list {
@@ -148,9 +148,5 @@ export class BurgerMenuComponent {
 
   get normalizedItems(): { text: string; href?: string }[] {
     return this.items.map((item) => (typeof item === 'string' ? { text: item } : item));
-  }
-
-  get menuClass(): string {
-    return this.openDirection === 'up' ? 'menu-list menu-up' : 'menu-list';
   }
 }

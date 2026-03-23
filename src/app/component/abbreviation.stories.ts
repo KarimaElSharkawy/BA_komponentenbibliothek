@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AbbreviationComponent } from './abbreviation.component';
 
-
 const meta: Meta<AbbreviationComponent> = {
   title: 'Formulare/Felder/Text/Abbreviation',
   component: AbbreviationComponent,
