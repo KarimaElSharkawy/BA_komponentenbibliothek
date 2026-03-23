@@ -97,9 +97,7 @@ let burgerMenuIdCounter = 0;
       list-style: none;
       width: 100%;
       text-align: left;
-      padding: 0.125rem 0.25rem;
-      border-radius: 0.25rem;
-      transition: background-color 0.15s ease;
+      padding: 0;
     }
 
     .menu-items {
@@ -112,13 +110,22 @@ let burgerMenuIdCounter = 0;
       width: 100%;
     }
 
+    .menu-item :is(a, .nav-text-link, .menu-item-text) {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
     .menu-item-interactive {
       cursor: pointer;
     }
 
-    .menu-item-interactive:hover,
-    .menu-item-interactive:focus-within {
+    .menu-item-interactive:hover :is(a, .nav-text-link),
+    .menu-item-interactive:focus-within :is(a, .nav-text-link) {
       background: #e9f3ff;
+      color: #0f2f25;
     }
 
     .menu-item-interactive app-nav-text,
@@ -127,9 +134,6 @@ let burgerMenuIdCounter = 0;
     }
 
     .menu-item-text {
-      display: inline-block;
-      width: 100%;
-      padding: 0.375rem 0.5rem;
       color: #212529;
     }
   `],

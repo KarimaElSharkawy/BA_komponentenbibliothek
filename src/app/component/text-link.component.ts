@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p class="mb-0">
-      {{ text }}
+    <span [class.d-inline]="inline" [class.d-block]="!inline">
+      <span *ngIf="text">{{ text }} </span>
       <a
         [href]="href"
         class="link-dark text-decoration-underline"
@@ -17,24 +17,15 @@ import { Component, Input } from '@angular/core';
       >
         <span>{{ linkText }}</span>
         <span *ngIf="suffixIcon === 'pdf'" class="link-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7zm0 0v5h5" />
-            <path d="M8 15h1.5a1.5 1.5 0 0 0 0-3H8v6" />
-            <path d="M12 18h1.2a2.8 2.8 0 0 0 0-5.6H12z" />
-            <path d="M16 12h3" />
-            <path d="M16 15h2.5" />
-          </svg>
+          <i class="bi bi-filetype-pdf"></i>
         </span>
         <span *ngIf="suffixIcon === 'external'" class="link-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
-            <path d="M7 17 17 7" />
-            <path d="M9 7h8v8" />
-          </svg>
+          <i class="bi bi-box-arrow-up-right"></i>
         </span>
         <span *ngIf="suffixIcon === 'pdf'" class="visually-hidden"> (PDF-Dokument)</span>
         <span *ngIf="target === '_blank'" class="visually-hidden"> (öffnet in neuem Tab)</span>
       </a>
-    </p>
+    </span>
   `,
   styles: [`
     .visually-hidden {
@@ -60,14 +51,9 @@ import { Component, Input } from '@angular/core';
       vertical-align: text-bottom;
     }
 
-    .link-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: currentColor;
-      stroke-width: 1.75;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .link-icon :is(svg, i) {
+      font-size: 1em;
+      line-height: 1;
     }
 
     a:focus-visible {
@@ -82,6 +68,7 @@ export class TextLinkComponent {
   @Input() linkText = 'diesem Link';
   @Input() href = 'https://www.htw-berlin.de';
   @Input() ariaLabel = '';
+  @Input() inline = false;
   @Input() target: '_blank' | '_self' | '_parent' | '_top' = '_blank';
   @Input() rel = 'noopener noreferrer';
   @Input() suffixIcon: 'pdf' | 'external' | null = null;

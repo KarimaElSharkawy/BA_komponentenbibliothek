@@ -1,0 +1,711 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Analyse der HTW-Antidiskriminierungs-Webseite</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="326358e1-50c7-8048-9714-ce0e21d327c3" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎓</span></div><h1 class="page-title" dir="auto">Analyse der HTW-Antidiskriminierungs-Webseite</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><div id="326358e1-50c7-8184-a1a6-c8f7625f4831" class="collection-content"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Prinzip</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Guideline</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Erfolgskriterium</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Betroffenheit</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Konformitätsstufe</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Fundort</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>Status</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Begründung</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/attachment_gray.svg" style="width:14px;height:14px;display:block"/></span>Anhang</th></tr></thead><tbody><tr id="326358e1-50c7-815c-a20b-f051cb2abefc"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c7815ca20bf051cb2abefc?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.2 – Time-based Media</td><td class="cell-Z=~s">1.2.3 – Audio Description or Media Alternative (Prerecorded)</td><td class="cell-J&lt;&lt;P">Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8151-a061-f3256a0e134a"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c78151a061f3256a0e134a?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.7 – Dragging Movements</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8165-bfee-d24d1a97689c"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c78165bfeed24d1a97689c?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.2 – Enough Time</td><td class="cell-Z=~s">2.2.1 – Timing Adjustable</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8164-bb51-d1d07982ff2f"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c78164bb51d1d07982ff2f?pvs=21">Understandable</a></td><td class="cell-rdZ&gt;">3.1 – Readable</td><td class="cell-Z=~s">3.1.2 – Language of Parts</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81d6-be99-d4ebdcb22354"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781d6be99d4ebdcb22354?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.2 – Enough Time</td><td class="cell-Z=~s">2.2.2 – Pause, Stop, Hide</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8144-ad37-f58dbe2edd05"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78144ad37f58dbe2edd05?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.2 – Time-based Media</td><td class="cell-Z=~s">1.2.1 – Audio-only and Video-only (Prerecorded)</td><td class="cell-J&lt;&lt;P">Auditory/Hearing</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8166-9523-e1e4b1cfc80f"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781669523e1e4b1cfc80f?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.3 – Seizures and Physical Reactions</td><td class="cell-Z=~s">2.3.1 – Three Flashes or Below Threshold</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8167-b0e5-d121a61547cc"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78167b0e5d121a61547cc?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.2 – Time-based Media</td><td class="cell-Z=~s">1.2.5 – Audio Description (Prerecorded)</td><td class="cell-J&lt;&lt;P">Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-817b-bc86-c9589743356e"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c7817bbc86c9589743356e?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.2 – Time-based Media</td><td class="cell-Z=~s">1.2.4 – Captions (Live)</td><td class="cell-J&lt;&lt;P">Auditory/Hearing</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81b5-bd0b-c60d4ec66b95"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781b5bd0bc60d4ec66b95?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.1 – Pointer Gestures</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81cd-9a30-c8fd10823797"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781cd9a30c8fd10823797?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.2 – Audio Control</td><td class="cell-J&lt;&lt;P">Auditory/Hearing</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81e9-b909-d24ea8bfac34"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781e9b909d24ea8bfac34?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.4 – Motion Actuation</td><td class="cell-J&lt;&lt;P">Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81d8-acb0-f06030c626f0"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781d8acb0f06030c626f0?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.2 – Time-based Media</td><td class="cell-Z=~s">1.2.2 – Captions (Prerecorded)</td><td class="cell-J&lt;&lt;P">Auditory/Hearing</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-810d-af11-d438d120c1b0"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c7810daf11d438d120c1b0?pvs=21">Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.8 – Accessible Authentication (Minimum)</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81e0-9b68-f26f6bd3b5cd"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781e09b68f26f6bd3b5cd?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.1 – Keyboard Accessible</td><td class="cell-Z=~s">2.1.4 – Character Key Shortcuts</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81eb-90cc-f669033c1300"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781eb90ccf669033c1300?pvs=21">Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.4 – Error Prevention (Legal, Financial, Data)</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-blue"><div class="status-dot status-dot-color-blue"></div>NA</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-811b-bf2c-c9e3f0ee643a"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c7811bbf2cc9e3f0ee643a?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.2 – Labels or Instructions</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: <br/>Label ist nicht mit dem Input verknüpft<br/><br/>Ansprechperson?</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81b7-8b10-f6e2c226e5e8"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781b78b10f6e2c226e5e8?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.4 – Link Purpose (In Context)</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Bei Formularen ist nicht klar erkenntlich dass sich PDFs öffnen<br/>Verlinkungen wie “hier” oder “an wen”</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81fa-9310-f3247d0c2c9f"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781fa9310f3247d0c2c9f?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.11 – Focus Not Obscured (Minimum)</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Fokus wird beim fokussieren des Namen durch den Footer bedeckt</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-814d-b910-f8a6a5c4c970"><td class="cell-title"><a href="https://www.notion.so/Robust-326358e150c7814db910f8a6a5c4c970?pvs=21"><span class="icon">‼️</span>Robust</a></td><td class="cell-rdZ&gt;">4.1 – Compatible</td><td class="cell-Z=~s">4.1.3 – Status Messages</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Alle div class=&quot;error-message&quot; (Fehler erscheinen, aber ohne aria-live)<br/><br/>Wechsel zu summary (weiter) – Schrittwechsel ohne Statusankündigung<br/><br/>Dynamische Fehlermeldungen  keine Status Messages<br/><br/>Kontaktformular: Wechsel von Schritt „Formular“ zu „Summary“ ohne Statusankündigung<br/><br/>(Es gibt keine Erfolg-/Fehler-Statusmeldung beim Submit)<br/><br/>Dynamische Fehlermeldungen  keine Status Messages<br/><br/>Ansprechperson: Filtermeldung erscheint dynamisch, aber hat kein role, kein aria-live, kein aria-atomic</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8169-824c-f0bb2f1e729d"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78169824cf0bb2f1e729d?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.1 – Use of Color</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Die Aktive Seite wird nur per Farbe vermittelt (Zusätzlich Farben mit wenig Kontrast)</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable/Bildschirmfoto_2026-03-16_um_20.45.14.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable/Bildschirmfoto_2026-03-16_um_20.45.14.png" alt="Bildschirmfoto 2026-03-16 um 20.45.14.png"/></a></span></td></tr><tr id="326358e1-50c7-81a7-b42b-cd7318ea1d0c"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781a7b42bcd7318ea1d0c?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.10 – Reflow</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Auswahl nicht mehr lesbar<br/>Ansprechperson: Filter Auswahl nicht mehr lesbar</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-1d0c/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-1d0c/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-1d0c/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-1d0c/image%201.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-814d-babb-e09c2f7aeb46"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c7814dbabbe09c2f7aeb46?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.5 – Multiple Ways</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Es gibt keine mindestens Zwei Wege um eine Unterseite zu erreichen Seiten sind teils nicht einmal per footer navigation zu erreichen</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81fa-ae36-e25605cf67c8"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781faae36e25605cf67c8?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.2 – Page Titled</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry"><strong>Untesre</strong><strong>iten haben keinen eigenen Titel </strong><strong>alle sind &lt;title&gt;HtwAntidiskriminierungsapp&lt;/title&gt;</strong></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8138-ae45-ce9354a95e4b"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78138ae45ce9354a95e4b?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.11 – Non-text Contrast</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Startseite: Verlinkungen haben nicht ausreichend Kontrast<br/>Buttons haben nicht ausreichend Kontrast<br/><br/>Kontaktformular: Button hat nicht ausreichend Kontrats <br/>Verlinkungen haben nicht ausreichend Kontrast<br/><br/>Navigation: Kein Element hat ausreichend Kontrast<br/>Sprachauswahl Pfeil hat nicht ausreichend Kontrast<br/><br/>Impressum: Verlinkungen haben nicht ausreichen Kontrast<br/><br/>FAQs: Verlinkungen haben nicht ausreichend Kontrast<br/>(Icons haben nicht ausreichend Kontrast sind aber auch nicht klickbar)<br/><br/>Datenschutz: Verlinkungen haben nicht ausreichend Kontrast<br/><br/>Ansprechperson: Button haben nicht ausreichend Kontrast<br/><br/>Chevron Icon hat nicht ausreichend Kontrast (nicht auf allen Seiten klickbar)</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5e4b/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5e4b/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5e4b/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5e4b/image%201.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81a7-9f38-cea3b480d131"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781a79f38cea3b480d131?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.6 – Headings and Labels</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Fehlertext falschen Elementen zugeordnet header kein echtes Heading (kein h1 etc.) <br/>Label ist nicht mit dem Input verknüpft Ein &lt;div&gt; innerhalb eines &lt;label&gt; mehrfach dieselbe ID id=&quot;optional”<strong><br/></strong><br/>Kontaktformular: Mehrfach verwendetes id=&quot;optional”<br/><br/>(Ansprechperson: Namen der Ansprechpersonen sind nur als Überschrift dargestellt aber &lt;p&gt;)</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%201.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%202.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%202.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%203.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-d131/image%203.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81ec-9cad-dc9761cb5bae"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781ec9caddc9761cb5bae?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.1 – Error Identification</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Error falsch plaziert<br/>Fehlermeldungen sind generisch und nicht garantiert feldspezifisch</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8137-a836-d49fb0254980"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78137a836d49fb0254980?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.3 – Adaptable</td><td class="cell-Z=~s">1.3.5 – Identify Input Purpose</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Kein Autocomplete in Formularen<br/>Inputformulare nicht mit Lable verbunden <br/>mehrfach gleiche IDs<br/><br/>Navigation: Sprachwechesl hat kein lable</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81d8-a4c6-c69c6f58ff04"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781d8a4c6c69c6f58ff04?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.8 – Target Size (Minimum)</td><td class="cell-J&lt;&lt;P">Physical/Motor</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Navigation: Icon hat nicht ausreichend abstand zu Datenschutz Verlinkung</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-ff04/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-ff04/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81e9-8e4f-c44797e4f043"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781e98e4fc44797e4f043?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.3 – Adaptable</td><td class="cell-Z=~s">1.3.3 – Sensory Characteristics</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Icons für Adminbereich ohne text und Lable </td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8173-9d4e-c5e7cc2859c1"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781739d4ec5e7cc2859c1?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.3 – Adaptable</td><td class="cell-Z=~s">1.3.2 – Meaningful Sequence</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Modal am Anfang im DOM<br/>Fehlermeldungen im Kontaktdatenblock, die zu anderen Feldern gehören<br/>Checkbox-Label nicht korrekt verbunden<br/>ID Duplikate + div im label<br/><br/>FAQs: Accordion Header als &lt;p&gt;<br/>Keine programmatische Zuordnung zwischen Frage und Antwortbereich<br/>Plus/Minus-Icon als alleiniger Statusindikator ohne Status-Attribut<br/><br/>Ansprechperson: leeres div im header &lt;div class=&quot;col-1&quot;&gt;&lt;/div&gt;<br/><br/>doppelten Ausgabe derselben Kontaktinformationen für mobile und Desktop-Ansichten<br/><br/></td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-59c1/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-59c1/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81a4-aaf1-dda0341ff017"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781a4aaf1dda0341ff017?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.1 – Readable</td><td class="cell-Z=~s">3.1.1 – Language of Page</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Alle Seiten ist standardmäßig auf Englisch egal ob deutsch oder englisch eingestellt ist- problematisch für screenreader</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Understandable/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Understandable/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-818e-84da-eca571ff5bf3"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c7818e84daeca571ff5bf3?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.3 – Adaptable</td><td class="cell-Z=~s">1.3.4 – Orientation</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Ansprechperson: Auswahl verschiebt sich. Text wird zu klein </td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5bf3/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-5bf3/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-8128-8693-d434f78fa3bd"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781288693d434f78fa3bd?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.1 – Bypass Blocks</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry"><strong>Es gibt keine Mechanismen um Blöcke zu überspringen außer den Footer und vereinzelte Überschriften</strong></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-814f-b464-c681fb77d047"><td class="cell-title"><a href="https://www.notion.so/Robust-326358e150c7814fb464c681fb77d047?pvs=21"><span class="icon">‼️</span>Robust</a></td><td class="cell-rdZ&gt;">4.1 – Compatible</td><td class="cell-Z=~s">4.1.1 – Parsing</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Navigation: Ungültiges Attribut &lt;div class=&quot;col-1&quot; text-center&gt; müsste &lt;div class=&quot;col-1 text-center&quot;&gt; sein<br/><br/>Meldeformular: &lt;head&gt; im Komponenten-Template<br/>Der &lt;head&gt; gehört ausschließlich in das Root-Dokument (index.html)<br/>Mehrfach gleiche IDs<br/><br/>Kontaktformular: Mehrfach gleiche IDs<br/><br/>FAQs: Mehrfach gleich IDs</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%201.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%202.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%202.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%203.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust/image%203.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81d3-86c7-c21c41794a46"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781d386c7c21c41794a46?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.3 – Adaptable</td><td class="cell-Z=~s">1.3.1 – Info and Relationships</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Kontaktformular: mehrfach gleiche ID<br/>Fehlermeldungen nicht programmatisch mit dem Feld verknüpft (von screenreadern nicht nutzbar) <br/><br/>Navigation: Sprachauswahl ohne sichtbares/programmatisches Label<br/>Icon Links/Buttons ohne zugänglichen Namen<br/><br/>FAQs: Unklar wie viele Items da es keine tatsächliche Liste ist<br/><br/>Meldeformular: <br/>Fehlermeldungen sind nicht dem richtigen Feld zugeordnet keine Verknüpfung (z. B. aria-describedby / aria-errormessage + aria-invalid)<br/>mehrfach gleiche ID<br/>Checkbox ist nicht mit ihrem Label verknüpft<br/>Falsche Fehlermeldungen im Kontaktdaten-Block<br/><br/>Datenschutz: Auf h1 folgt h3<br/><br/>Impressum: Auf h1 folgt h3<br/><br/>Ansprechperson: Inhalte bestehen aus mehreren strukturierten Bezeichnungs-Wert-Paaren wie Telefon, E-Mail, Mitgliedergruppe oder Gremium, werden jedoch nur als einfache Absätze dargestellt und nicht semantisch als zusammengehörige Datensätze ausgezeichnet<br/>Umsetzungsvorschlag definitionsliste<br/><br/>Name einer Kontaktperson wird visuell als Titel hervorgehoben, jedoch lediglich mit einem <code>p</code>-Element statt mit einer semantischen Überschrift umgesetzt<br/><br/>Unklar wie viele Items da es keine tatsächliche Liste ist</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%201.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%202.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%202.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%203.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-4a46/image%203.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-818a-b778-e75b67b067f4"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c7818ab778e75b67b067f4?pvs=21">Understandable</a></td><td class="cell-rdZ&gt;">3.2 – Predictable</td><td class="cell-Z=~s">3.2.6 – Consistent Help</td><td class="cell-J&lt;&lt;P">Cognitive</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Es befindet sich nur auf der Startseite eine verlinkung zu den Kontakt und Hilfsmöglichkeiten</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-819b-91eb-ec5e5fa12d59"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c7819b91ebec5e5fa12d59?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.1 – Keyboard Accessible</td><td class="cell-Z=~s">2.1.1 – Keyboard</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-green">Kontaktformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Kontaktformular: nicht alle Elemente sind per Tastatur nutzbar<br/><br/>FAQs: Icons sind nicht per Keyboard zu erreichen<br/><br/>Ansprechperson: Zurück Icon kann nicht über Tastatur erreicht werden<br/><br/>(Meldeformular Pop-up kann per tab übersprungen werden ohne geschlossen zu werden)</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-2d59/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Operable%203263-2d59/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81c8-9179-efdbe5977061"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781c89179efdbe5977061?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.3 – Contrast (Minimum)</td><td class="cell-J&lt;&lt;P">Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Startseite: Button und Verlinkungen haben nicht ausreichen Kontrast<br/><br/>Kontaktformular:Nicht ausreichender Kontrast <br/>Schriftgöße bei “(optional”) zu klein<br/><br/>Navigation: Kein Element hat ausreichend Kontrast<br/><br/>Meldeformular: Fehlermeldungen und Links haben nicht ausreichend Kontrast<br/>Schriftgöße bei “(optional”) zu klein<br/><br/>Impressum: Verlinkungen haben nicht ausreichend Kontrast<br/><br/>FAQs: Text im Akkordeon hat nicht ausreichend Kontrast<br/>linktext nich ausreichend Kontrast<br/><br/>Datenschutz: Verlinkungen haben nicht ausreichend Kontrast<br/><br/>Ansprechperson: Text hat nicht ausreichend Kontrast</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%201.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%202.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%202.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%203.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%203.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%204.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%204.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%205.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%205.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/Bildschirmfoto_2026-02-20_um_22.51.03.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/Bildschirmfoto_2026-02-20_um_22.51.03.png" alt="Bildschirmfoto 2026-02-20 um 22.51.03.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%206.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-7061/image%206.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81ed-b634-db0c22972d2f"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781edb634db0c22972d2f?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.3 – Error Suggestion</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Meldeformular: Fehlermeldungen am falschen Feld<br/><br/>Kontaktformular: “Bitte wählen Sie etwas aus.” ist nicht spezifisch genug</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Understandable%203263-2d2f/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Understandable%203263-2d2f/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-812f-b6b1-d2cdbb4d6fdb"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c7812fb6b1d2cdbb4d6fdb?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.1 – Text Alternatives</td><td class="cell-Z=~s">1.1.1 – Non-text Content</td><td class="cell-J&lt;&lt;P">Auditory/Hearing, Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span><span class="selected-value select-value-color-red">Startseite</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Sartseite: Alt-Text für Bild an falscher stelle im code angegeben<br/>Kein Alt-Text für Bedienelemente<br/><br/><strong>Klickbaren Chevron-Icons auf allen Seiten außer Startseite entahleten keinen Text und keine sinnvollen Text Alternativen</strong><br/><br/>FAQs: Zurück-Icon sowie die Plus- und Minus-Symbole besitzen keine Textalternativen<br/> <br/>Ansprechperson:</td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-6fdb/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Perceivable%203263-6fdb/image.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81d1-a285-c08f68623768"><td class="cell-title"><a href="https://www.notion.so/Robust-326358e150c781d1a285c08f68623768?pvs=21"><span class="icon">‼️</span>Robust</a></td><td class="cell-rdZ&gt;">4.1 – Compatible</td><td class="cell-Z=~s">4.1.2 – Name, Role, Value</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"><span class="selected-value select-value-color-blue">Ansprechperson finden</span><span class="selected-value select-value-color-gray">Datenschutzhinweise</span><span class="selected-value select-value-color-purple">FAQs</span><span class="selected-value select-value-color-pink">Impressum</span><span class="selected-value select-value-color-green">Kontaktformular</span><span class="selected-value select-value-color-orange">Meldeformular</span><span class="selected-value select-value-color-yellow">Navigation</span></td><td class="cell-ZHhm"><span class="status-value select-value-color-red"><div class="status-dot status-dot-color-red"></div>Nicht Erfüllt</span></td><td class="cell-K`Ry">Navigation: Icon verlinkung ohne zugänglichen Namen (<strong>keinen sichtbaren Text</strong> und auch <strong>kein </strong><code><strong>aria-label)</strong></code><br/>&lt;select&gt; ohne Label<br/><br/><strong>Auf allen Seiten außer Startseite Chevron-Icon besitzt keinen programmatisch bestimmbaren zugänglichen Namen und keine passendes Semantisches Element eher ein Anker ein &lt;a&gt;</strong><br/><br/>Meldeformular: Beschriftung der Checkbox zur Kontaktaufnahme fehlerhaft zugeordnet, da das label nicht auf die tatsächliche id des Eingabefelds verweist<br/><br/>Kontaktformular: mehrfach verwendete IDs<br/>&lt;label for=&quot;Kontaktaufnahme&quot;&gt; zeigt auf kein Form-Control<br/></td><td class="cell-@ip@"><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust%203263-3768/image.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust%203263-3768/image.png" alt="image.png"/></a></span><span style="margin-inline-end:6px"><a href="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust%203263-3768/image%201.png"><img style="width:20px;max-height:24px" src="Analyse%20der%20HTW-Antidiskriminierungs-Webseite/Untitled/Robust%203263-3768/image%201.png" alt="image.png"/></a></span></td></tr><tr id="326358e1-50c7-81a6-9496-ffca261cc560"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781a69496ffca261cc560?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.4 – Resize Text</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81ae-a966-df3e4fbb63f6"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781aea966df3e4fbb63f6?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.2 – Predictable</td><td class="cell-Z=~s">3.2.4 – Consistent Identification</td><td class="cell-J&lt;&lt;P">Cognitive</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8162-b203-fb1dcd5b3566"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c78162b203fb1dcd5b3566?pvs=21">Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.5 – Images of Text</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-810c-be4b-fbe3fc1eb60f"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c7810cbe4bfbe3fc1eb60f?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.3 – Label in Name</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81e9-8224-d9eded7b57ec"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c781e98224d9eded7b57ec?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.13 – Content on Hover or Focus</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-818e-b41d-e65b49ef0951"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c7818eb41de65b49ef0951?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.2 – Predictable</td><td class="cell-Z=~s">3.2.2 – On Input</td><td class="cell-J&lt;&lt;P">Cognitive</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81af-bbb4-cc57a3504eb4"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781afbbb4cc57a3504eb4?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.5 – Input Modalities</td><td class="cell-Z=~s">2.5.2 – Pointer Cancellation</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81d7-a79d-ec05da8fc8d3"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c781d7a79dec05da8fc8d3?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.2 – Predictable</td><td class="cell-Z=~s">3.2.3 – Consistent Navigation</td><td class="cell-J&lt;&lt;P">Cognitive</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-812d-9320-fbc06fd126a0"><td class="cell-title"><a href="https://www.notion.so/Perceivable-326358e150c7812d9320fbc06fd126a0?pvs=21"><span class="icon">‼️</span>Perceivable</a></td><td class="cell-rdZ&gt;">1.4 – Distinguishable</td><td class="cell-Z=~s">1.4.12 – Text Spacing</td><td class="cell-J&lt;&lt;P">Cognitive, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8180-a563-d7d2fbfb93ea"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c78180a563d7d2fbfb93ea?pvs=21">Understandable</a></td><td class="cell-rdZ&gt;">3.3 – Input Assistance</td><td class="cell-Z=~s">3.3.7 – Redundant Entry</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-812a-b62f-d1ac980ce266"><td class="cell-title"><a href="https://www.notion.so/Understandable-326358e150c7812ab62fd1ac980ce266?pvs=21"><span class="icon">‼️</span>Understandable</a></td><td class="cell-rdZ&gt;">3.2 – Predictable</td><td class="cell-Z=~s">3.2.1 – On Focus</td><td class="cell-J&lt;&lt;P">Cognitive</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-81aa-9ad4-d618ea8cd803"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781aa9ad4d618ea8cd803?pvs=21">Operable</a></td><td class="cell-rdZ&gt;">2.1 – Keyboard Accessible</td><td class="cell-Z=~s">2.1.2 – No Keyboard Trap</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8105-a375-efb481aa7eca"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c78105a375efb481aa7eca?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.7 – Focus Visible</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">AA</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry">wenig Kontrast</td><td class="cell-@ip@"></td></tr><tr id="326358e1-50c7-8194-8453-d8a384a00b31"><td class="cell-title"><a href="https://www.notion.so/Operable-326358e150c781948453d8a384a00b31?pvs=21"><span class="icon">‼️</span>Operable</a></td><td class="cell-rdZ&gt;">2.4 – Navigable</td><td class="cell-Z=~s">2.4.3 – Focus Order</td><td class="cell-J&lt;&lt;P">Cognitive, Physical/Motor, Visual</td><td class="cell-L}?p">A</td><td class="cell-RDjX"></td><td class="cell-ZHhm"><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Erfüllt</span></td><td class="cell-K`Ry"></td><td class="cell-@ip@"></td></tr></tbody></table><br/><br/></div></div><div style="display:contents" dir="auto"><p id="328358e1-50c7-80a8-874a-f4d6005eacf0" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

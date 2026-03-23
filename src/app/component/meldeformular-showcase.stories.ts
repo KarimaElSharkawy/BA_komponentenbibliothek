@@ -8,6 +8,7 @@ import { TextareaComponent } from './textarea.component';
 import { HeadingComponent } from './heading.component';
 import { ButtonComponent } from './button.component';
 import { LogoComponent } from './logo.component';
+import { TextLinkComponent } from './text-link.component';
 
 
 const meta: Meta = {
@@ -23,6 +24,7 @@ const meta: Meta = {
         HeadingComponent,
         ButtonComponent,
         LogoComponent,
+        TextLinkComponent,
       ],
     }),
   ],
@@ -156,67 +158,25 @@ export const Standard: Story = {
                   Ich erkläre mich damit einverstanden, dass Daten zur Bearbeitung meines Anliegens
                   von der HTW Berlin erhoben, gespeichert, verarbeitet und intern übermittelt
                   werden, siehe
-                  <a
-                    class="link-dark text-decoration-underline"
+                  <app-text-link
+                    [inline]="true"
+                    text=""
+                    linkText="Datenschutzinformationen"
                     href="https://antidis.f4.htw-berlin.de/meldeformular#:~:text=Datenschutzinformationen"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >
-                    <span>Datenschutzinformationen</span>
-                    <span
-                      aria-hidden="true"
-                      class="d-inline-flex align-items-center ms-1"
-                      style="width: 1em; height: 1em; vertical-align: text-bottom;"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        focusable="false"
-                        style="width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round;"
-                      >
-                        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7zm0 0v5h5" />
-                        <path d="M8 15h1.5a1.5 1.5 0 0 0 0-3H8v6" />
-                        <path d="M12 18h1.2a2.8 2.8 0 0 0 0-5.6H12z" />
-                        <path d="M16 12h3" />
-                        <path d="M16 15h2.5" />
-                      </svg>
-                    </span>
-                    <span
-                      style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"
-                    >
-                      (PDF-Dokument, öffnet in neuem Tab)
-                    </span>
-                  </a>
+                    suffixIcon="pdf"
+                  ></app-text-link>
                   sowie in der
-                  <a
-                    class="link-dark text-decoration-underline"
+                  <app-text-link
+                    [inline]="true"
+                    text=""
+                    linkText="Antidiskriminierungsrichtlinie"
                     href="https://antidis.f4.htw-berlin.de/meldeformular#:~:text=Antidiskriminierungsrichtlinie"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >
-                    <span>Antidiskriminierungsrichtlinie</span>
-                    <span
-                      aria-hidden="true"
-                      class="d-inline-flex align-items-center ms-1"
-                      style="width: 1em; height: 1em; vertical-align: text-bottom;"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        focusable="false"
-                        style="width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round;"
-                      >
-                        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7zm0 0v5h5" />
-                        <path d="M8 15h1.5a1.5 1.5 0 0 0 0-3H8v6" />
-                        <path d="M12 18h1.2a2.8 2.8 0 0 0 0-5.6H12z" />
-                        <path d="M16 12h3" />
-                        <path d="M16 15h2.5" />
-                      </svg>
-                    </span>
-                    <span
-                      style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;"
-                    >
-                      (PDF-Dokument, öffnet in neuem Tab)
-                    </span>
-                  </a>
+                    suffixIcon="pdf"
+                  ></app-text-link>
                   der HTW Berlin (§10).
                 </p>
               </div>

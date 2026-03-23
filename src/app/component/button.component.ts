@@ -14,16 +14,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       [attr.aria-label]="ariaLabel || null"
       (click)="onClick()"
     >
-      <svg
-        class="icon"
-        [hidden]="!iconOnly"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path d="M15 5L8 12L15 19" />
-      </svg>
-      <span [hidden]="iconOnly">{{ label }}</span>
+      @if (iconOnly) {
+        <i class="bi bi-chevron-left icon" aria-hidden="true"></i>
+      } @else {
+        <span>{{ label }}</span>
+      }
     </button>
   `,
   styles: [`
@@ -74,13 +69,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       color: #002e5a;
     }
     .icon {
-      width: 1.75rem;
-      height: 1.75rem;
-      stroke: currentColor;
-      stroke-width: 2.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      font-size: 1.75rem;
+      line-height: 1;
     }
   `],
 })

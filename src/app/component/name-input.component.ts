@@ -82,6 +82,8 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
 
   value = '';
   disabled = false;
+  touched = false;
+  dirty = false;
 
   private readonly ngControl = inject(NgControl, { optional: true, self: true });
   private onChange: (value: string) => void = () => {};
@@ -96,7 +98,12 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
 
   get showError(): boolean {
     const control = this.ngControl?.control;
-    return !!control && control.invalid && (control.touched || control.dirty);
+
+    if (control) {
+      return control.invalid && (control.touched || control.dirty);
+    }
+
+    return this.required && !this.value.trim() && (this.touched || this.dirty);
   }
 
   writeValue(value: string | null): void {
@@ -130,11 +137,13 @@ export class NameInputComponent implements ControlValueAccessor, Validator {
     const value = (event.target as HTMLInputElement).value;
 
     this.value = value;
+    this.dirty = true;
     this.onChange(value);
     this.onValidatorChange();
   }
 
   markTouched(): void {
+    this.touched = true;
     this.onTouched();
   }
 }
