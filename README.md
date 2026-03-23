@@ -1,18 +1,14 @@
 # <u>BA Komponentenbibliothek</u>
 
-Angular-Komponentenbibliothek mit Storybook zur Dokumentation und Vorschau von UI-Komponenten.
-
 ## <u>Komponenten</u>
 
-Die Komponenten befinden sich im Verzeichnis `src/app/component` und sind als standalone Angular-Komponenten umgesetzt. Die Bibliothek umfasst Formularfelder, Navigationsbausteine sowie Text- und Darstellungskomponenten.
+Die folgenden Komponenten wurden in Der Komponentenbibliothek umgesetzt. Die Komponenten befinden sich im Verzeichnis `src/app/component` und sind als standalone Angular-Komponenten umgesetzt.
 
 ### <u>Abbreviation</u>
 
 Die `AbbreviationComponent` dient zur Darstellung von Abkürzungen und deren ausgeschriebener Bedeutung. Sie eignet sich für fachliche Begriffe, die im Text verständlich aufgelöst werden sollen.
 
 Die folgende Abbildung zeigt eine Beispielansicht der Komponente.
-
----
 
 <img width="455" height="83" alt="Bildschirmfoto 2026-03-23 um 01 01 47" src="https://github.com/user-attachments/assets/1e9219e5-1df4-44e2-a8a6-2eef669ea253" />
 
