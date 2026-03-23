@@ -2,6 +2,35 @@
 
 Angular-Komponentenbibliothek mit Storybook zur Dokumentation und Vorschau von UI-Komponenten.
 
+
+## Komponenten
+
+### Abbreviation
+
+### Akkordeon
+
+### Burger Menu
+
+### Button
+
+### Checkbox
+
+### Dropdown
+
+### Email Input
+
+### Heading
+
+### Lang
+
+### Logo
+### Name Input
+### Nav Text
+### Showcase
+### Text Link
+### Text Paragraph
+### Textarea
+
 ## Voraussetzungen
 
 - Node.js (empfohlen: aktuelle LTS-Version)
