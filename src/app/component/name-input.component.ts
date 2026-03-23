@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef, inject } from '@angular/core';
+import { Component, HostBinding, Input, forwardRef, inject } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -69,6 +69,7 @@ let nameInputInstanceCounter = 0;
 
 export class NameInputComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++nameInputInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
   @Input() id = `name-field-${this.instanceId}`;
   @Input() label = 'Name';
   @Input() ariaLabel = '';

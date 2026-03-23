@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, forwardRef } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -69,6 +69,7 @@ let checkboxInstanceCounter = 0;
 
 export class CheckboxComponent implements ControlValueAccessor, Validator {
   private readonly instanceId = ++checkboxInstanceCounter;
+  @HostBinding('attr.id') externalId: string | null = null;
   @Input() id = `checkbox-field-${this.instanceId}`;
   @Input() label = '';
   @Input() ariaLabel = '';
